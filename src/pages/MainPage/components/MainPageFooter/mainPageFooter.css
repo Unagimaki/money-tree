@@ -1,0 +1,6 @@
+.main_footer {
+    display: flex;
+    justify-content: space-around;
+    background: #e5e5e5;
+    padding: 5%;
+}
