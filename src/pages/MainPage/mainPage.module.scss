@@ -1,0 +1,13 @@
+.main_page {
+    padding-top: 5.42%;
+    position: relative;
+    margin: 0 auto;
+    background-color: #ccc;
+    width: min(52.08vw, 375px);
+    height: min(112.78vw, 812px);
+    display: flex;
+    flex-direction: column;
+    background: url('./assets/background.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+}

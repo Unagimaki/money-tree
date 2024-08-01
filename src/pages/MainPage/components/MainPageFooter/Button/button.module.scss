@@ -1,0 +1,14 @@
+.button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 17.2%;
+    &_img {
+        width: 67.8%;
+        height: auto;
+    }
+    &_text {
+        color: #fff;
+        font-size: 75%;
+    }
+}

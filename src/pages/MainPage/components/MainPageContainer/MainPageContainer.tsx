@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom"
-import { MainTree } from "./components/MainTree"
-import './mainPageContainer.css'
+import styles from './mainPageContainer.module.scss'
+import { MainTree } from "./MainTreeContainer/MainTree"
 
 
 export const MainPageContainer = () => {
     return(
-        <div className="main_container">
+        <div className={styles.main_container}>
             <Link to={"/game"}>
-                <MainTree />
+                <MainTree/>
             </Link>
         </div>
     )

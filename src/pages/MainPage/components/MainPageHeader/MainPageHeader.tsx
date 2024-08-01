@@ -1,14 +1,12 @@
-import { MainCoins } from './MainCoins/MainCoins'
-import { MainDamage } from './MainDamage/MainDamage'
-import { MainEnergy } from './MainEnergy/MainEnergy'
-import './mainPageHeader.css'
+import { MainDamageContainer } from './MainDamageContainer/MainDamageContainer'
+import { MainEnergyContainer } from './MainEnergyContainer/MainEnergyContainer'
+import styles from './mainPageHeader.module.scss'
 
 export const MainPageHeader = () => {
     return(
-        <div className="main_header">
-            <MainDamage/>
-            <MainCoins/>
-            <MainEnergy/>
+        <div className={styles.header}>
+            <MainDamageContainer/>
+            <MainEnergyContainer/>
         </div>
     )
 }

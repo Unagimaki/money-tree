@@ -1,7 +1,7 @@
 import { randomElementPosition } from "./randomElementPosition"
 import { removeElement } from "./removeElement"
 import { moveElement } from "./moveElement"
-import { getCoins } from "../getCoins"
+import { getCoins } from "../service/getCoins"
 
 export const createMoneyElement = (parentElement: HTMLDivElement, elementSizeViewport: number, elementPixelSize: number, elementFallingSpeed: number) => {   
     const newDiv = document.createElement("div")
