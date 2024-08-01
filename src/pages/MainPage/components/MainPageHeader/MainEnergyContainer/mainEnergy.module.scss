@@ -1,3 +1,5 @@
+@import '../../../../../styles/vars';
+
 .energy {
     width: 46.9%;
     height: 83.33%;
@@ -10,7 +12,7 @@
     }
     &_count {
         position: absolute;
-        background: linear-gradient(to right, #202020, #223B37);
+        background: $dark_gradient;
         border: 2px solid #494949;
         color: #fff;
         width: 86.67%;

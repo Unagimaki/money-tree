@@ -1,9 +1,11 @@
+@import '../../styles/vars';
+
+
 .bonus_page {
+    position: relative;
     margin: 0 auto;
-    background-color: #ccc;
-    width: 40vw;
-    height: 80vw;
+    background: url($page_background);
+    width: $page_width;
+    height: $page_height;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
 }

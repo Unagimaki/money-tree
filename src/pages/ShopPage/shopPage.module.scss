@@ -1,10 +1,11 @@
 @import '../../styles/vars';
 
-.boosts_page {
-    padding-top: 5.42%;
+.shop_page {
     position: relative;
+    margin: 0 auto;
     background: url($page_background);
     width: $page_width;
     height: $page_height;
-    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
 }

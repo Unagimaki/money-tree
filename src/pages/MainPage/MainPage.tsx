@@ -1,6 +1,6 @@
 import { BalanceModule } from '../../modules/BalanceModule/BalanceModule'
-import { MainPageContainer } from './components/MainPageContainer/MainPageContainer'
-import { MainPageFooter } from './components/MainPageFooter/MainPageFooter'
+import { FooterMenuModule } from '../../modules/FooterMenuModule/FooterMenuModule'
+import { TreeModule } from '../../modules/TreeModule/TreeModule'
 import { MainPageHeader } from './components/MainPageHeader/MainPageHeader'
 import styles from './mainPage.module.scss'
 
@@ -9,8 +9,8 @@ export const MainPage = () => {
         <div className={styles.main_page}>
             <MainPageHeader/>
             <BalanceModule/>
-            <MainPageContainer/>
-            <MainPageFooter/>
+            <TreeModule/>
+            <FooterMenuModule/>
         </div>
     )
 }

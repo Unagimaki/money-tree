@@ -1,13 +1,15 @@
+@import '../../styles/vars';
+
 .main_page {
     padding-top: 5.42%;
     position: relative;
     margin: 0 auto;
     background-color: #ccc;
-    width: min(52.08vw, 375px);
-    height: min(112.78vw, 812px);
+    width: min(52.08vw, $page_width);
+    height: min(112.78vw, $page_height);
     display: flex;
     flex-direction: column;
-    background: url('./assets/background.png');
+    background: url($page_background);
     background-repeat: no-repeat;
     background-size: contain;
 }

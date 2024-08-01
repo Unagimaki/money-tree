@@ -1,3 +1,5 @@
+@import '../../../../../styles/vars';
+
 .damage {
     width: 50.13%;
     height: 83.33%;
@@ -15,7 +17,7 @@
         position: absolute;
         top: 20.55%;
         right: 0;
-        background: linear-gradient(to right, #202020, #223B37);
+        background: $dark_gradient;
         border: 2px solid #494949;
         color: #fff;
         border-radius: 8px;

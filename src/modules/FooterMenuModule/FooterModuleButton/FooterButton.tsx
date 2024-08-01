@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { FC } from 'react'
-import styles from './button.module.scss'
+import styles from './footerButton.module.scss'
 
 interface ButtonProps {
     to: string
@@ -9,7 +9,7 @@ interface ButtonProps {
     current_url: string
   }
 
-export const Button: FC<ButtonProps> = ({text, to, img, current_url}) => {
+export const FooterButton: FC<ButtonProps> = ({text, to, img, current_url}) => {
     return(
         <Link to={`${to}`} className={styles.button}>
             

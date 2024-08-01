@@ -1,9 +1,9 @@
-import { Button } from './Button/Button'
-import { PagesLinksEnum } from '../../../../shared/PagesLinks.enum'
-import styles from './mainPageFooter.module.scss'
-import { useLocation } from 'react-router-dom';
+import { useLocation } from "react-router-dom"
+import { FooterButton } from "./FooterModuleButton/FooterButton"
+import { PagesLinksEnum } from "../../shared/PagesLinks.enum"
+import styles from './footerMenuModule.module.scss'
 
-export const MainPageFooter = () => {
+export const FooterMenuModule = () => {
     const currentUrl = useLocation().pathname
 
     const buttons = [
@@ -38,7 +38,7 @@ export const MainPageFooter = () => {
         <div className={styles.footer}>
             {
                 buttons.map((item, index) => {
-                    return <Button key={index} text={item.name} to={item.link} img={item.img} current_url={currentUrl}/>
+                    return <FooterButton key={index} text={item.name} to={item.link} img={item.img} current_url={currentUrl}/>
                 })
             }
 
