@@ -1,3 +1,5 @@
+@import '../../../assets/styles/vars';
+
 .button {
     display: flex;
     flex-direction: column;
@@ -8,7 +10,7 @@
         height: auto;
     }
     &_text {
-        color: #fff;
+        font-family: 'MBold';
         font-size: 75%;
     }
 }

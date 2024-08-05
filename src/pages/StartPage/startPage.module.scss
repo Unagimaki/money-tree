@@ -1,0 +1,17 @@
+@import '../../assets/styles/vars';
+
+.start {
+    @each $property, $value in $page_styles {
+        #{$property}: $value;
+    }
+    padding-top: 4%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5.6%;
+}
+.start::before {
+    @each $property, $value in $page_mask {
+        #{$property}: $value;
+    }
+}

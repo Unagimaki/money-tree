@@ -1,4 +1,3 @@
-export const randomElementPosition = (elem: HTMLDivElement, size: number) => {   
-    const rect = elem.getBoundingClientRect()    
-    return Math.random() * ((rect.left + (elem.offsetWidth - size)) - rect.left) + rect.left
+export const randomElementPosition = () => {   
+    return Math.floor(Math.random() * (90 - 10 + 1)) + 10;
 } 

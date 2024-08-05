@@ -1,11 +1,8 @@
-@import '../../styles/vars';
+@import '../../assets/styles/vars';
 
 
 .bonus_page {
-    position: relative;
-    margin: 0 auto;
-    background: url($page_background);
-    width: $page_width;
-    height: $page_height;
-    display: flex;
+    @each $property, $value in $page_styles {
+        #{$property}: $value;
+    }
 }

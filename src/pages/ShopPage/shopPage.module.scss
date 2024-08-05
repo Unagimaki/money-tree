@@ -1,11 +1,14 @@
-@import '../../styles/vars';
+@import '../../assets/styles/vars';
+
 
 .shop_page {
-    position: relative;
-    margin: 0 auto;
-    background: url($page_background);
-    width: $page_width;
-    height: $page_height;
-    display: flex;
-    flex-direction: column;
+    @each $property, $value in $page_styles {
+        #{$property}: $value;
+    }
+    padding-top: 34.29%;
+}
+.shop_page::before {
+    @each $property, $value in $page_mask {
+        #{$property}: $value;
+    }
 }

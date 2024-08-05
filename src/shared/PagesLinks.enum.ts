@@ -5,4 +5,6 @@ export enum PagesLinksEnum {
     SHOP_URL = '/shop',
     STATS_URL = '/stats',
     BONUS_URL = '/bonus',
+    MAIN_URL = '/main',
+    LOADING_URL = '/loading',
 }

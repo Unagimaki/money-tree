@@ -1,15 +1,13 @@
-@import '../../styles/vars';
+@import '../../assets/styles/vars';
 
 .main_page {
-    padding-top: 5.42%;
     position: relative;
+    width: $page_width;
+    height: $page_height;
+    background: url($page_backgroundNoTree) no-repeat;
+    background-size: cover;
     margin: 0 auto;
-    background-color: #ccc;
-    width: min(52.08vw, $page_width);
-    height: min(112.78vw, $page_height);
-    display: flex;
-    flex-direction: column;
-    background: url($page_background);
-    background-repeat: no-repeat;
-    background-size: contain;
+    overflow: hidden;
+    transition: opacity 0.5s;
+    animation: entry .5s ease-in-out
 }

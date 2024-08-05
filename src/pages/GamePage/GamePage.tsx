@@ -1,25 +1,30 @@
-import { useEffect } from 'react'
-import './gamePage.css'
+import { useEffect, useRef } from 'react'
 import { createMoneyElement } from './helpers/createMoneyElement'
-import { getPixelsFromViewport } from './helpers/getPixelsFromViewport'
+import styles from './gamePage.module.scss'
+import { ModuleStats } from '../../modules/ModuleStats/ModuleStats'
+import { TreeModule } from '../../modules/TreeModule/TreeModule'
 
 export const GamePage = () => {
+    const gameElementRef = useRef<any>(null);
+
     useEffect(() => {
-        const gameElement = document.querySelector(".game_page") as HTMLDivElement
+        const gameElement = gameElementRef.current
+        console.log(gameElement);
+        
         const elementSizeViewport = 3
-        const elementPixelSize = getPixelsFromViewport(elementSizeViewport)  
-        const elementSpawnRate = 500  
-        const elementFallingSpeed = 8
+        const elementSpawnRate = 1000  
+        const elementFallingSpeed = 10
 
         setInterval(() => {
-            createMoneyElement(gameElement, elementSizeViewport, elementPixelSize, elementFallingSpeed)
+            createMoneyElement(gameElement, elementSizeViewport, elementFallingSpeed)
         }, elementSpawnRate)
     }, [])
 
 
     return(
-        <div className="game_page">
-
+        <div ref={gameElementRef} className={styles.game}>
+            <ModuleStats/>
+            <TreeModule/>
         </div>
     )
 } 

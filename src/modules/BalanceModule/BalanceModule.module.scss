@@ -1,4 +1,9 @@
+@import '../../assets/styles/vars';
+
 .balance {
+    position: absolute;
+    top: 13.05%;
+    left: 10.67%;
     width: 78.93%;
     height: 7.88%;
     display: flex;
@@ -9,7 +14,10 @@
     &_text {
         font-size: 250%;
         color: #fff;
-        font-weight: bold;
+        font-family: $PExtra;
+        -webkit-text-stroke: 1px black;
+        text-stroke: 1px black;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     }
     &_img {
         width: 20.65%;

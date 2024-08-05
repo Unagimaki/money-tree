@@ -1,14 +1,14 @@
 import { BalanceModule } from '../../modules/BalanceModule/BalanceModule'
-import { FooterMenuModule } from '../../modules/FooterMenuModule/FooterMenuModule'
-import { TreeModule } from '../../modules/TreeModule/TreeModule'
+import { FriendsCountContainer } from './FriendsCountContainer/FriendsCountContainer'
 import styles from './shopPage.module.scss'
+import { SkinList } from './SkinList/SkinList'
 
 export const ShopPage = () => {
     return(
         <div className={styles.shop_page}>
-            <BalanceModule/>
-            <TreeModule/>
-            <FooterMenuModule/>
+            <BalanceModule top='5.42%'/>
+            <FriendsCountContainer/>
+            <SkinList/>
         </div>
     )
 }
