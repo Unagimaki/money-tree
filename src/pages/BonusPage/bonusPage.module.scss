@@ -1,9 +1,8 @@
+@import '../../assets/styles/vars';
+
+
 .bonus_page {
-    margin: 0 auto;
-    background-color: #ccc;
-    width: 40vw;
-    height: 80vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    @each $property, $value in $page_styles {
+        #{$property}: $value;
+    }
 }

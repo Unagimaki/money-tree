@@ -1,0 +1,40 @@
+@import '../../../../assets/styles/vars';
+
+.boost_item {
+    width: 100%;
+    background: $card_background;
+    display: flex;
+    aspect-ratio: 6.125;
+    color: #fff;
+    border-radius: 8px;
+    padding: 2%;
+    cursor: pointer;
+    &_img_container {
+        height: 100%;
+        aspect-ratio: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 3%;
+        img {
+            width: 90%;
+            height: auto;
+        }
+    }
+
+    &_info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        &_title {
+            font-family: $MSemiBold;
+        }
+        &_text {
+            font-family: $MMedium;
+            font-size: 75%;
+        }
+    }
+}
+.boost_item:not(:last-child) {
+    margin-bottom: 2.5%;
+}

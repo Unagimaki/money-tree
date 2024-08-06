@@ -1,9 +1,13 @@
+@import '../../assets/styles/vars';
+
 .boosts_page {
-    margin: 0 auto;
-    background-color: #ccc;
-    width: 40vw;
-    height: 80vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    @each $property, $value in $page_styles {
+        #{$property}: $value;
+    }
+    padding-top: 33.3%;
+}
+.boosts_page::before {
+    @each $property, $value in $page_mask {
+        #{$property}: $value;
+    }
 }

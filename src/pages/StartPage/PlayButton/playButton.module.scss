@@ -1,0 +1,18 @@
+@import '../../../assets/styles/vars';
+
+.button {
+    display: block;
+    position: relative;
+    color: #000;
+    background-color: $green;
+    width: 82.67%;
+    height: 6.9%;
+    font-family: $MSemiBold;
+    font-size: 150%;
+    border-radius: 8px;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}

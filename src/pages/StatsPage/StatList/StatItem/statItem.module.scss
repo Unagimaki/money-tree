@@ -1,0 +1,51 @@
+@import '../../../../assets/styles/vars';
+
+.item {
+    color: #fff;
+    border: 2px solid $green;
+    background-color: $card_background;
+    width: 100%;
+    aspect-ratio: 6.125;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2.4%;
+    &_profile {
+        width: 23.03%;
+        height: 62.5%;
+        display: flex;
+        justify-content: space-between;
+        &_info {
+            &_place {
+                font-family: $MBold;
+                color: #818181;
+                font-size: 75%;
+            }
+            &_name {
+                font-size: 88%;
+                font-family: $MSemiBold;
+            }
+        }
+
+    }
+    &_count {
+        width: 31.49%;
+        height: 42.86%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        &_img {
+            width: 22.22%;
+            aspect-ratio: 1;
+        }
+        &_text {
+            color: $green;
+            font-family: $MBold;
+            font-size: 100%;
+        }
+    }
+}
+.item:not(:last-child) {
+    margin-bottom: 2.4%;
+}

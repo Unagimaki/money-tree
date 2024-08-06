@@ -1,0 +1,13 @@
+@import '../../assets/styles/vars';
+
+.main_page {
+    position: relative;
+    width: $page_width;
+    height: $page_height;
+    background: url($page_backgroundNoTree) no-repeat;
+    background-size: cover;
+    margin: 0 auto;
+    overflow: hidden;
+    transition: opacity 0.5s;
+    animation: entry .5s ease-in-out
+}

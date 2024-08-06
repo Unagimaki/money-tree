@@ -1,0 +1,16 @@
+@import '../../../assets/styles/vars';
+
+.button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 17.2%;
+    &_img {
+        width: 67.8%;
+        height: auto;
+    }
+    &_text {
+        font-family: 'MBold';
+        font-size: 75%;
+    }
+}

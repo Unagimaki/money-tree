@@ -1,28 +1,40 @@
 import './App.css';
 import { GamePage } from './pages/GamePage/GamePage';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import { BoostsPage } from './pages/BoostsPage/BoostsPage';
 import { RewardsPage } from './pages/RewardsPage/RewardsPage';
 import { ShopPage } from './pages/ShopPage/ShopPage';
-import { StatsPage } from './pages/StatsPage/StatsPage';
 import { BonusPage } from './pages/BonusPage/BonusPage';
 import { MainPage } from './pages/MainPage/MainPage';
 import { PagesLinksEnum } from './shared/PagesLinks.enum';
+import { StatPage } from './pages/StatsPage/StatPage';
+import { StartPage } from './pages/StartPage/StartPage';
+import { LoaderPage } from './pages/LoaderPage/LoaderPage';
+
+import styles from './App.module.scss'
+import { FooterMenuModule } from './modules/FooterMenuModule/FooterMenuModule';
 
 
 
 function App() {
+  const currentUrl = useLocation().pathname
+  
   return (
-    <div className="App">
+    <div className={styles.app}>
       <Routes>
         <Route path={PagesLinksEnum.BOOSTS_URL} element={<BoostsPage/>}/>
         <Route path={PagesLinksEnum.GAME_URL} element={<GamePage/>}/>
         <Route path={PagesLinksEnum.REWARDS_URL} element={<RewardsPage/>}/>
         <Route path={PagesLinksEnum.SHOP_URL} element={<ShopPage/>}/>
-        <Route path={PagesLinksEnum.STATS_URL} element={<StatsPage/>}/>
+        <Route path={PagesLinksEnum.STATS_URL} element={<StatPage/>}/>
         <Route path={PagesLinksEnum.BONUS_URL} element={<BonusPage/>}/>
-        <Route path='/' element={<MainPage/>}/>
+        <Route path={PagesLinksEnum.MAIN_URL} element={<MainPage/>}/>
+        <Route path={PagesLinksEnum.LOADING_URL} element={<LoaderPage/>}/>
+        <Route path='/' element={<StartPage/>}/>
       </Routes>
+      {
+        currentUrl !== '/' && currentUrl!== PagesLinksEnum.LOADING_URL && <FooterMenuModule/>
+      }
     </div>
   );
 }

@@ -1,0 +1,26 @@
+@import '../../../assets/styles/vars';
+
+.button {
+    position: absolute;
+    bottom: 12.81%;
+    left: 4.27%;
+    width: 91.47%;
+    height: 6.9%;
+    background-color: $green;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    margin: 0 auto;
+    border-radius: 8px;
+    font-family: $MBold;
+    font-size: 100%;
+    &_text {
+        font-size: 16px;
+        font-weight: bold;
+    }
+    &_icon {
+        width: 7%;
+        aspect-ratio: 1;
+    }
+}

@@ -1,0 +1,26 @@
+@import '../../assets/styles/vars';
+
+.balance {
+    position: absolute;
+    top: 13.05%;
+    left: 10.67%;
+    width: 78.93%;
+    height: 7.88%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 0 auto;
+    z-index: 99;
+    &_text {
+        font-size: 250%;
+        color: #fff;
+        font-family: $PExtra;
+        -webkit-text-stroke: 1px black;
+        text-stroke: 1px black;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+    &_img {
+        width: 20.65%;
+        height: auto;
+    }
+}

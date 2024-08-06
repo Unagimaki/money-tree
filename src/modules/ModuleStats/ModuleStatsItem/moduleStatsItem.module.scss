@@ -1,0 +1,32 @@
+@import '../../../assets/styles/vars';
+
+.item {
+    width: 50.13%;
+    height: 83.33%;
+    position: relative;
+    display: block;
+    &_img {
+        position: absolute;
+        left: 0;
+        width: 35.39%;
+        height: auto;
+        z-index: 2;
+    }
+    &_count {
+        font-family: $MBold;
+        width: 81.09%;
+        height: 58.18%;
+        position: absolute;
+        top: 20.55%;
+        right: 0;
+        background: $dark_gradient;
+        border: 2px solid #494949;
+        color: #fff;
+        border-radius: 8px;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+}
