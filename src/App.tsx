@@ -18,6 +18,7 @@ import { FooterMenuModule } from './modules/FooterMenuModule/FooterMenuModule';
 
 function App() {
   const currentUrl = useLocation().pathname
+
   
   return (
     <div className={styles.app}>
