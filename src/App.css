@@ -5,7 +5,12 @@
 	border: none;
 	box-sizing: border-box;
 }
-
+body {
+	width: 375px;
+	height: 812px;
+	max-width: 375px;
+	max-height: 812px;
+}
 *,
 *::before,
 *::after {
