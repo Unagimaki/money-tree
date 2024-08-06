@@ -1,4 +1,3 @@
-import { title } from 'process'
 import { BoostItem } from '../BoostsContainer/BoostItem/BoostItem'
 import { BoostsTitle } from '../BoostsTitle/BoostsTitle'
 import styles from './improveContainer.module.scss'
