@@ -57,7 +57,7 @@ $page_styles: (
   width: $page_width,
   height: $page_height,
   background: url($page_background) no-repeat,
-  background-size: cover,
+  background-size: contain,
   margin: 0 auto,
   overflow: hidden,
   transition: opacity 0.5s,
