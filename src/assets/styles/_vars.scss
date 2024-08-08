@@ -38,8 +38,8 @@ $MExtra: 'MExtra';
 $MSemiBold: 'MSemiBold';
 $MMedium: 'MMedium';
 
-$page_width: min(100vw, 375px);
-$page_height: max(100vh, 812px);
+$page_width: 100vw;
+$page_height: 100vh;
 
 $dark_gradient: linear-gradient(to right, #202020, #223B37);
 $page_background: '../../../public/images/background.png';
@@ -57,7 +57,7 @@ $page_styles: (
   width: $page_width,
   height: $page_height,
   background: url($page_background) no-repeat,
-  background-size: contain,
+  background-size: cover,
   margin: 0 auto,
   overflow: hidden,
   transition: opacity 0.5s,
