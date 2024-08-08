@@ -13,11 +13,16 @@ import { LoaderPage } from './pages/LoaderPage/LoaderPage';
 
 import styles from './App.module.scss'
 import { FooterMenuModule } from './modules/FooterMenuModule/FooterMenuModule';
+import { useEffect } from 'react';
 
 
 
 function App() {
   const currentUrl = useLocation().pathname
+
+  useEffect(() => {
+    alert(`Ширина экрана: ${window.innerWidth}px, Высота экрана: ${window.innerHeight}px`);
+  }, [])
 
   
   return (
