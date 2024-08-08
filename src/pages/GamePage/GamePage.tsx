@@ -24,7 +24,6 @@ export const GamePage = () => {
     return(
         <div ref={gameElementRef} className={styles.game}>
             <ModuleStats/>
-            <TreeModule/>
         </div>
     )
 } 

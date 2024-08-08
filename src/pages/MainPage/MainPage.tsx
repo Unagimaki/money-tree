@@ -7,13 +7,13 @@ import styles from './mainPage.module.scss'
 
 export const MainPage = () => {
     return(
-        <div className={styles.main_page}>
-            <ModuleStats/>
-            <BalanceModule/>
-            <Link to={PagesLinksEnum.GAME_URL}>
-                <TreeModule />
-            </Link>
-        </div>
+        <Link to={PagesLinksEnum.GAME_URL}>
+            <div className={styles.main_page}>
+                <ModuleStats/>
+                <BalanceModule/>
+            </div>
+        </Link>
+
     )
 }
 
