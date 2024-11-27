@@ -1,0 +1,19 @@
+@import '../../../../assets/styles/vars';
+
+.button {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: min(15.73vw, 59px);
+    z-index: 5;
+    bottom: 6.94vw;
+    &_img {
+        width: 67.8%;
+        height: auto;
+    }
+    &_text {
+        font-family: 'MBold';
+        font-size: min(3.2vw, 12px);
+    }
+}

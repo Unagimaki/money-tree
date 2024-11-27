@@ -1,0 +1,41 @@
+@import '../../../../../assets/styles/vars';
+
+.boost_item {
+    width: 100%;
+    height: min(14.93vw, 56px);
+    background: linear-gradient(45deg, #202020 0%, #171E17 100%);    display: flex;
+    align-items: center;
+    color: #fff;
+    border-radius: $br8px;
+    padding: min(2.93vw, 11px);
+    cursor: pointer;
+    &_img_container {
+        width: min(13.33vw, 50px);
+        height: min(13.33vw, 50px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: min(2.56vw, 9.6px);
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }   
+
+    &_info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        &_title {
+            font-family: $MSemiBold;
+            font-size: $fz14px;
+        }
+        &_text {
+            font-family: $MMedium;
+            font-size: $fz12px;
+        }
+    }
+}
+.boost_item:not(:last-child) {
+    margin-bottom: 2.5%;
+}

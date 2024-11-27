@@ -1,0 +1,59 @@
+@import '../../../../../assets/styles/vars';
+
+.container {
+    display: flex;
+    width: 100%;
+    background: linear-gradient(45deg, #202020 0%, #171E17 100%);
+    height: min(14.93vw, 56px);
+    position: relative;
+    color: #fff;
+    align-items: center;
+    padding: 0 min(1.33vw, 5px);
+    border-radius: $br8px;
+    font-size: $fz12px;
+    &_info {
+        width: 57.99%;
+        // width: min-content;
+        &_title {
+            font-family: $MMedium;
+            white-space: nowrap;
+            max-width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        &_reward {
+            display: flex;
+            align-items: center;    
+            font-family: $MBold;
+            color: $green;
+            img {
+                margin-right: 2%;
+                width: min(6.4vw, 24px);
+            }
+            &_money {
+                color: #fff;
+                white-space: nowrap;
+            }
+        }
+    }
+    &_image {
+        margin-right: $br8px;
+        width: min(12.27vw, 46px);
+        height: min(12.27vw, 46px);
+            img {
+            border-radius: $br8px;
+            width: 100%;
+            height: 100%;
+        }
+    }
+    &_done {
+        position: absolute;
+        right: 2%;
+        width: min(9vw, 30px);
+        height: min(9vw, 30px);
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+}

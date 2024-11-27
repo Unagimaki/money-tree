@@ -1,0 +1,2 @@
+export const SET_BOOSTS = 'SET_BOOSTS'
+export const UPGRADE_BOOST_LEVEL = 'UPGRADE_BOOST_LEVEL'

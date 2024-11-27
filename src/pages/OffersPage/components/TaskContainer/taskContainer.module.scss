@@ -1,0 +1,55 @@
+@import '../../../../assets/styles/vars';
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: $size343px;
+    position: relative;
+    z-index: 2;
+    &_title {
+        color: #fff;
+        font-size: $fz18px;
+        font-family: $MBold;
+        margin-bottom: $br8px;
+    }
+    &_tasks_wrapper {
+        max-height: 45vh;
+        overflow-y: scroll;
+        &_list {
+            display: flex;
+            flex-direction: column;
+            gap: $br8px;
+    
+        }
+    }
+}
+@media (max-height: 770px) {
+    .container_tasks_wrapper {
+        max-height: 42vh;
+    }
+}
+@media (max-height: 730px) {
+    .container_tasks_wrapper {
+        max-height: 40vh;
+    }
+}
+@media (max-height: 710px) {
+    .container_tasks_wrapper {
+        max-height: 37vh;
+    }
+}
+@media (max-height: 675px) {
+    .container_tasks_wrapper {
+        max-height: 34vh;
+    }
+}
+@media (max-height: 645px) {
+    .container_tasks_wrapper {
+        max-height: 30vh;
+    }
+}
+@media (max-height: 606px) {
+    .container_tasks_wrapper {
+        max-height: 26vh;
+    }
+}

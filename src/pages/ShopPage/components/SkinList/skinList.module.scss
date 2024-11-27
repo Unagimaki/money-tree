@@ -1,0 +1,25 @@
+.skin_list {
+    z-index: 2;
+    position: relative;
+    max-height: 60vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+@media (max-height: 750px) {
+    /* Ваши стили для экранов с высотой меньше 755px */
+    .skin_list {
+        max-height: 55vh;
+    }
+}
+@media (max-height: 682px) {
+    /* Ваши стили для экранов с высотой меньше 755px */
+    .skin_list {
+        max-height: 50vh;
+    }
+}
+@media (max-height: 600px) {
+    /* Ваши стили для экранов с высотой меньше 755px */
+    .skin_list {
+        max-height: 45vh;
+    }
+}

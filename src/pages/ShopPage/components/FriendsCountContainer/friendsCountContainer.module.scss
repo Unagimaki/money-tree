@@ -1,0 +1,25 @@
+@import '../../../../assets/styles/vars';
+
+.friends_container {
+    position: relative;
+    height: min(22.4vw, 84px);
+    width: min(91.47vw, 343px);
+    background: linear-gradient(45deg, #202020 0%, #171E17 100%);    border-radius: $size16px;
+    margin: 0 auto;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: $size16px;
+    &_text {
+        font-family: $MSemiBold;
+        font-size: inherit;
+        color: #fff;
+        text-align: center;
+        line-height: 1;
+        span {
+            font-size: $fz40px;
+            font-family: $MExtra;
+        }
+    }
+}

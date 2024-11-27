@@ -1,0 +1,65 @@
+@import '../../../../../assets/styles/vars';
+
+.item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: min(2.13vw, 8px);
+    border-radius: $br8px;
+    background: linear-gradient(45deg, #202020 0%, #171E17 100%);    width: min(44.53vw, 167px);
+    height: min(46.93vw, 176px);
+    font-size: $fz12px;
+    &_level {
+        position: absolute;
+        top: 5%;
+        left: 5%;
+        color: $green;
+        font-size: $fz12px;
+        font-family: $MBold;
+
+    }
+    &_img {
+        width: min(17.07vw, 64px);
+        height: min(17.07vw, 64px);
+        margin: 0 auto;
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+    &_title {
+        font-family: $MBold;
+    }
+    &_text {
+        display: flex;
+        justify-content: space-between;
+        font-family: $MMedium;
+        white-space: nowrap;
+        &_description {
+            color: #818181;
+        }
+        &_info {
+            display: flex;
+            justify-content: space-between;
+            img {
+                width: $size16px;
+                height: $size16px;
+            }
+        }
+    }
+    &_button {
+        font-family: $MBold;
+        background: $green;
+        color: #000;
+        height: min(8.53vw, 32px);
+        border-radius: $br8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        img {
+            width: $size16px;
+            height: $size16px;
+        }
+    }
+}

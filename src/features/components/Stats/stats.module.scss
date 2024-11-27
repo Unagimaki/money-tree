@@ -1,0 +1,25 @@
+.stats {
+    overflow: visible;
+    position: absolute;
+    height: min(16.53vw, 62px);
+    width: 100vw;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin: 0 auto;
+    top: 8vw;
+    &_wrapper {
+        height: inherit;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        overflow: visible;
+        gap: 20%;  
+    }
+}

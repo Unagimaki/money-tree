@@ -1,0 +1,28 @@
+@import '../../../assets/styles/vars';
+
+.balance {
+    position: absolute;
+    overflow: visible;
+    top: 21.27vw;
+    left: 10.67vw;
+    width: 78.93vw;
+    height: min(17.078vw, 64px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    z-index: 99;
+    &_text {
+        font-size: $fz40px;
+        color: #fff;
+        font-family: $PExtra;
+        -webkit-text-stroke: 1px black;
+        text-stroke: 1px black;
+        text-shadow: 0.533vw 0.533vw 1.067vw rgba(0, 0, 0, 0.5);
+        white-space: nowrap;
+    }
+    &_img {
+        width: min(17.07vw, 64px);
+        height: auto;
+    }
+}

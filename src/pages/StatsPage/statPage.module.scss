@@ -1,0 +1,21 @@
+@import '../../assets/styles/vars';
+
+
+.stat_page {
+    @each $property, $value in $page_styles {
+        #{$property}: $value;
+    }
+    padding-top: 5.42%;
+    &_background {
+        position: absolute;
+        top: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 1;
+    }
+}
+.stat_page:before {
+    @each $property, $value in $page_mask {
+        #{$property}: $value;
+    }
+}

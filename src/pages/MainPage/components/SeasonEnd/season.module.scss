@@ -1,0 +1,37 @@
+@import '../../../../assets/styles/vars';
+
+.container {
+  @each $property, $value in $page_styles {
+    #{$property}: $value;
+  }
+  padding-top: min(24vw, 90px);
+  color: #fff;
+  text-align: center;
+    font-family: $MBold;
+  &_title {
+    font-size: min(8.53vw, 32px);
+    margin-bottom: min(25.6vw, 96px);
+  }
+  &_text {
+    font-size: $fz14px;
+  }
+  &_balance {
+    &_wrapper {
+        margin-bottom: min(19.73vw, 74px);
+        &_title {
+            font-size: min(5.33vw, 20px);
+        }
+        &_balance {
+            display: flex;
+            align-items: center;
+            div {
+                font-size: $fz40px;
+            }
+            img {
+                width: min(17.07vw, 64px);
+                height: min(17.07vw, 64px);
+            }
+        }
+    }
+  }
+}

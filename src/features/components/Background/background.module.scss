@@ -1,0 +1,26 @@
+@import '../../../assets/styles/vars';
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    background-size: cover;
+    background-position: center;
+    &_img {
+        animation: entry .5s ease-in-out;
+        width: 100%;
+        height: auto;
+        z-index: 1;
+    }
+}
+
+@keyframes opacity {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}

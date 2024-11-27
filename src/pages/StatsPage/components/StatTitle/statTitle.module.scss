@@ -1,0 +1,10 @@
+@import '../../../../assets/styles/vars';
+
+.title {
+    position: relative;
+    text-align: center;
+    color: #fff;
+    font-size: $fz40px;
+    font-family: $MExtra;
+    z-index: 2;
+}

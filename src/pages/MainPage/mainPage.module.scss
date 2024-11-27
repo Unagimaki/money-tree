@@ -1,0 +1,42 @@
+@import '../../assets/styles/vars';
+
+.main_page {
+    position: relative;
+    width: $page_width;
+    height: $page_height;
+    background-size: cover;
+    background-position: center;
+    margin: 0 auto;
+    overflow: hidden;
+    transition: opacity 0.5s;
+    animation: entry .5s ease-in-out;
+    &_alert {
+        z-index: 99;
+        width: 100vw;
+        text-align: center;
+    }
+    &_image {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        animation: opacity 0.5s forwards;
+    }
+    &_button {
+        background-color: red;
+        top: 20%;
+        left: 20%;
+        position: absolute;
+        color: #fff;
+        z-index: 99;
+    }
+}
+
+@keyframes opacity {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}

@@ -1,0 +1,103 @@
+$font-path-mont: '../fonts/Montserrat/';
+$font-path-poppins: '../fonts/Poppins/';
+
+@font-face {
+  font-family: 'PBold';
+  src: url($font-path-poppins + 'Poppins-Bold.ttf'),
+}
+@font-face {
+  font-family: 'PExtra';
+  src: url($font-path-poppins + 'Poppins-ExtraBold.ttf'),
+}
+@font-face {
+  font-family: 'MRegular';
+  src: url($font-path-mont + 'Montserrat-Regular.ttf'),
+}
+@font-face {
+  font-family: 'MBold';
+  src: url($font-path-mont + 'Montserrat-Bold.ttf'),
+}
+@font-face {
+  font-family: 'MExtra';
+  src: url($font-path-mont + 'Montserrat-ExtraBold.ttf'),
+}
+@font-face {
+  font-family: 'MSemiBold';
+  src: url($font-path-mont + 'Montserrat-SemiBold.ttf'),
+}
+@font-face {
+  font-family: 'MMedium';
+  src: url($font-path-mont + 'Montserrat-Medium.ttf'),
+}
+
+$PBold: 'PBold';
+$PExtra: 'PExtra';
+
+$MRegular: 'MRegular';
+$MBold: 'MBold';
+$MExtra: 'MExtra';
+$MSemiBold: 'MSemiBold';
+$MMedium: 'MMedium';
+
+$page_width: 100vw;
+$page_height: 100vh;
+
+$br8px: min(2.13vw, 8px);
+$fz12px: min(3.2vw, 12px);
+$fz14px: min(3.73vw, 14px);
+$fz18px: min(4.8vw, 18px);
+$fz40px: min(10.67vw, 40px);
+
+$size8px: min(2.13vw, 8px);
+$size16px: min(4.27vw, 16px);
+$size14px: min(3.73vw, 14px);
+$size12px: min(3.2vw, 12px);
+$size24px: min(6.4vw, 24px);
+$size343px: min(91.47vw, 343px);
+
+$dark_gradient: linear-gradient(to right, #202020, #223B37);
+$page_background: '../../../../public/images/background.png';
+$page_mainBackground: '../../../public/images/main_background.png';
+$tree_background: '../../../../../public/images/tree.png';
+$card_background: #2D2D2D;
+$page_gradient: linear-gradient(to bottom, 
+    rgba(0, 0, 0, 0.5) 73%, 
+    rgba(255, 255, 255, 0) 100%
+);
+$green: #8CDB4E;
+
+$page_styles: (
+  display: flex,
+  flex-direction: column,
+  align-items: center,
+  position: relative,
+  width: $page_width,
+  // min-height: $page_height,
+  // background: url($page_background) no-repeat,
+  // background-size: cover,
+  margin: 0 auto,
+  overflow: hidden,
+  transition: opacity 0.5s,
+  animation: entry .5s ease-in-out, // add animation property
+  z-index: 2,
+);
+             
+$page_mask: (
+  content: '',
+  width: 100%,
+  height: 100%,
+  top: 0,
+  display: block,
+  position: absolute,
+  background: $page_gradient,
+  z-index: 1,
+);
+
+@keyframes entry {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

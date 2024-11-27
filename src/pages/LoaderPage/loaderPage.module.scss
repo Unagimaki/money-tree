@@ -1,0 +1,57 @@
+@import '../../assets/styles/vars';
+
+.loading {
+  @each $property, $value in $page_styles {
+    #{$property}: $value;
+    width: 100vw;
+    height: 100vh;
+  }
+  &_wrapper {
+    width: inherit;
+    height: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    &_title {
+      top: min(27.47vw, 103px);
+      position: absolute;
+      color: #fff;
+      text-align: center;
+      font-size: min(11.2vw, 42px);
+      font-family: $MBold;
+
+    }
+    &_image {
+      position: absolute;
+      bottom: 0vw;
+      left: 0vw;
+    }
+    &_loader {
+      position: absolute;
+      border: $br8px solid rgba(255, 255, 255, 0.3);
+      border-left-color: #fff;
+      border-radius: 50%;
+      width: min(20.8vw, 78px);
+      height: min(20.8vw, 78px);
+      top: min(70.93vw, 266px);
+      animation: donut-spin 1.2s linear infinite;
+    }
+  }
+}
+@keyframes donut-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes opacity {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}

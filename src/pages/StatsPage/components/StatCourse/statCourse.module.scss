@@ -1,0 +1,34 @@
+@import '../../../../assets/styles/vars';
+
+.container {
+    width: min(65.33vw, 375px);
+    height: min(8.53vw, 32px);
+    background: $dark_gradient;
+    color: #fff;
+    border-radius: $size16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    font-size: $size16px;
+    font-family: $MBold;
+    margin-bottom: $size12px;
+    &_inner {
+        display: flex;
+        align-items: center;
+        gap: min(1.07vw, 4px);
+        &_dollar_icon {
+            width: $size24px;
+            height: $size24px;
+        }
+    }
+    span {
+        font-size: $size14px;
+        font-family: $MSemiBold;
+    }
+    img {
+        width: $size24px;
+        height: $size24px;
+    }
+
+}

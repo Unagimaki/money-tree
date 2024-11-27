@@ -1,0 +1,56 @@
+@import '../../../assets/styles/vars';
+
+.container {
+    position: absolute;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 47.47vw;
+    left: 0;
+    z-index: 99;
+    font-family: $MMedium;
+    text-align: center;
+    animation: enter .5s forwards;
+    box-sizing: content-box;
+    padding: $size8px $size12px;
+    &_inner {
+        width: min(88.27vw, 331px);
+        height: 100%;
+        color: #fff;
+        border-radius: $size16px;
+        background: linear-gradient(90deg, #c4cec6, #90a392, #7c927e, #718776, #6b826f);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: $size8px $size12px;
+        &_icon {
+            width: min(8.53vw, 32px);
+            height: min(8.53vw, 32px);
+        }
+        &_text {
+            text-align: left;
+            &_title {
+                font-size: $size16px;
+            }
+            &_subtitle {
+                font-size: $size14px;
+            }
+        }
+        &_button {
+            font-size: $size14px;
+        }
+    }
+    &_text {
+        height: min-content;
+    }
+}
+
+@keyframes enter {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}

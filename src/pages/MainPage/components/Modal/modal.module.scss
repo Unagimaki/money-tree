@@ -1,0 +1,70 @@
+@import '../../../../assets/styles/_vars.scss';
+
+.container, .container_hide {
+    width: 100vw;
+    height: 123.73vw;
+    font-family: $MBold;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: 0;
+    left: 0;
+    background: $card_background;
+    border-radius: $br8px $br8px 0 0;
+    border-top: min(0.53vw, 2px) solid $green;
+    animation: offerShow .5s forwards;
+    color: #fff;
+    z-index: 4;
+    &_hide {
+        animation: offerHide 0.5s forwards;
+    }
+    &_wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: $size16px;
+        &_title {
+            font-size: min(6.4vw, 24px);
+        }
+        &_text {
+            font-size: $size16px;
+        }
+        &_close_button {
+            position: absolute;
+            top: 6.4%;
+            right: 10.67%;
+            width: min(6.4vw, 24px);
+            height: min(6.4vw, 24px);
+        }
+        &_close_button img {
+            height: 100%;
+            width: 100%;
+        }
+        &_button {
+            width: min(47.2vw, 375px);
+            height: min(12.8vw, 48px);
+            background-color: $green;
+            border-radius: $br8px;
+            color: #000;
+        }
+    }
+    
+
+}
+@keyframes offerShow {
+    0% {
+        transform: translateY(100%);
+    }
+    100% {
+        transform: translateY(0%);
+    }
+}
+@keyframes offerHide {
+    0% {
+        transform: translateY(0%);
+    }
+    100% {
+        transform: translateY(100%);
+    }
+}

@@ -1,0 +1,44 @@
+@import '../../../../../assets/styles/vars';
+
+.skin_container {
+    width: min(91.47vw, 343px);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 3%;
+    z-index: 2;
+    position: relative;
+    &_inner {
+        overflow-x: auto;
+        &_wrapper {
+            overflow-x: auto;
+            min-width: max-content;
+            display: flex;
+            flex-wrap: nowrap;
+            gap: $br8px;
+            &_arrow {
+                right: 1%;
+                top: 5%;
+                position: absolute;
+                width: min(1.45vw, 5.43px);
+                height: min(1.45vw, 5.43px);
+                border-top: 1px solid #fff;
+                border-left: 1px solid #fff;
+                z-index: 3;
+                animation: arrow 1.5s infinite;
+            }
+        }
+    }
+}
+
+@keyframes arrow {
+    0% {
+        transform: translateX(0) rotate(135deg);
+    }
+    50% {
+        transform: translateX(45%) rotate(135deg);
+    }
+    100% {
+        transform: translateX(0) rotate(135deg);
+    }
+}

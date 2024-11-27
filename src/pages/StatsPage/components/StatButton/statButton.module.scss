@@ -1,0 +1,34 @@
+@import '../../../../assets/styles/vars';
+
+.button {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: 27.73vw;
+    left: 4.27vw;
+    width: 91.47vw;
+    height: min(16vw, 60px);
+    z-index: 2;
+    font-family: $MBold;
+    &_wrapper {
+        height: min(16vw, 60px);
+        background-color: $green;
+        width: $size343px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: $br8px;
+    }
+    &_text {
+        font-size: $size16px;
+        font-weight: bold;
+    }
+    &_icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: $size24px;
+        height: $size24px;
+    }
+}

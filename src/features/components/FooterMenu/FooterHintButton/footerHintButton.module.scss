@@ -1,0 +1,33 @@
+@import '../../../../assets/styles/vars';
+
+.container {
+    position: fixed;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: min(9.07vw, 34px);   
+    bottom: 29.87vw;
+    z-index: 5;
+    &_inner {
+        height: 100%;
+        background-color: #E5F4DA;
+        border: min(0.53vw, 2px) solid $green;
+        border-radius: $size16px;
+        font-size: $size16px;
+        font-family: $MBold;
+        animation: movement 1.5s infinite;
+    }
+}
+
+@keyframes movement {
+    0% {
+        transform: translateY(0%);
+    }   
+    50% {
+        transform: translateY(40%);
+    }
+    100% {
+        transform: translateY(0%);
+    }
+}

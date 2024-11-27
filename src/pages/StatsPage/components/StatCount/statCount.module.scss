@@ -1,0 +1,35 @@
+@import '../../../../assets/styles/vars';
+
+.count {
+    position: relative;
+    width: $size343px;
+    margin: 0 auto;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4.3%;
+    margin-top: 4.3%;
+    font-family: $MBold;
+    font-size: $fz18px;
+    color: #fff;
+    &_first {
+        width: 46.06%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: min(1.07vw, 4px);
+        &_icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: $size24px;
+            height: $size24px;
+        }
+        &_img {
+            width: min(4.8vw, 18px);
+            height: min(4.8vw, 18px);
+            height: auto;
+        }
+    }
+}

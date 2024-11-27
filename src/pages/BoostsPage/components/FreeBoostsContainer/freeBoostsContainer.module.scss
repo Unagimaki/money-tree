@@ -1,0 +1,9 @@
+@import '../../../../assets/styles/vars';
+
+.boosts_container {
+    position: relative;
+    width: $size343px;
+    color: #fff;
+    z-index: 2;
+    margin-bottom: min(4.27vw, 16px);
+}

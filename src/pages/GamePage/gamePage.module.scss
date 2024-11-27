@@ -1,0 +1,93 @@
+@import '../../assets/styles/vars';
+
+.game {
+    @each $property, $value in $page_styles {
+        #{$property}: $value;
+    }
+    height: 100vh;
+    overflow-x: hidden;
+    touch-action: none;
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+.game::before {
+    @each $property, $value in $page_mask {
+        #{$property}: $value;
+    }
+}
+
+.element {
+    position: absolute;
+    animation: smooth-start .5s forwards;
+    cursor: pointer;
+    z-index: 99;
+    user-drag: none;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+.green {
+    position: absolute;
+    width: min(24vw, 90px);
+    height: min(24vw, 90px);
+    background: url('./assets/green.png') no-repeat;
+    background-size: contain;
+}
+.red {
+    position: absolute;
+    width: min(24vw, 90px);
+    height: min(24vw, 90px);
+    background: url('./assets/red.png') no-repeat;
+    background-size: contain;
+}
+.orange {
+    position: absolute;
+    width: min(24vw, 90px);
+    height: min(24vw, 90px);
+    background: url('./assets/orange.png') no-repeat;
+    background-size: contain;
+}
+.bomb {
+    position: absolute;
+    width: min(24vw, 90px);
+    height: min(24vw, 90px);
+    background: url('./assets/bomb.png') no-repeat;
+    background-size: contain;
+}
+.star {
+    position: absolute;
+    width: min(24vw, 90px);
+    height: min(24vw, 90px);
+    background: url('./assets/star.png') no-repeat;
+    background-size: contain;
+    transform: rotate(15deg);
+}
+
+
+.smooth_end {
+    animation: smooth-end .1s forwards;
+}
+@keyframes smooth-start {
+    0% {
+        opacity: 0;  
+    }
+    100% {
+        opacity: 1;  
+    }
+}
+@keyframes smooth-end {
+    0% {
+        opacity: 1;  
+    }
+    100% {
+        opacity: 0;  
+    }
+}

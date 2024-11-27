@@ -1,0 +1,1 @@
+export const hasTargetWord = (word, text) => { return text.toLowerCase().includes(word.toLowerCase()) }

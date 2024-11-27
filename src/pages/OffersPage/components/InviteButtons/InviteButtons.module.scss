@@ -1,0 +1,42 @@
+@import '../../../../assets/styles/vars';
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    width: $size343px;
+    height: min(12.8vw, 48px);
+    margin-top: $br8px;
+    margin-bottom: min(8.53vw, 32px);
+    img {
+        width: min(6.4vw, 24px);
+        height: min(6.4vw, 24px);
+    }
+    * {
+        background-color: $green;
+        border-radius: $br8px;
+    }
+    &_invite_button {
+        display: flex;
+        align-items: center;
+        gap: min(2.67vw, 10px);
+        justify-content: center;
+        color: #000;
+        width: min(74.4vw, 279px);
+        &_icon {
+            width: min(6.4vw, 24px);
+            height: min(6.4vw, 24px);
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }        
+        &_text {
+            font-size: $size16px;
+            font-family: $MBold;
+        }
+    
+    }
+    &_copy_button {
+        width: min(16vw, 60px);
+    }
+}

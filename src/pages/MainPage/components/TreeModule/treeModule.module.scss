@@ -1,0 +1,104 @@
+@import '../../../../assets/styles/vars';
+
+.container {
+    position: relative;
+    width: $page_width;
+    z-index: 2;
+    &_tree {
+        position: absolute;
+        top: 11.08vh;
+        left: 18.67%;
+        width: 62.93vw;
+        height: 125.87vw;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        animation: opacity 0.5s forwards;
+    }
+    &_damageImage_1 {
+        position: absolute;
+        left: 56.36%;
+        top: 54.66%;
+        width: 7.73vw;
+        height: 7.73vw;
+    }
+    &_damageImage_2 {
+        position: absolute;
+        left: 56.36%;
+        top: 54.66%;
+        width: 7.73vw;
+        height: 7.73vw;
+    }
+    &_damageImage_3 {
+        position: absolute;
+        left: 53.81%;
+        top: 51.48%;
+        width: 11.2vw;
+        height: 11.2vw;
+    }
+    &_damageImage_4 {
+        position: absolute;
+        right: 0%;
+        top: 65.68%;
+        width: 21.33vw;
+        height: 21.33vw;
+    }
+    &_damageImage_5 {
+        position: absolute;
+        right: 0%;
+        top: 65.68%;
+        width: 24vw;
+        height: 24vw;
+    }
+    &_energyImage {
+        position: absolute;
+        left: 1.6vw;
+        top: 141.87vw;
+        width: 95.47%;
+        height: 30.8vw;
+    }
+    &_regenImage_1 {
+        position: absolute;
+        top: 46.4%;
+        left: 20.76%;
+        width: 26.9vw;
+        height: 26.9vw;
+    }
+    &_regenImage_2 {
+        position: absolute;
+        top: 44.28%;
+        left: 20.76%;
+        width: 37.3vw;
+        height: 30.36vw;
+    }
+    &_regenImage_3 {
+        position: absolute;
+        top: 44.28%;
+        left: 12.29%;
+        width: 42.63vw;
+        height: 31.7vw;
+    }
+    &_regenImage_4 {
+        position: absolute;
+        top: 44.28%;
+        left: 12.29%;
+        width: 45.83vw;
+        height: 31.7vw;
+    }
+    &_regenImage_5 {
+        position: absolute;
+        top: 44.28%;
+        left: 12.29%;
+        width: 45.83vw;
+        height: 31.7vw;
+    }
+}
+
+@keyframes opacity {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}

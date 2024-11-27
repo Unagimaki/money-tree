@@ -1,0 +1,59 @@
+@import '../../../../../assets/styles/vars';
+
+.item {
+    color: #fff;
+    background: linear-gradient(45deg, #202020 0%, #171E17 100%);    width: 100%;
+    height: min(14.93vw, 56px);
+    border-radius: $br8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 $size8px;
+    &_profile {
+        width: min(8.53vw, 32px);
+        height: min(8.53vw, 32px);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        img {
+            width: $size24px;
+            height: $size24px;
+            margin-right: $br8px;
+        }
+        &_info {
+            display: flex;
+            flex-direction: column;
+            gap: 1%;
+            &_place {
+                font-family: $MBold;
+                color: #818181;
+                font-size: $fz12px;
+            }
+            &_name {
+                font-size: $fz14px;
+                font-family: $MSemiBold;
+            }
+        }
+
+    }
+    &_count {
+        width: min-content;
+        height: min(6.4vw, 24px);
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        &_img {
+            width: min(6.4vw, 24px);
+            height: min(6.4vw, 24px);
+        }
+        &_text {
+            color: $green;
+            font-family: $MBold;
+            font-size: $size16px;
+        }
+    }
+}
+
+.item:not(:last-child) {
+    margin-bottom: $size8px;
+}

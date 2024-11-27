@@ -1,0 +1,121 @@
+@import '../../../../assets/styles/vars';
+
+.container, .container_hide {
+    font-family: $MBold;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: min-content;
+    min-height: min(155.73vw, 584px);
+    width: 100vw;
+    background: $dark_gradient;
+    z-index: 10;
+    border-radius: $br8px $br8px 0 0;
+    border-top: min(0.53vw, 2px) solid $green;
+    animation: offerShow .5s forwards;
+    color: #fff;
+    padding: min(17.6vw, 66px) 0;
+    &_limited_img {
+        position: absolute;
+        width: min(38.67vw, 145px);
+        height: min(38.67vw, 145px);
+        transform: rotate(-15deg);
+        top: -12%;
+        left: 0%;
+    }
+    &_hide {
+        animation: offerHide 0.5s forwards;
+    }
+    &_wrapper {
+        width: 85vw;
+        height: inherit;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: min(4.27vw, 16px);
+        text-align: center;
+        &_image {
+            width: min(59.73vw, 224px);
+            height: auto;
+            img {
+                border-radius: $br8px;
+            }
+        }
+        &_complete_button {
+            color: $green;
+            border: min(0.8vw, 3px) solid $green;
+            border-radius: $br8px;
+            width: min(58.4vw, 219px);
+            height: min(12.8vw, 48px);
+        }
+        &_image img {
+            width: 100%;
+            height: 100%;
+        }
+        &_title {
+            font-size: min(6.4vw, 24px);
+        }
+        &_text {
+            font-size: $fz14px;
+        }
+        &_terms {
+            font-size: $fz12px;
+        }
+        &_close_button {
+            position: absolute;
+            top: 6.4%;
+            right: 10.67%;
+            width: min(6.4vw, 24px);
+            height: min(6.4vw, 24px);
+        }
+        &_close_button img {
+            height: 100%;
+            width: 100%;
+        }
+        &_done_button {
+            color: #000;
+            background-color: $green;
+            width: min(58.4vw, 219px);
+            height: min(12.8vw, 48px);
+            border-radius: $br8px;
+        }
+        &_reward {
+            display: flex;
+            align-items: center;
+            font-size: min(6.88vw, 25.8px);
+            font-family: $MExtra;
+            &_discount {
+                opacity: .5;
+                display: flex;
+                align-items: center;
+                font-size: min(5.87vw, 22px);
+                text-decoration: line-through;
+                font-family: $MExtra;
+            }
+            &_img {
+                width: min(17.07vw, 64px);
+                height: min(17.07vw, 64px);
+            }
+        }
+    }
+}
+
+@keyframes offerShow {
+    0% {
+        transform: translateY(100%);
+    }
+    100% {
+        transform: translateY(0%);
+    }
+}
+@keyframes offerHide {
+    0% {
+        transform: translateY(0%);
+    }
+    100% {
+        transform: translateY(100%);
+    }
+}

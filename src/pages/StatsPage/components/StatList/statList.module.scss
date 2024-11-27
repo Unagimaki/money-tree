@@ -1,0 +1,30 @@
+@import '../../../../assets/styles/vars';
+
+.list {
+    display: flex;
+    flex-direction: column;
+    width: $size343px;
+    z-index: 2;
+    position: relative;
+    max-height: 60vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    &_wrapper {
+        width: 98%;
+        &_item {
+            border: min(0.53vw, 2px) solid $green;
+            border-radius: $br8px;
+            margin-bottom: 5%;
+        }
+    }
+}
+@media (max-height: 780px) {
+    .list {
+        max-height: 50vh;
+    }
+}
+@media (max-height: 705px) {
+    .list {
+        max-height: 45vh;
+    }
+}

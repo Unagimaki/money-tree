@@ -1,0 +1,127 @@
+@import '../../../../../../assets/styles/vars';
+
+.skin_item {
+    position: relative;
+    width: min(44.53vw, 167px);
+    height: min(46.93vw, 176px);
+    background: linear-gradient(45deg, #202020 0%, #171E17 100%);
+    padding: min(5.33vw, 20px) $br8px $br8px $br8px;
+    border-radius: $br8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+    font-size: $fz12px;
+    z-index: 2;
+    &_image {
+        height: min(17.07vw, 64px);
+        width: auto;
+    }
+    &_name {
+        width: 100%;
+        z-index: 5;
+        font-family: $MBold;
+        text-align: left;
+    }
+    &_description {
+        &_text {
+            color: #818181;
+        }
+        &_inner {
+            display: flex;
+            align-items: center;
+        }
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        font-family: $MMedium;
+        text-align: left;
+        &_img {
+            width: $size16px;
+            height: $size16px;
+        }
+    }
+
+
+    &_lock {
+        width: 27.54%;
+        aspect-ratio: 1;
+        position: absolute;
+        top: 16.48%;
+        left: 36.53%;
+        z-index: 5;
+    }
+    &_lvl {
+        position: absolute;
+        top: 8%;
+        left: 8%;
+        z-index: 2;
+        font-family: $MBold;
+        color: $green;
+    }
+    &_img {
+        width: min(17.07vw, 64px);
+        height: min(17.07vw, 64px);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        margin: 0 auto;
+
+    }
+    &_button {
+        width: 100%;
+        height: min(8.53vw, 32px);
+        background-color: $green;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: $br8px;
+        color: #000;
+        font-family: $MBold;
+        font-size: $fz12px;
+        white-space: nowrap;
+        img {
+            width: min(4.27vw, 16px);
+            height: min(4.27vw, 16px);
+        }
+        z-index: 2;
+    }
+    &_info {
+        font-family: $MBold;
+        font-size: $fz12px;
+        text-align: center;
+        // background: linear-gradient(45deg, #202020 0%, #171E17 100%);
+        border-radius: $br8px;
+        width: 100%;
+        height: min(10.67vw, 40px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 5;
+        span {
+            color: $green;
+        }
+        img {
+            width: $size16px;
+            height: $size16px;
+        }
+    }
+        &::after {
+        display: none;
+        position: absolute;
+        border-radius: $br8px;
+        content: '';
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 4;
+        background-color: #000;
+        opacity: 0.5;
+    }
+    &.show_after::after {
+        display: block;
+    }
+}
