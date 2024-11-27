@@ -15,7 +15,7 @@ export const InviteButtons = () => {
     const botLink = `https://t.me/moneytree_game_bot?start=ref_${tgID}`
 
     useEffect(() => {
-        setRefLink(`https://t.me/share/url?url=${encodeURIComponent(botLink)}&text=${encodeURIComponent('Привет! 🤚🏻 Играю в Money Tree и моментально обмениваю лифы на доллары по честному курсу 🤑 По моей ссылке ты получишь 100 000 лифов в подарок! 🍃 Попробуй!')}`)
+        setRefLink(`https://t.me/share/url?url=${encodeURIComponent(botLink)}&text=${encodeURIComponent('\nПривет! 🤚🏻 Играю в Money Tree и моментально обмениваю лифы на доллары по честному курсу \n🤑 По моей ссылке ты получишь 100 000 лифов в подарок! \n🍃 Попробуй!')}`)
     }, [])
 
     const copyInviteLink = async () => {
