@@ -17,7 +17,7 @@ export const UserLogin = data => {
 	if (playerData) return playerData;
 
 	// Выбор источника данных
-	const body = !isDevelopment
+	const body = isDevelopment
 		? example
 		: {
 			tgId: getUserInfo(data).user.id,
