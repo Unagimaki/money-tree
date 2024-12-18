@@ -9,7 +9,7 @@ import { autobotLaunch } from '../../services/autobotLaunch'
 import { getData } from '../../../../services/getData'
 import { actionIncreaseUserBalance, actionSetUserBalance } from '../../../../state/reducers/userReducer/actions'
 
-export const AutoBot = ({ handleAlertModalShow }) => {
+export const AutoBot = ({ currentBotLevel, handleAlertModalShow }) => {
   const [time, setTime] = useState({ hours: 0, minutes: 0, seconds: 0 });
   const isInitialValue =
     time.hours === 0 && time.minutes === 0 && time.seconds === 0;
@@ -82,7 +82,11 @@ export const AutoBot = ({ handleAlertModalShow }) => {
         }
       }, 1000);
     }
-  }, [isActive]);
+  }, [isActive])
+
+  if (!currentBotLevel || currentBotLevel <= 0 || bot.autoBots.length === 0) {
+    return null;
+  }
 
   return (
     <div className={styles.bot}>
@@ -113,4 +117,3 @@ export const AutoBot = ({ handleAlertModalShow }) => {
     </div>
   );
 };
-

@@ -11,66 +11,54 @@ import { WebApp } from '../../App'
 import { PagesLinks } from '../../shared/PagesLinks'
 import { useNavigate } from 'react-router-dom'
 import { actionHintButtonVisible, actionSetTutorialActive } from '../../state/reducers/tutorialReducer/tutorialReducer'
+import { DailyBonusIcon } from './components/DailyBonus/DailyBonusIcon/DailyBonusIcon'
+import { DailyBonusWindow } from './components/DailyBonus/DailuBonusWindow/DailyBonusWindow'
+import { MainBackground } from './components/MainBackground/MainBackground'
 
 
-const MainPage = ({
-  isStatModalVisible,
-  onDamageModalShow,
-  handleAlertModalShow,
-}) => {
-  const state = store.getState();
-  const season = useSelector((state) => state?.season?.isActive);
-  const [isLoading, setIsLoading] = useState(true);
+const MainPage = ({ isStatModalVisible, onDamageModalShow, handleAlertModalShow }) => {
   const navigate = useNavigate();
-  const isHintActive = useSelector(state => state.tutorial.isHintVisible)
   const dispatch = useDispatch()
   const main_background = require("./assets/main_background.png");
+  const [isLoading, setIsLoading] = useState(true);
 
-  const handleButtonClick = () => {
-    isStatModalVisible ? onDamageModalShow() : WebApp.close();
-  };
+  const currentBotLevel = useSelector(state => state.bot.autoBots.length > 0 && state.bot.autoBots[0].currentLevel);
+  const season = useSelector((state) => state?.season?.isActive);
+  const isHintActive = useSelector(state => state.tutorial.isHintVisible)
+  const shop = useSelector(state => state.shop)
+  const regen = shop?.find(item => item.shopItem.itemType === 'REGENERATION').currentLevel
+  const background = regen > 0 ? require(`./assets/regen/${regen}.png`) : main_background;
+
+  console.log(store.getState());
   
+  const handleButtonClick = () => { isStatModalVisible ? onDamageModalShow() : WebApp.close() };
+ 
   useEffect(() => {
-    const isTutorialDone = JSON.parse(localStorage.getItem('isTutorialDone')) || false;    
+    const isTutorialDone = JSON.parse(localStorage.getItem('isTutorialDone')) || false;   
     !isTutorialDone && dispatch(actionSetTutorialActive(true))
   }, [])
 
-  useEffect(() => {
-    isHintActive.toMainButton && dispatch(actionHintButtonVisible(false, false))
-  }, [])
+  useEffect(() => { isHintActive.toMainButton && dispatch(actionHintButtonVisible(false, false)) }, [])
+  useEffect(() => {if (!season) { navigate(PagesLinks.SEASON_URL) }}, [season])
+
   useEffect(() => {
     const img = new Image();
     img.src = main_background;
-    img.onload = () => {
-      setIsLoading(false);
-    };
-    img.onerror = () => setIsLoading(false);
-  }, [main_background]);
-  console.log(state);
-  
-  useEffect(() => {
-    if (!season) {
-      navigate(PagesLinks.SEASON_URL);
-    }
-  }, [season]);
+    img.onload = () => setIsLoading(false)
+    img.onerror = () => setIsLoading(false)
+  }, [main_background]);  
 
   return (
     <div>
       <div className={styles.main_page}>
-        {!isLoading && (
-          <img
-            className={styles.main_page_image}
-            src={main_background}
-            alt="main_back"
-          />
-        )}
-        {state.bot.autoBots[0].currentLevel > 0 && (
-          <AutoBot handleAlertModalShow={handleAlertModalShow} />
-        )}
-        <Stats onDamageModalShow={onDamageModalShow} />
+        <MainBackground main_background={main_background} img={background} isLoading={isLoading}/>
+        <AutoBot currentBotLevel={currentBotLevel} handleAlertModalShow={handleAlertModalShow}/>
+        <Stats onDamageModalShow={onDamageModalShow}/>
         <Balance />
-        {Object.keys(state.shop).length !== 0 && <TreeModule state={state} />}
-        {isStatModalVisible && <BackButton onClick={handleButtonClick} />}
+        <TreeModule shop={shop} state={store.getState()}/>
+        <DailyBonusIcon/>
+        <DailyBonusWindow/>
+        {isStatModalVisible && <BackButton onClick={handleButtonClick}/>}
       </div>
     </div>
   );

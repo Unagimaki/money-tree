@@ -19,32 +19,12 @@ export const FooterMenu = () => {
     const zIndex = (currentStep === 3 || currentStep === 5) ? 99 : 5
 
     return (
-      <>
+      <div className={styles.wrapper}>
         <div className={styles.footer_background} />
-        <FooterMenuButton
-          img={boosts_img}
-          text={"Бусты"}
-          left={"6.4vw"}
-          to={PagesLinks.BOOSTS_URL}
-        />
-        <FooterMenuButton
-          img={shop_img}
-          text={"Скины"}
-          left={"24.27vw"}
-          to={PagesLinks.SHOP_URL}
-        />
-        <FooterMenuButton
-          img={stat_img}
-          text={"Стата"}
-          left={"60vw"}
-          to={PagesLinks.STATS_URL}
-        />
-        <FooterMenuButton
-          img={bonus_img}
-          text={"Бонусы"}
-          left={"77.87vw"}
-          to={PagesLinks.BONUS_URL}
-        />
+        <FooterMenuButton img={boosts_img} text="Бусты" left="6.4vw" to={PagesLinks.BOOSTS_URL} />
+        <FooterMenuButton img={shop_img} text="Скины" left="24.27vw" to={PagesLinks.SHOP_URL} />
+        <FooterMenuButton img={stat_img} text="Стата" left="60vw" to={PagesLinks.STATS_URL} />
+        <FooterMenuButton img={bonus_img} text="Бонусы" left="77.87vw" to={PagesLinks.BONUS_URL} />
         {
           isHintActive.toMainButton && currentUrl === PagesLinks.GAME_URL && <FooterHintButton text={'На главную'} />
         }
@@ -63,6 +43,6 @@ export const FooterMenu = () => {
         >
           <img src={tree_img} alt="tree_img" />
         </div>
-      </>
+      </div>
     );
 }

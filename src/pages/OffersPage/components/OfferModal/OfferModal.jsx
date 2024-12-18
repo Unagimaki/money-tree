@@ -50,19 +50,12 @@ export const OfferModal = ({ handleAlertModalShow }) => {
       })
       .catch((e) => {
         e.response.status === 409
-          ? handleAlertModalShow(
-              "Внимание!",
-              "Вы уже выполнили это задание!",
-              "warning"
-            )
-          : handleAlertModalShow(
-              "Ошибка при выполнении",
-              "",
-              "warning"
-            );
+          ? handleAlertModalShow( "Внимание!", "Вы уже выполнили это задание!", "warning" )
+          : handleAlertModalShow( "Ошибка при выполнении", "", "warning" );
       })
       .finally(() => setIsLoadingOffer(false));
   };
+  
   const handleCheck = () => {
     if (url.startsWith("https://t.me/")) {
       WebApp.openTelegramLink(url);

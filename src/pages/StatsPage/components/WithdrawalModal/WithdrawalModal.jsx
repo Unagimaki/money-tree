@@ -8,6 +8,7 @@ import { saveUserWallet } from '../../services/saveUserWallet'
 import { removeUserWallet } from '../../services/removeUserWallet'
 import { withdrawalUserWallet } from '../../services/withdrawalUserWallet'
 import { actionSetUserBalance } from '../../../../state/reducers/userReducer/actions'
+import { WithdrawalBalance } from '../WithdrawalBalance/WithdrawalBalance'
 
 export const WithdrawalModal = ({ handleAlertModalShow }) => {
   const dispatch = useDispatch();
@@ -30,9 +31,7 @@ export const WithdrawalModal = ({ handleAlertModalShow }) => {
   const walletTon = useTonWallet();
   const { state, open, closeModal } = useTonConnectModal();
  
-  useEffect(() => {
-    setTonWalletAddress(currentAccount?.address);
-  }, [
+  useEffect(() => { setTonWalletAddress(currentAccount?.address) }, [
     currentIsConnectedStatus,
     currentWalletInfo,
     tonConnectUI.onModalStateChange,
@@ -46,16 +45,10 @@ export const WithdrawalModal = ({ handleAlertModalShow }) => {
     if (tonWalletAddress) {
       dispatch(actionSetUserWallet(tonWalletAddress));
       saveUserWallet(token, tonWalletAddress)
-        .then((res) => {
-          handleAlertModalShow('Кошелек подключен')
-        })
+        .then(() => { handleAlertModalShow('Кошелек подключен') })
         .catch((e) => console.log(e));
     }
   }, [tonConnectUI, tonWalletAddress, tonConnectUI.onModalStateChange]);
-
-  const handleClose = () => {
-    dispatch(actionSetConnectModalVisible(false));
-  };
 
   const handleWalletConnection = useCallback((address) => {
     address && setTonWalletAddress(address);
@@ -157,10 +150,7 @@ export const WithdrawalModal = ({ handleAlertModalShow }) => {
   return (
     <div className={styles.container}>
       <div className={styles.container_wrapper}>
-        <button
-          onClick={handleClose}
-          className={styles.container_wrapper_close_button}
-        >
+        <button onClick={() => dispatch(actionSetConnectModalVisible(false))} className={styles.container_wrapper_close_button}>
           <img src={close} alt="close" />
         </button>
         <img
@@ -169,13 +159,7 @@ export const WithdrawalModal = ({ handleAlertModalShow }) => {
           alt="wallet"
         />
         <div className={styles.container_wrapper_title}>
-          {tonWalletAddress ? (
-            "Ваш кошелек подключен"
-          ) : (
-            <>
-              Подключите свой <br /> кошелек
-            </>
-          )}
+          {tonWalletAddress ? ( "Ваш кошелек подключен" ) : ( <>Подключите свой <br /> кошелек</> )}
         </div>
         {tonWalletAddress ? (
           <div className={styles.container_wrapper_wallet_panel}>
@@ -186,38 +170,17 @@ export const WithdrawalModal = ({ handleAlertModalShow }) => {
               <img src={close_wallet_button} alt="close_wallet_button" />
             </button>
             <div className={styles.container_wrapper_wallet_panel_info}>
-              <div
-                className={styles.container_wrapper_wallet_panel_info_adress}
-              >
-                <img
-                  className={
-                    styles.container_wrapper_wallet_panel_info_adress_wallet_img
-                  }
-                  src={wallet_icon}
-                  alt="wallet_icon"
-                />
-                <div
-                  className={
-                    styles.container_wrapper_wallet_panel_info_adress_stroke
-                  }
-                >
+              <div className={styles.container_wrapper_wallet_panel_info_adress}>
+                <img className={ styles.container_wrapper_wallet_panel_info_adress_wallet_img } src={wallet_icon} alt="wallet_icon"/>
+                <div className={ styles.container_wrapper_wallet_panel_info_adress_stroke }>
                   {formatString(tonWalletAddress)}
                 </div>
               </div>
-              <img
-                className={
-                  styles.container_wrapper_wallet_panel_info_wallet_copy_button
-                }
-                src={copy_icon}
-                alt="copy_icon"
-              />
+              <img className={ styles.container_wrapper_wallet_panel_info_wallet_copy_button } src={copy_icon} alt="copy_icon" />
             </div>
           </div>
         ) : (
-          <button
-            onClick={handleWalletAction}
-            className={styles.container_wrapper_button}
-          >
+          <button onClick={handleWalletAction} className={styles.container_wrapper_button} >
             <div>Подключите кошелек</div>
             <img src={wallet} alt="wallet_icon" />
           </button>
@@ -232,6 +195,7 @@ export const WithdrawalModal = ({ handleAlertModalShow }) => {
             Вывод в USDT <img src={tether_icon} alt="tether_icon" />
           </button>
         )}
+        <WithdrawalBalance/>
         {tonWalletAddress ? (
           <div className={styles.container_wrapper_withdrawal}>
             <div className={styles.container_wrapper_withdrawal_title}>
@@ -261,6 +225,7 @@ export const WithdrawalModal = ({ handleAlertModalShow }) => {
         {!tonWalletAddress && (
           <button className={styles.container_wrapper_button}>Проверить</button>
         )}
+        
       </div>
     </div>
   );

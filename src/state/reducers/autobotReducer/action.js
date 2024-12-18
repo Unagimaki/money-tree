@@ -1,4 +1,4 @@
-import { SET_AUTOBOT, SET_AUTOBOT_COLLECTED, SET_AUTOBOT_LAST_LAUNCH_TIME, SET_AUTOBOT_READY_TO_COLLECT, SET_AUTOBOT_READY_TO_LAUNCH, SET_AUTOBOT_START, SET_AUTOBOT_STOP, SET_LAUCH_INFO, UPDATE_AUTOBOT_LEVEL } from "./types"
+import { SET_AUTOBOT, SET_AUTOBOT_COLLECTED, SET_AUTOBOT_LAST_LAUNCH_TIME, SET_AUTOBOT_READY_TO_COLLECT, SET_AUTOBOT_READY_TO_LAUNCH, SET_AUTOBOT_READY_TO_START, SET_AUTOBOT_START, SET_AUTOBOT_STOP, SET_LAUCH_INFO, UPDATE_AUTOBOT_LEVEL } from "./types"
 
 export const actionSetAutobot = (data) => {    
     return {
@@ -46,5 +46,11 @@ export const actionSetAutobotReadyToCollect = () => {
 export const actionUpdateAutoBotLevel = () => {
     return {
         type: UPDATE_AUTOBOT_LEVEL
+    }
+}
+export const actionSetAutoBotReadyStart = () => {
+    return {
+        type: SET_AUTOBOT_READY_TO_START
+        
     }
 }

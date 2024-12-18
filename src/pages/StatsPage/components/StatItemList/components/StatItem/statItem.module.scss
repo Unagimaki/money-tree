@@ -1,4 +1,4 @@
-@import '../../../../../assets/styles/vars';
+@import '../../../../../../assets/styles/vars';
 
 .item {
     color: #fff;
@@ -15,6 +15,10 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        &_place_icon {
+            width: $size24px;
+            height: $size24px;
+        }
         img {
             width: $size24px;
             height: $size24px;

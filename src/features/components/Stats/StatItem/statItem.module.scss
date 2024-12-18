@@ -4,12 +4,8 @@
     overflow: visible;
     position: relative;
     height: min(16.53vw, 62px);
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    align-items: center;
     font-family: $MBold;
     color: #fff;
     text-align: center;
@@ -21,45 +17,26 @@
         left: -30%;
     }
     &_container {
-        padding-left: calc(16.53vw / 1.8);
         position: relative;
-        display: -webkit-box;
-        display: -ms-flexbox;
         display: flex;
-        -webkit-box-pack: end;
-            -ms-flex-pack: end;
-                justify-content: flex-end;
+        justify-content: flex-end;
         height: min(12.2vw, 45.75px);
         border-radius: $br8px;
         background: $dark_gradient;
         border: 2px solid #494949;
         &_inner {
             padding-right: 10%;
-            display: -webkit-box;
-            display: -ms-flexbox;
             display: flex;
-            -webkit-box-orient: vertical;
-            -webkit-box-direction: normal;
-                -ms-flex-direction: column;
-                    flex-direction: column;
-            width: -webkit-max-content;
-            width: -moz-max-content;
+            flex-direction: column;
             width: max-content;
-            -webkit-box-align: start;
-                -ms-flex-align: start;
-                    align-items: flex-start;
+            align-items: flex-start;
             height: 100%;
+            justify-content: center;
             &_title {
-                display: -webkit-box;
-                display: -ms-flexbox;
                 display: flex;
-                -webkit-box-align: center;
-                    -ms-flex-align: center;
-                        align-items: center;
+                align-items: center;
                 font-size: $fz12px;
                 gap: 3%;
-                width: -webkit-max-content;
-                width: -moz-max-content;
                 width: max-content;
                 &_text {
                     white-space: nowrap;

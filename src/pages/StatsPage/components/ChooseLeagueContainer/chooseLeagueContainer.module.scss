@@ -1,0 +1,16 @@
+@import '../../../../assets/styles/vars';
+
+.container {
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    &_inner {
+        width: min(78.4vw, 294px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: $size16px;
+    }
+}

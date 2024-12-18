@@ -1,0 +1,72 @@
+@import '../../../../../assets/styles/vars';
+
+.container {
+    width: min(26.58vw, 99.67px);
+    height: min(18.13vw, 68px);
+    border-radius: $size10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: $MBold;
+    font-size: $size10px;
+    position: relative;
+    &_inner {
+        width: min(22.31vw, 83.67px);
+        height: min(13.87vw, 52px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: #fff;
+        &_day_count {
+            width: 100%;
+            height: min(5.87vw, 22px);
+            border-radius: min(1.07vw, 4px);
+            color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: $size10px;
+        }
+        &_day_reward {
+            display: flex;
+            align-items: center;
+            gap: 5%;
+            white-space: nowrap;
+            img {
+                width: $size12px;
+                height: $size12px;
+            }
+        }
+    }
+    &_collected_wrapper {
+        border-radius: inherit;
+        &_mask {
+            top: 0;
+            left: 0;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: inherit;
+            background: $dark_gradient;
+            z-index: 98;
+            opacity: .8;
+        }
+        
+        &_img {
+            top: 30%;
+            left: 35%;
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: min(7.47vw, 28px);
+            height: min(7.47vw, 28px);
+            border-radius: 50%;
+            background-color: $green;
+            z-index: 99;
+            img {
+                width: min(1.87vw, 7px);
+            }
+        }
+    }
+}

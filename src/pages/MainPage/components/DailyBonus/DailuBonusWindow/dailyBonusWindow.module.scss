@@ -1,0 +1,96 @@
+@import '../../../../../assets/styles/vars';
+
+.container {
+    &_dark_background {
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+        z-index: 95;
+        background-color: #000;
+        opacity: .6;
+        animation: entry_back .5s linear;
+    }
+    &_close_button {
+        position: absolute;
+        width: min(7.47vw, 28px);
+        height: min(7.47vw, 28px);
+        background-color: $card_background;
+        z-index: 98;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        top: min(54.4vw, 204px);
+        right: $size16px;
+    }
+&_collect_button_wrapper {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: min(12.8vw, 48px);
+    top: min(150.93vw, 566px);
+    z-index: 97;
+
+    button {
+        width: min(74.4vw, 279px);
+        height: 100%;
+        border-radius: $size8px;
+        font-size: $size16px;
+        font-family: $MBold;
+
+        &.green {
+            background-color: $green;
+        }
+
+        &.blur {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(8px);
+        }
+    }
+}
+    &_wrapper {
+        width: $size343px;
+        height: 100vh;
+        margin: 0 auto;
+        position: relative;
+        z-index: 97;
+        &_dailymodal {
+            overflow: auto;
+            padding: $size12px;
+            width: 100%;
+            position: absolute;
+            top: min(64vw, 240px);
+            left: 0;
+            height: min(65.6vw, 246px);
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: min(4.8vw, 18px);
+            backdrop-filter: blur(8px);
+            animation: entry_modal .5s linear;
+            &_scroll {
+                display: flex;
+                flex-wrap: wrap;
+                gap: $size10px;
+            }
+        }
+    }
+}
+@keyframes entry_back {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: .6;
+    }
+}
+@keyframes entry_modal {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}

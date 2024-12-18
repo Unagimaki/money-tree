@@ -1,9 +1,12 @@
 import styles from './statItem.module.scss'
-import { formatNumber } from '../../../../../helpers/formatNumber'
+import { formatNumber } from '../../../../../../helpers/formatNumber'
 
 export const StatItem = ({rank, name, balance, imgUrl}) => {
-    const money_icon = require('../../../assets/money_icon.png')
-    console.log(imgUrl);
+    const money_icon = require('../../../../assets/money_icon.png')
+
+    const first = require('../../../../assets/medal-star.png')
+    const second = require('../../../../assets/award.png')
+    const third = require('../../../../assets/medal.png')
     
     return(
         <div className={styles.item}>
@@ -11,9 +14,15 @@ export const StatItem = ({rank, name, balance, imgUrl}) => {
                 {
                     imgUrl && <img src={imgUrl} alt="imgUrl" />
                 }
+                {
+                    (rank === 1 || rank === 2 || rank === 3) &&
+                    <img src={rank === 1 ? first : rank === 2 ? second : third} className={styles.item_profile_place_icon}/>
+                }
                 <div className={styles.item_profile_info}>
                     <div className={styles.item_profile_info_name}>{name}</div>
-                    <div className={styles.item_profile_info_place}>#{rank}</div>
+                    <div className={styles.item_profile_info_place}>
+                        #{rank}                   
+                    </div>
                 </div>
             </div>
             <div className={styles.item_count}>

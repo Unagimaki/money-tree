@@ -1,21 +1,18 @@
 import { useEffect, useState } from 'react'
 import styles from './treeModule.module.scss'
-import { Helmet } from 'react-helmet'
 
-export const TreeModule = ({state}) => {  
-    const tree_background = require('./assets/tree.png')
-    const damage = state && state?.shop?.find(item => item.shopItem.itemType === 'DAMAGE').currentLevel
-    const energy = state && state?.shop?.find(item => item.shopItem.itemType === 'ENERGY').currentLevel
-    const regen = state && state?.shop?.find(item => item.shopItem.itemType === 'REGENERATION').currentLevel
+export const TreeModule = ({shop, state}) => {  
+    const [isLoading, setIsLoading] = useState(true)
 
-    const regenImage = regen > 0 ? require(`./assets/regen/${regen}.png`) : null;  
+    const damage = state.shop.find(item => item.shopItem.itemType === 'DAMAGE').currentLevel
+    const energy = state.shop.find(item => item.shopItem.itemType === 'ENERGY').currentLevel
+
     const energyImage = energy > 0 ? require(`./assets/energy/${energy}.png`) : null;  
     const damageImage = damage > 0 ? require(`./assets/damage/${damage}.png`) : null;  
 
-    const regenClassName = styles[`container_regenImage_${regen}`];
     const damageClassName = styles[`container_damageImage_${damage}`];
+    const tree_background = require('./assets/tree.png')
 
-    const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
         const img = new Image();
@@ -26,6 +23,8 @@ export const TreeModule = ({state}) => {
         img.onerror = () => setIsLoading(false)
     }, [tree_background]);
 
+    if (Object.keys(shop).length === 0) return null
+
     return(
         <div className={styles.container} >
             {
@@ -34,9 +33,6 @@ export const TreeModule = ({state}) => {
                 style={{ backgroundImage: `url(${tree_background})` }}
                 className={styles.container_tree}
                 >
-                {
-                    regenImage && <img className={regenClassName} src={regenImage} alt='img'/>
-                }
                 {
                     damageImage && <img className={damageClassName} src={damageImage} alt='img'/>
                 }

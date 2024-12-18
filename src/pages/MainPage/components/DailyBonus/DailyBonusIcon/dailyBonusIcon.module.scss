@@ -1,0 +1,22 @@
+@import '../../../../../assets/styles/vars';
+
+.container {
+    position: absolute;
+    width: min(12.8vw, 48px);
+    height: min(12.8vw, 48px);
+    top: min(49.07vw, 184px);
+    right: $size16px;
+    background-image: url('../../../assets/daily_bonus.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    z-index: 3;
+    &_marked {
+        position: absolute;
+        width: min(2.67vw, 10px);
+        height: min(2.67vw, 10px);
+        background-color: $green;
+        border-radius: 50%;
+        bottom: 0;
+        right: 0;
+    }
+}

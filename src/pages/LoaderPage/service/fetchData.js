@@ -1,6 +1,6 @@
 import { getData } from "../../../services/getData";
 
-export const fetchData = async (token) => {
+export const fetchData = async (token) => {  
   try {
     const results = await Promise.allSettled([
       getData(token, "auto-bot"),
@@ -12,11 +12,13 @@ export const fetchData = async (token) => {
       getData(token, "boosts"),
       getData(token, "shop-item"),
       getData(token, "offers"),
-      getData(token, 'wallet')
+      getData(token, 'wallet'),
+      getData(token, "player/leagues"),
+      getData(token, "daily-bonuses"),
     ])       
       
     return results
   } catch (e) {
-    console.log(e)
+    console.log(`fetchData func error: ${e}`)
   }
 }

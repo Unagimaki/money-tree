@@ -12,6 +12,8 @@ import { boostsReducer } from "./reducers/boostsReducer/boostsReducer";
 import { gameReducer } from "./reducers/gameReducer/gameReducer";
 import { imagesLoaderReducer } from "./reducers/imagesLoaderReducer/imagesLoaderReducer";
 import { tutorialReducer } from "./reducers/tutorialReducer/tutorialReducer";
+import { leagueReducer } from "./reducers/leagueReducer/leagueReducer";
+import { dailyBonusReducer } from "./reducers/dailyBonusReducer/dailyBonusReducer";
 
 const rootReducer = combineReducers({
   user: userReducer,
@@ -27,6 +29,8 @@ const rootReducer = combineReducers({
   game: gameReducer,
   imagesLoaded: imagesLoaderReducer,
   tutorial: tutorialReducer,
+  league: leagueReducer,
+  dailyBonus: dailyBonusReducer
 });
 
 export const store = createStore(rootReducer)

@@ -7,7 +7,7 @@
 	box-sizing: border-box;
 }
 body {
-	background: url('../public/images/backgroundNoTree.png') no-repeat;
+	background: url('../public/images/background.png') no-repeat;
 	background-size: cover;
 	overflow: hidden;
 }
@@ -88,9 +88,10 @@ button, input[type="submit"] {
     cursor: pointer;
 }
 
-input:focus, input:active,
+button, input:focus, input:active,
 button:focus, button:active {
     outline: none;
+	-webkit-tap-highlight-color: transparent;
 }
 
 button::-moz-focus-inner {

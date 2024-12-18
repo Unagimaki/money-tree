@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { baseURL } from '../App'
 import { isDevelopment } from '../utils/config';
 import { axiosInstance } from './axios'
@@ -16,7 +17,7 @@ export const UserLogin = data => {
 	if (playerData) return playerData;
 
 	// Выбор источника данных
-	const body = isDevelopment
+	const body = !isDevelopment
 		? example
 		: {
 			tgId: getUserInfo(data).user.id,
@@ -26,7 +27,7 @@ export const UserLogin = data => {
 			initData: data
 		};
 
-	return axiosInstance
+	return axios
 		.post(`https://${baseURL}/api/auth/login`, body, {
 			withCredentials: true
 		})
@@ -38,5 +39,8 @@ export const UserLogin = data => {
 				playerData = newPlayerData;
 			}
 			return playerData;
-		});
+		})
+		.catch(e => {
+			console.log(`User login error: ${e}`);
+		})
 };

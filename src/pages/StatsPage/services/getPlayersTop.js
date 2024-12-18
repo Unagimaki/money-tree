@@ -1,18 +1,26 @@
-import axios from 'axios';
-import { baseURL } from '../../../App'
+import { axiosInstance } from "../../../services/axios";
+import { ApiUrl } from "../../../utils/config";
 
-export const getPlayersTop = async (token) => {
+export const getPlayersTop = async (token, page) => {
+	if (!token) {
+		console.log(`Error: Missing pars in getPlayersTop func`);
+		return;
+	}
+
 	const headers = {
 		Authorization: `Bearer ${token}`,
 		'Content-Type': 'application/json',
 		Accept: 'application/json',
 	};
-	const headersJson = JSON.stringify(headers);
+	const params = {
+		// take: amount,
+		page
+	// Здесь можно добавить любые другие параметры
+	};
 
-	const result = await axios.get(`https://${baseURL}/api/player/top`, {
-		headers: JSON.parse(headersJson),
+	const result = await axiosInstance.get(`https://${ApiUrl}/api/player/top`, {
+		headers,
+		params, // Параметры будут автоматически сериализованы в строку запроса
 	});
-	console.log(result.data);
-
 	return result;
-};
+}

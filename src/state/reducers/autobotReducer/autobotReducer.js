@@ -9,7 +9,7 @@ const initialState = {
 
 export const autobotReducer = (state = initialState, action) => {        
     switch (action.type) {
-        case SET_AUTOBOT:
+        case SET_AUTOBOT: 
             const autoBots = action.payload.autoBots
             const sortedAutoBots = autoBots.map((autoBot) => {
             return {

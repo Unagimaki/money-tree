@@ -7,12 +7,10 @@ import StatPage from './pages/StatsPage/StatPage';
 import MainPage from './pages/MainPage/MainPage';
 import LoaderPage from './pages/LoaderPage/LoaderPage';
 import styles from './App.module.scss'
-import OffersPage from './pages/OffersPage/OffersPage';
 import { StatButton } from './pages/StatsPage/components/StatButton/StatButton';
 import { useDispatch, useSelector } from 'react-redux';
 import { OfferModal } from './pages/OffersPage/components/OfferModal/OfferModal';
 import { FooterMenu } from './features/components/FooterMenu/FooterMenu';
-import { Background } from './features/components/Background/Background';
 import { WithdrawalModal } from './pages/StatsPage/components/WithdrawalModal/WithdrawalModal';
 import { useEffect, useRef, useState } from 'react';
 import { store } from './state';
@@ -25,14 +23,13 @@ import { actionAddRef } from './state/reducers/referralsReducer/actions';
 import { Alert } from './features/components/Alert/Alert';
 import { Tutorial } from './features/components/Tutorial/Tutorial';
 import { TwaAnalyticsProvider } from "@tonsolutions/telemetree-react";
-import { Modal } from './features/modals/Modal/Modal';
+import OffersPage from './pages/OffersPage/OffersPage';
 
 export const WebApp = window.Telegram.WebApp
 export const baseURL = process.env.REACT_APP_BASE_URL
 
 function App() {
   const [isLoaded, setIsLoaded] = useState(false);
-  const [isVisible, setIsVisible] = useState(false)
 
   const [isStatModalVisible, setIsStatModalVisible] = useState({
     isVisible: false,
@@ -190,25 +187,23 @@ function App() {
     setIsLoaded(true);
   }, []);
 
-  useEffect(() => {
+  // useEffect(() => {
     
-    const handleVisibilityChange = () => window.location.reload() // тут вместо релоада обновить объект юзера player/me
+  //   const handleVisibilityChange = () => window.location.reload() // тут вместо релоада обновить объект юзера player/me
     
     
-    document.addEventListener('visibilitychange', handleVisibilityChange)
-    return () => {
-      document.removeEventListener('visibilitychange', handleVisibilityChange)
-    }
-  }, [])
+  //   document.addEventListener('visibilitychange', handleVisibilityChange)
+  //   return () => {
+  //     document.removeEventListener('visibilitychange', handleVisibilityChange)
+  //   }
+  // }, [])
 
   if (!isLoaded) return null;
 
   return (
     <TwaAnalyticsProvider projectId="59a2dcea-5236-4c30-888c-93c99eea7a19" apiKey="fb8e3102-1c0c-4751-8b14-6f687520c638" appName="Money tree">
       <div className={styles.app}>
-        {currentUrl !== PagesLinks.MAIN_URL && <Background />}
         {isTutorialActive && <Tutorial />}
-        { isVisible && <Modal/> }
         <Routes>
           <Route path={PagesLinks.BOOSTS_URL} element={<BoostsPage
             handleCloseAlert={handleCloseAlert}

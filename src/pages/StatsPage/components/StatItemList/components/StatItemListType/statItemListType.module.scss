@@ -1,0 +1,26 @@
+@import '../../../../../../assets/styles/vars';
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    margin: $size24px 0;
+    &_inner {
+        width: min(65.6vw, 246px);
+        height: min(9.87vw, 37px);
+        background: $dark_gradient;
+        border-radius: min(3.2vw, 12px);
+        display: flex;
+    }
+}
+.container_inner_all,
+.container_inner_friends {
+    color: #fff;
+    font-family: $MSemiBold;
+    font-size: $size12px;
+    width: 130px;
+    height: 100%;
+    border-radius: inherit;
+    transition: all .3s linear;
+}

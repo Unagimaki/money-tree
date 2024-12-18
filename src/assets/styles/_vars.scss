@@ -49,6 +49,7 @@ $fz18px: min(4.8vw, 18px);
 $fz40px: min(10.67vw, 40px);
 
 $size8px: min(2.13vw, 8px);
+$size10px: min(2.67vw, 10px);
 $size16px: min(4.27vw, 16px);
 $size14px: min(3.73vw, 14px);
 $size12px: min(3.2vw, 12px);
@@ -72,9 +73,6 @@ $page_styles: (
   align-items: center,
   position: relative,
   width: $page_width,
-  // min-height: $page_height,
-  // background: url($page_background) no-repeat,
-  // background-size: cover,
   margin: 0 auto,
   overflow: hidden,
   transition: opacity 0.5s,

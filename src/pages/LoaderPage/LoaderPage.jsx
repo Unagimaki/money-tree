@@ -16,6 +16,8 @@ import { PagesLinks } from "../../shared/PagesLinks";
 import { UserLogin } from "../../services/userLogin";
 import { actionSetUserWallet } from "../../state/reducers/walletReducer/actions";
 import { example_query, isDevelopment } from "../../utils/config";
+import { actionSetLeagues } from "../../state/reducers/leagueReducer/leagueReducer";
+import { actionSetDailyBonus } from "../../state/reducers/dailyBonusReducer/dailyBonusReducer";
 
 const LoaderPage = () => {
   const dispatch = useDispatch();
@@ -39,6 +41,7 @@ const LoaderPage = () => {
   useEffect(() => {
     window.Telegram.WebApp.expand()
     window.Telegram.WebApp.disableVerticalSwipes()
+
     const dispatchFunctions = [
       (data) => dispatch(actionSetAutobot(data)),
       (data) => dispatch(actionSetAutobotLauchInfo(data)),
@@ -49,31 +52,30 @@ const LoaderPage = () => {
       (data) => dispatch(actionSetBoosts(data)),
       (data) => dispatch(actionSetShopItems(data)),
       (data) => dispatch(actionSetOffers(data)),
-      (data) => dispatch(actionSetUserWallet(data))
+      (data) => dispatch(actionSetUserWallet(data)),
+      (data) => dispatch(actionSetLeagues(data)),
+      (data) => dispatch(actionSetDailyBonus(data)),
     ]    
     if (!dataFetched) {
       UserLogin(auth_data)
-        .then((user) => {
+        .then((user) => {       
           dispatch(actionSetUserRefreshToken(user.refreshToken));
           dispatch(actionSetUser(user.player));
           dispatch(actionSetUserToken(user.accessToken));
 
           fetchData(user.accessToken)
             .then((results) => {
-              
               results.forEach((result, index) => {
-                if (result.status === "fulfilled") {
-                  dispatchFunctions[index](result.value.data);
+                if (result.status === "fulfilled") {                 
+                  dispatchFunctions[index] ? dispatchFunctions[index](result.value.data) : console.log(`Нет dispatch функции`)                  
                 } else {
-                  console.log(
-                    `Ошибка при получении данных: ${result.reason.response.data.path}`
-                  );
+                  console.log(`Ошибка при получении данных: ${result.reason.response.data.path}`);                  
                 }
               });
               setTimeout(() => {
                 setDataFetched(true);
                 navigate(PagesLinks.MAIN_URL)
-              }, 2000);
+              }, isDevelopment ? 0 : 2000);
             })
             .catch((e) => console.log("fetchData error: " + e));
         })

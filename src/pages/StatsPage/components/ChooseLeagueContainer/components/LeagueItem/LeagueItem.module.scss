@@ -1,0 +1,15 @@
+@import '../../../../../../assets/styles/vars';
+
+.container {
+    width: min(12.27vw, 46px);
+    height: min(12.27vw, 46px);
+    background: linear-gradient(225deg, rgba(32, 32, 32, 1), rgba(23, 30, 23, 1));
+    border-radius: min(2.67vw, 10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img {
+        width: min(6.67vw, 25px);
+        height: min(6.67vw, 25px);
+    }
+}
