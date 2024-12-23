@@ -27,9 +27,9 @@ const StatPage = ({navigate}) => {
       navigate('/main')
     }
 
-    useEffect(() => {
-      dispatch(actionSetCurrentLeague(getLeagueFromUserNumber(currentUser.rank)))
-    }, [])
+    // useEffect(() => {
+    //   dispatch(actionSetCurrentLeague(getLeagueFromUserNumber(currentUser.rank)))
+    // }, [])
     
     return (
       <div className={styles.stat_page}>
