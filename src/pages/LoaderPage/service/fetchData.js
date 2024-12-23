@@ -7,15 +7,11 @@ export const fetchData = async (token) => {
       getData(token, "auto-bot/player"),
       getData(token, "free-boosts"),
       getData(token, "seasons"),
-      getData(token, "player/top"),
-      getData(token, "referrals"),
       getData(token, "boosts"),
       getData(token, "shop-item"),
       getData(token, "offers"),
-      getData(token, 'wallet'),
       getData(token, "player/leagues"),
       getData(token, "daily-bonuses"),
-      getData(token, "refferals"),
     ])       
       
     return results
