@@ -13,9 +13,9 @@ export const LeagueItem = ({img, leagueNum}) => {
 
     const handleChangeLeague = () => {
         dispatch(actionSetCurrentLeague(leagueNum))
-        // getPlayersTop(token, getPageForLeague(leagueNum))
-        // .then((res) => dispatch(actionSetPlayersTop(res.data)))
-        // .catch(e => console.log('StatPage: get players stats error'))
+        getPlayersTop(token, getPageForLeague(leagueNum))
+        .then((res) => dispatch(actionSetPlayersTop(res.data)))
+        .catch(e => console.log('StatPage: get players stats error'))
     }
 
     return(

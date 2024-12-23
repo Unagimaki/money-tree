@@ -26,7 +26,7 @@ export const StatItemList = () => {
     .catch(e => console.log('StatPage: get players stats error: ' + e))
     .finally(() => setLoading(false))
 
-  }, [currentLeague])
+  }, [])
   
 
   return (

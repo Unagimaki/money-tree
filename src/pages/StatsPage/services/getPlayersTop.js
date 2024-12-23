@@ -12,15 +12,10 @@ export const getPlayersTop = async (token, page) => {
 		'Content-Type': 'application/json',
 		Accept: 'application/json',
 	};
-	const params = {
-		// take: amount,
-		page
-	// Здесь можно добавить любые другие параметры
-	};
 
-	const result = await axiosInstance.get(`https://${ApiUrl}/api/player/top`, {
+	const result = await axiosInstance.get(`https://${ApiUrl}/api/player/top?league=${page}`, {
 		headers,
-		params, // Параметры будут автоматически сериализованы в строку запроса
 	});
+	
 	return result;
 }

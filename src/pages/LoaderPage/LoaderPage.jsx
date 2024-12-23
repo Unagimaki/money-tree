@@ -47,7 +47,7 @@ const LoaderPage = () => {
       (data) => dispatch(actionSetAutobotLauchInfo(data)),
       (data) => dispatch(actionSetFreeBoosts(data)),
       (data) => dispatch(actionSetSeason(data)),
-      (data) => dispatch(actionSetPlayersTop(data)),
+      // (data) => dispatch(actionSetPlayersTop(data)),
       (data) => dispatch(actionSetRef(data)),
       (data) => dispatch(actionSetBoosts(data)),
       (data) => dispatch(actionSetShopItems(data)),
