@@ -48,11 +48,11 @@ const LoaderPage = () => {
       (data) => dispatch(actionSetFreeBoosts(data)),
       (data) => dispatch(actionSetSeason(data)),
       // (data) => dispatch(actionSetPlayersTop(data)),
-      (data) => dispatch(actionSetRef(data)),
+      // (data) => dispatch(actionSetRef(data)),
       (data) => dispatch(actionSetBoosts(data)),
       (data) => dispatch(actionSetShopItems(data)),
       (data) => dispatch(actionSetOffers(data)),
-      (data) => dispatch(actionSetUserWallet(data)),
+      // (data) => dispatch(actionSetUserWallet(data)),
       (data) => dispatch(actionSetLeagues(data)),
       (data) => dispatch(actionSetDailyBonus(data)),
     ]    
