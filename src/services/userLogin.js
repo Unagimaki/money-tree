@@ -28,7 +28,7 @@ export const UserLogin = data => {
 		};
 
 	return axios
-		.post(`https://${baseURL}/api/auth/login`, body, {
+		.post(`https://moneytree-stage.extensi.one/api/auth/login`, body, {
 			withCredentials: true
 		})
 		.then(result => {
