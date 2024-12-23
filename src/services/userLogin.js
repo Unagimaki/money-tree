@@ -26,7 +26,8 @@ export const UserLogin = data => {
 			profileImageUrl: getUserInfo(data).user?.photo_url || '',
 			initData: data
 		};
-
+		console.log(body);
+		
 	return axios
 		.post(`https://moneytree-stage.extensi.one/api/auth/login`, body, {
 			withCredentials: true
