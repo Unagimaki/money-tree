@@ -222,9 +222,9 @@ export const WithdrawalModal = ({ handleAlertModalShow }) => {
             <br /> своем аккаунте Telegram
           </div>
         )}
-        {!tonWalletAddress && (
+        {/* {!tonWalletAddress && (
           <button className={styles.container_wrapper_button}>Проверить</button>
-        )}
+        )} */}
         
       </div>
     </div>
