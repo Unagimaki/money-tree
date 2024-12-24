@@ -10,7 +10,7 @@ export const StatItemList = ({currentListType}) => {
   const players = useSelector(state => state.league?.leagues.topPlayers)
   const friends = useSelector(state => state.league.friends.topPlayers)
    
-  const currentUser = useSelector(state => state.playersTop?.currentUser)
+  const currentUser = useSelector(state => state.league.leagues.currentUser)
   const currentLeague = useSelector(state => state.league.showCurrentLeague)
   const token = useSelector(state => state.user.token)
 
