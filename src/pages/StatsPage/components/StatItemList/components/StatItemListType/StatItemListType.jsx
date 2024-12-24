@@ -1,7 +1,6 @@
 import styles from './statItemListType.module.scss'
 
 export const StatItemListType = ({handleChangeListType, currentListType}) => {
-
     return(
         <div className={styles.container}>
             <div className={styles.container_inner}>

@@ -10,8 +10,8 @@ export const fetchData = async (token) => {
       getData(token, "boosts"),
       getData(token, "shop-item"),
       getData(token, "offers"),
-      getData(token, "player/leagues"),
       getData(token, "daily-bonuses"),
+      getData(token, "player/top?league=bronze"),
     ])       
       
     return results

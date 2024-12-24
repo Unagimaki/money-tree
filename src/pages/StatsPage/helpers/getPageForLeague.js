@@ -1,4 +1,4 @@
-export const getPageForLeague = (leagueNumber) => { 
+export const getPageForLeague = (leagueNumber) => {  
   let startUser;
 
   // Определяем, с какого пользователя начинается эта лига
@@ -19,7 +19,8 @@ export const getPageForLeague = (leagueNumber) => {
       startUser = 'diamond';
       break;
     default:
-      throw new Error("Неверный номер лиги.");
+      console.log("Неверный номер лиги.");
+      
   }
 
   // Вычисляем первую страницу для лиги, округляя вверх

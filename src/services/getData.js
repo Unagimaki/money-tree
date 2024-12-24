@@ -14,7 +14,9 @@ export const getData = async (token, url) => {
     };
 
     const result = await axiosInstance.get(`https://${ApiUrl}/api/${url}`, { headers });
-    // console.log(result.data);
+    console.log(url);
+    
+    console.log(result.data);
     
     return result;
 }

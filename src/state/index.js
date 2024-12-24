@@ -1,6 +1,5 @@
 import { combineReducers, createStore } from "@reduxjs/toolkit";
 import { userReducer } from "./reducers/userReducer/userReducer";
-import { statsReducer } from "./reducers/statsReducer/statsReducer";
 import { offersReducer } from "./reducers/offersReducer/offersReducer";
 import { freeBoostsReducer } from "./reducers/freeBoostsReducer/freeBoostsReducer";
 import { referralsReducer } from "./reducers/referralsReducer/referralsReducer";
@@ -17,7 +16,6 @@ import { dailyBonusReducer } from "./reducers/dailyBonusReducer/dailyBonusReduce
 
 const rootReducer = combineReducers({
   user: userReducer,
-  playersTop: statsReducer,
   offers: offersReducer,
   freeBoosts: freeBoostsReducer,
   boosts: boostsReducer,

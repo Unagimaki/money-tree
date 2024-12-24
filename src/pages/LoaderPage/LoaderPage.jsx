@@ -3,8 +3,6 @@ import styles from "./loaderPage.module.scss";
 import { useDispatch, } from "react-redux";
 import { actionSetShopItems } from "../../state/reducers/shopReducer/actions";
 import { actionSetSeason } from "../../state/reducers/seasonReducer/actions";
-import { actionSetPlayersTop } from "../../state/reducers/statsReducer/actions";
-import { actionSetRef } from "../../state/reducers/referralsReducer/actions";
 import { actionSetFreeBoosts } from "../../state/reducers/freeBoostsReducer/action";
 import { actionSetBoosts } from "../../state/reducers/boostsReducer/action";
 import { actionSetOffers } from "../../state/reducers/offersReducer/actions";
@@ -47,14 +45,12 @@ const LoaderPage = () => {
       (data) => dispatch(actionSetAutobotLauchInfo(data)),
       (data) => dispatch(actionSetFreeBoosts(data)),
       (data) => dispatch(actionSetSeason(data)),
-      // (data) => dispatch(actionSetPlayersTop(data)),
-      // (data) => dispatch(actionSetRef(data)),
       (data) => dispatch(actionSetBoosts(data)),
       (data) => dispatch(actionSetShopItems(data)),
       (data) => dispatch(actionSetOffers(data)),
-      // (data) => dispatch(actionSetUserWallet(data)),
-      (data) => dispatch(actionSetLeagues(data)),
       (data) => dispatch(actionSetDailyBonus(data)),
+      (data) => dispatch(actionSetLeagues(data)),
+      
     ]    
     if (!dataFetched) {
       UserLogin(auth_data)

@@ -9,6 +9,7 @@ import { actionIncreaseUserBalance } from '../../../../../state/reducers/userRed
 export const DailyBonusWindow = ({handleAlertModalShow}) => {
     const close_icon = require('../../../assets/close_daily_icon.png')
     const dispatch = useDispatch()
+
     const [isCanCollect, setIsCanCollect] = useState(false)
     const token = useSelector(state => state.user.token);
     const dailyBonusWindowVisible = useSelector(state => state.dailyBonus?.isBonusWindowVisible || null);
@@ -23,21 +24,23 @@ export const DailyBonusWindow = ({handleAlertModalShow}) => {
         collectDailyBonus(token)
         .then(res => {
             console.log(res)
-            dispatch(actionSetBonusCollected(bonuses[currentStreak].id))
-            dispatch(actionIncreaseUserBalance(bonuses[currentStreak].id))
+            dispatch(actionSetBonusCollected(bonuses[currentStreak-1].id))
+            dispatch(actionIncreaseUserBalance(bonuses[currentStreak-1].bonus))
             handleAlertModalShow("Бонус собран", "", "success");
-            
 
         })
-        .catch(e => console.log(e))
-        handleAlertModalShow("Ошибка", "", "warning");
+        .catch(e => {
+            handleAlertModalShow("Ошибка", "", "warning");
+            console.log(e)            
+        })
     }
 
     useEffect(() => {
-        bonuses[currentStreak-1].isAvailable && setIsCanCollect(true)
+        if (!bonuses) return
+        bonuses[currentStreak-1].isAvailable ? setIsCanCollect(true) : setIsCanCollect(false)
     }, [bonuses])
 
-    if (!dailyBonusWindowVisible || !bonuses ) return
+    if (!dailyBonusWindowVisible ) return
 
     return(
         <div className={styles.container}>

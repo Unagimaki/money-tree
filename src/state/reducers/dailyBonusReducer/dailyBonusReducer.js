@@ -16,6 +16,8 @@ export const actionSetDailyBonus = (data) => {
     }
 }
 export const actionSetBonusCollected = (id) => {
+    console.log(id);
+    
     return {
         type: SET_DAILY_BONUS_COLLECTED,
         payload: id
@@ -23,7 +25,7 @@ export const actionSetBonusCollected = (id) => {
 }
 const initialState = {
     isBonusWindowVisible: false,
-    bonus: []
+    bonus: {}
 }
 
 
@@ -36,12 +38,16 @@ export const dailyBonusReducer = (state = initialState, action) => {
         case SET_DAILY_BONUS_COLLECTED:
             return {
                 ...state,
-                bonus: state.bonus.map(item =>
-                    item.id === action.payload
-                        ? { ...item, isAvailable: false, isCollected: true }
-                        : item
-                )
+                bonus: {
+                    ...state.bonus,
+                    dailyBonuses: state.bonus.dailyBonuses.map(item =>
+                        item.id === action.payload
+                            ? { ...item, isAvailable: false, isCollected: true }
+                            : item
+                    )
+                }
             };
+
         default: return state
     }
 }

@@ -1,1 +1,0 @@
-export const SET_PLAYER_TOP = 'SET_PLAYER_TOP'
