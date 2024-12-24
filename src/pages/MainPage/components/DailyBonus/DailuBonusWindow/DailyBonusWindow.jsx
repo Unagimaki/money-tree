@@ -6,7 +6,7 @@ import { collectDailyBonus } from '../../../services/collectDailyBonus'
 import { useEffect, useState } from 'react'
 import { actionIncreaseUserBalance } from '../../../../../state/reducers/userReducer/actions'
 
-export const DailyBonusWindow = () => {
+export const DailyBonusWindow = ({handleAlertModalShow}) => {
     const close_icon = require('../../../assets/close_daily_icon.png')
     const dispatch = useDispatch()
     const [isCanCollect, setIsCanCollect] = useState(false)
@@ -26,6 +26,7 @@ export const DailyBonusWindow = () => {
             dispatch(actionSetBonusCollected(bonuses[currentStreak].id))
             dispatch(actionIncreaseUserBalance(bonuses[currentStreak].id))
             handleAlertModalShow("Бонус собран", "", "success");
+            
 
         })
         .catch(e => console.log(e))

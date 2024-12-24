@@ -57,7 +57,7 @@ const MainPage = ({ isStatModalVisible, onDamageModalShow, handleAlertModalShow 
         <Balance />
         <TreeModule shop={shop} state={store.getState()}/>
         <DailyBonusIcon/>
-        <DailyBonusWindow/>
+        <DailyBonusWindow handleAlertModalShow={handleAlertModalShow}/>
         {isStatModalVisible && <BackButton onClick={handleButtonClick}/>}
       </div>
     </div>
