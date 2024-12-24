@@ -25,8 +25,11 @@ export const DailyBonusWindow = () => {
             console.log(res)
             dispatch(actionSetBonusCollected(bonuses[currentStreak].id))
             dispatch(actionIncreaseUserBalance(bonuses[currentStreak].id))
+            handleAlertModalShow("Бонус собран", "", "success");
+
         })
         .catch(e => console.log(e))
+        handleAlertModalShow("Ошибка", "", "warning");
     }
 
     useEffect(() => {
