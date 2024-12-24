@@ -71,7 +71,7 @@ const LoaderPage = () => {
               setTimeout(() => {
                 setDataFetched(true);
                 navigate(PagesLinks.MAIN_URL)
-              }, isDevelopment ? 0 : 2000);
+              }, isDevelopment ? 0 : 0);
             })
             .catch((e) => console.log("fetchData error: " + e));
         })

@@ -21,6 +21,7 @@ export const DailyBonusWindow = ({handleAlertModalShow}) => {
         dispatch(actionSetBonusWindowVisible(false))        
     }
     const handleCollectDailyBonus = () => {
+        
         collectDailyBonus(token)
         .then(res => {
             console.log(res)
@@ -67,7 +68,7 @@ export const DailyBonusWindow = ({handleAlertModalShow}) => {
                 </div>
             </div>
             <div onClick={handleCollectDailyBonus} className={styles.container_collect_button_wrapper}>
-                <button className={`${isCanCollect ? styles.green : styles.blur}`}>
+                <button className={`${isCanCollect ? styles.green : styles.blur}`} disabled={!isCanCollect}>
                     {isCanCollect ? 'Собрать' : 'Собрано'}
                 </button>
             </div>
