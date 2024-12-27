@@ -23,33 +23,6 @@
         top: min(54.4vw, 204px);
         right: $size16px;
     }
-&_collect_button_wrapper {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100vw;
-    height: min(12.8vw, 48px);
-    top: min(150.93vw, 566px);
-    z-index: 97;
-
-    button {
-        width: min(74.4vw, 279px);
-        height: 100%;
-        border-radius: $size8px;
-        font-size: $size16px;
-        font-family: $MBold;
-
-        &.green {
-            background-color: $green;
-        }
-
-        &.blur {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(8px);
-        }
-    }
-}
     &_wrapper {
         width: $size343px;
         height: 100vh;
@@ -61,7 +34,7 @@
             padding: $size12px;
             width: 100%;
             position: absolute;
-            top: min(64vw, 240px);
+            top: min(29.56vh, 240px);
             left: 0;
             height: min(65.6vw, 246px);
             background: rgba(255, 255, 255, 0.1);
@@ -72,6 +45,33 @@
                 display: flex;
                 flex-wrap: wrap;
                 gap: $size10px;
+            }
+        }
+        &_collect_button {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: min(12.8vw, 48px);
+            top: min(69.7vh, 566px);
+            z-index: 97;
+
+            button {
+                width: min(74.4vw, 279px);
+                height: 100%;
+                border-radius: $size8px;
+                font-size: $size16px;
+                font-family: $MBold;
+
+                &.green {
+                    background-color: $green;
+                }
+
+                &.blur {
+                    background: rgba(255, 255, 255, 0.1);
+                    backdrop-filter: blur(8px);
+                }
             }
         }
     }

@@ -147,12 +147,12 @@ export const SkinItem = ({
             >
               {!isReferralCountEnough && (
                 <div>
-                  Пригласи{" "}
+                  Пригласи{" "} + {" "}
                   <span>
                     {referralRequiredAmount - playerReferralsCount < 0
                       ? 0
                       : referralRequiredAmount - playerReferralsCount}{" "}
-                    друзей
+                    {referralRequiredAmount - playerReferralsCount < 5 ? 'друга' : 'друзей'}
                   </span>
                 </div>
               )}

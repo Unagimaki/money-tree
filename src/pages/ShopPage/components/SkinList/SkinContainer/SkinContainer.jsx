@@ -4,9 +4,7 @@ import { SkinItem } from './SkinItem/SkinItem'
 import { SkinTitle } from './SkinTitle/SkinTitle'
 
 export const SkinContainer = ({ obj, handleAlertModalShow }) => {
-  const playerReferralsCount = useSelector(
-    (state) => state.referrals.playerReferralsCount
-  );
+  const playerReferralsCount = useSelector((state) => state.referrals.playerReferralsCount || 0)
   const token = useSelector((state) => state.user.token);
   const title = obj.shopItem.title;
   const balance = useSelector((state) => state.user.player.balance);

@@ -66,11 +66,11 @@ export const DailyBonusWindow = ({handleAlertModalShow}) => {
                         }
                     </div>
                 </div>
-            </div>
-            <div onClick={handleCollectDailyBonus} className={styles.container_collect_button_wrapper}>
-                <button className={`${isCanCollect ? styles.green : styles.blur}`} disabled={!isCanCollect}>
-                    {isCanCollect ? 'Собрать' : 'Собрано'}
-                </button>
+                <div className={styles.container_wrapper_collect_button}>
+                    <button onClick={handleCollectDailyBonus} className={`${isCanCollect ? styles.green : styles.blur}`} disabled={!isCanCollect}>
+                        {isCanCollect ? 'Собрать' : 'Собрано'}
+                    </button>
+                </div>
             </div>
         </div>
     )
