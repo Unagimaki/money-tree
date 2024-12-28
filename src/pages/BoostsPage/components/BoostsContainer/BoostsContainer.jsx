@@ -7,7 +7,7 @@ export const BoostsContainer = ({ handleAlertModalShow, handleCloseAlert }) => {
   const boosts = useSelector((state) => state.boosts.boosts);
   const token = useSelector((state) => state.user.token);
   const bot = useSelector((state) => state.bot.autoBots[0]);
-  const currentBotLevel = useSelector(state => state.bot.autoBots.length > 0 && state.bot.autoBots[0].currentLevel);
+  const currentBotLevel = useSelector(state => state.bot.autoBots[0].currentLevel);
 
   return (
     <div className={styles.improve_container}>
@@ -32,8 +32,6 @@ export const BoostsContainer = ({ handleAlertModalShow, handleCloseAlert }) => {
               />
             );
           })}
-          {
-            currentBotLevel &&
             <BoostItem
               currentLevel={currentBotLevel}
               type={"AUTOBOT"}
@@ -46,8 +44,6 @@ export const BoostsContainer = ({ handleAlertModalShow, handleCloseAlert }) => {
               handleAlertModalShow={handleAlertModalShow}
               handleCloseAlert={handleCloseAlert}
             />
-
-          }
         </div>
       </div>
     </div>
