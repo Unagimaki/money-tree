@@ -12,6 +12,7 @@ import { WithdrawalBalance } from '../WithdrawalBalance/WithdrawalBalance'
 
 export const WithdrawalModal = ({ handleAlertModalShow }) => {
   const dispatch = useDispatch();
+
   const wallet = require("../../assets/wallet.png");
   const close = require("../../assets/close.png");
   const close_wallet_button = require("../../assets/close_button.png");
@@ -163,11 +164,8 @@ export const WithdrawalModal = ({ handleAlertModalShow }) => {
         </div>
         {tonWalletAddress ? (
           <div className={styles.container_wrapper_wallet_panel}>
-            <button
-              onClick={handleDisconnectWallet}
-              className={styles.container_wrapper_wallet_panel_remove_button}
-            >
-              <img src={close_wallet_button} alt="close_wallet_button" />
+            <button onClick={handleDisconnectWallet} className={styles.container_wrapper_wallet_panel_remove_button}           >
+              <img src={close_wallet_button} alt="close_wallet_button"/>
             </button>
             <div className={styles.container_wrapper_wallet_panel_info}>
               <div className={styles.container_wrapper_wallet_panel_info_adress}>

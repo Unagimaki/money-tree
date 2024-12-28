@@ -14,12 +14,14 @@ import { actionHintButtonVisible, actionSetTutorialActive } from '../../state/re
 import { DailyBonusIcon } from './components/DailyBonus/DailyBonusIcon/DailyBonusIcon'
 import { DailyBonusWindow } from './components/DailyBonus/DailuBonusWindow/DailyBonusWindow'
 import { MainBackground } from './components/MainBackground/MainBackground'
+import Snowfall from 'react-snowfall'
 
 
 const MainPage = ({ isStatModalVisible, onDamageModalShow, handleAlertModalShow }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch()
   const main_background = require("./assets/main_background.png");
+  const snow_background = require("./assets/background_snow.png");
   const [isLoading, setIsLoading] = useState(true);
 
   const currentBotLevel = useSelector(state => state.bot.autoBots.length > 0 && state.bot.autoBots[0].currentLevel);
@@ -27,7 +29,7 @@ const MainPage = ({ isStatModalVisible, onDamageModalShow, handleAlertModalShow 
   const isHintActive = useSelector(state => state.tutorial.isHintVisible)
   const shop = useSelector(state => state.shop)
   const regen = shop?.find(item => item.shopItem.itemType === 'REGENERATION').currentLevel
-  const background = regen > 0 ? require(`./assets/regen/${regen}.png`) : main_background;
+  const background = regen > 0 ? require(`./assets/regen/${regen}.png`) : snow_background;
 
   console.log(store.getState());
   
@@ -43,15 +45,15 @@ const MainPage = ({ isStatModalVisible, onDamageModalShow, handleAlertModalShow 
 
   useEffect(() => {
     const img = new Image();
-    img.src = main_background;
+    img.src = snow_background;
     img.onload = () => setIsLoading(false)
     img.onerror = () => setIsLoading(false)
-  }, [main_background]);  
+  }, [snow_background]);  
 
   return (
     <div>
       <div className={styles.main_page}>
-        <MainBackground main_background={main_background} img={background} isLoading={isLoading}/>
+        <MainBackground main_background={snow_background} img={background} isLoading={isLoading}/>
         <AutoBot currentBotLevel={currentBotLevel} handleAlertModalShow={handleAlertModalShow}/>
         <Stats onDamageModalShow={onDamageModalShow}/>
         <Balance />

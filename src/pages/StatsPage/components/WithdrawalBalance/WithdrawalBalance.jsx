@@ -6,6 +6,8 @@ import { useSelector } from 'react-redux'
 
 export const WithdrawalBalance = () => {
     const clock = require('../../assets/clock.png')
+    const available = require('../../assets/available.png')
+    const isAvailable = useSelector(state => state.wallet.walletAdress?.withdrawStatus || null)
 
     const WEEK_LIMIT = 5
     const UNLIMITED = 35
@@ -64,7 +66,7 @@ export const WithdrawalBalance = () => {
                     </div>
                     <div className={styles.container_inner_info_time_left}>
                         <div>3 дн.</div>
-                        <img src={clock} alt="clock" />
+                        <img src={isAvailable ? available : clock} alt="clock" />
                     </div>
                 </div>
 

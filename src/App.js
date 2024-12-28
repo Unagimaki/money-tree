@@ -24,6 +24,8 @@ import { Alert } from './features/components/Alert/Alert';
 import { Tutorial } from './features/components/Tutorial/Tutorial';
 import { TwaAnalyticsProvider } from "@tonsolutions/telemetree-react";
 import OffersPage from './pages/OffersPage/OffersPage';
+import { isDevelopment } from './utils/config';
+import Snowfall from 'react-snowfall';
 
 export const WebApp = window.Telegram.WebApp
 // export const baseURL = process.env.REACT_APP_BASE_URL
@@ -188,22 +190,24 @@ function App() {
     setIsLoaded(true);
   }, []);
 
-  // useEffect(() => {
+  useEffect(() => {
+    if (isDevelopment) return
     
-  //   const handleVisibilityChange = () => window.location.reload() // тут вместо релоада обновить объект юзера player/me
+    const handleVisibilityChange = () => window.location.reload() // тут вместо релоада обновить объект юзера player/me
     
     
-  //   document.addEventListener('visibilitychange', handleVisibilityChange)
-  //   return () => {
-  //     document.removeEventListener('visibilitychange', handleVisibilityChange)
-  //   }
-  // }, [])
+    document.addEventListener('visibilitychange', handleVisibilityChange)
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange)
+    }
+  }, [])
 
   if (!isLoaded) return null;
 
   return (
     <TwaAnalyticsProvider projectId="59a2dcea-5236-4c30-888c-93c99eea7a19" apiKey="fb8e3102-1c0c-4751-8b14-6f687520c638" appName="Money tree">
       <div className={styles.app}>
+        <Snowfall style={{width: '100vw', height: '100vh', zIndex: 99}}/>
         {isTutorialActive && <Tutorial />}
         <Routes>
           <Route path={PagesLinks.BOOSTS_URL} element={<BoostsPage

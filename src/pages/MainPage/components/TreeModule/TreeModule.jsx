@@ -12,16 +12,17 @@ export const TreeModule = ({shop, state}) => {
 
     const damageClassName = styles[`container_damageImage_${damage}`];
     const tree_background = require('./assets/tree.png')
+    const tree_snow = require('./assets/tree_snow.png')
 
 
     useEffect(() => {
         const img = new Image();
-        img.src = tree_background;
+        img.src = tree_snow;
         img.onload = () =>{
             setIsLoading(false)
         }
         img.onerror = () => setIsLoading(false)
-    }, [tree_background]);
+    }, [tree_snow]);
 
     if (Object.keys(shop).length === 0) return null
 
@@ -30,7 +31,7 @@ export const TreeModule = ({shop, state}) => {
             {
             !isLoading &&
             <div
-                style={{ backgroundImage: `url(${tree_background})` }}
+                style={{ backgroundImage: `url(${tree_snow})` }}
                 className={styles.container_tree}
                 >
                 {

@@ -10,25 +10,26 @@
         opacity: .6;
         animation: entry_back .5s linear;
     }
-    &_close_button {
-        position: absolute;
-        width: min(7.47vw, 28px);
-        height: min(7.47vw, 28px);
-        background-color: $card_background;
-        z-index: 98;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-        top: min(54.4vw, 204px);
-        right: $size16px;
-    }
+
     &_wrapper {
         width: $size343px;
         height: 100vh;
         margin: 0 auto;
         position: relative;
         z-index: 97;
+        &_close_button {
+            position: absolute;
+            width: min(7.47vw, 28px);
+            height: min(7.47vw, 28px);
+            background-color: $card_background;
+            z-index: 98;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            top: min(25.12vh, 204px);
+            right: 0%;
+        }
         &_dailymodal {
             overflow: auto;
             padding: $size12px;

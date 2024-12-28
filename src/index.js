@@ -5,6 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from './state';
 import { TonConnectUIProvider } from '@tonconnect/ui-react'
+import Snowfall from 'react-snowfall';
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 

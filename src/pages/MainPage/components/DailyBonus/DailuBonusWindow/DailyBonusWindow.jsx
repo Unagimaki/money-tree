@@ -46,10 +46,11 @@ export const DailyBonusWindow = ({handleAlertModalShow}) => {
     return(
         <div className={styles.container}>
             <div className={styles.container_dark_background}/>
-            <button onClick={handleCloseDailyWindow} className={styles.container_close_button}>
-                <img src={close_icon} alt="close_icon" />
-            </button>
             <div className={styles.container_wrapper}>
+                <button onClick={handleCloseDailyWindow} className={styles.container_wrapper_close_button}>
+                    <img src={close_icon} alt="close_icon" />
+                </button>
+
                 <div className={styles.container_wrapper_dailymodal}>
                     <div className={styles.container_wrapper_dailymodal_scroll}>
                         {

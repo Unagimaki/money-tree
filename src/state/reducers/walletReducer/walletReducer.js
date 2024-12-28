@@ -2,7 +2,8 @@ import { REMOVE_USER_WALLET, SET_CONNECT_WALLET_VISIBLE, SET_USER_WALLET } from 
 
 const initialState = {
     isVisible: false,
-    walletAdress: null
+    walletAdress: null,
+    
 }
 
 export const walletReducer = (state = initialState, action) => {
