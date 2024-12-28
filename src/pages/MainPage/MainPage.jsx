@@ -29,7 +29,7 @@ const MainPage = ({ isStatModalVisible, onDamageModalShow, handleAlertModalShow 
   const isHintActive = useSelector(state => state.tutorial.isHintVisible)
   const shop = useSelector(state => state.shop)
   const regen = shop?.find(item => item.shopItem.itemType === 'REGENERATION').currentLevel
-  const background = regen > 0 ? require(`./assets/regen/${regen}.png`) : snow_background;
+  const background = regen > 0 ? require(`./assets/regen_snow/${regen}.png`) : snow_background;
 
   console.log(store.getState());
   
