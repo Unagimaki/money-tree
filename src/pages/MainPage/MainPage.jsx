@@ -24,12 +24,12 @@ const MainPage = ({ isStatModalVisible, onDamageModalShow, handleAlertModalShow 
   const snow_background = require("./assets/background_snow.png");
   const [isLoading, setIsLoading] = useState(true);
 
-  const currentBotLevel = useSelector(state => state.bot.autoBots.length > 0 && state.bot.autoBots[0].currentLevel);
+  const currentBotLevel = useSelector(state => state.bot.autoBots[0].currentLevel > 0);
   const season = useSelector((state) => state?.season?.isActive);
   const isHintActive = useSelector(state => state.tutorial.isHintVisible)
   const shop = useSelector(state => state.shop)
-  const regen = shop?.find(item => item.shopItem.itemType === 'REGENERATION').currentLevel
-  const background = regen > 0 ? require(`./assets/regen_snow/${regen}.png`) : snow_background;
+  const energy = shop?.find(item => item.shopItem.itemType === 'ENERGY').currentLevel
+  const background = energy > 0 ? require(`./assets/energy_snow/${energy}.png`) : snow_background;
 
   console.log(store.getState());
   

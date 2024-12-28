@@ -5,12 +5,13 @@ export const TreeModule = ({shop, state}) => {
     const [isLoading, setIsLoading] = useState(true)
 
     const damage = state.shop.find(item => item.shopItem.itemType === 'DAMAGE').currentLevel
-    const energy = state.shop.find(item => item.shopItem.itemType === 'ENERGY').currentLevel
+    const regen = state.shop.find(item => item.shopItem.itemType === 'REGENERATION').currentLevel
 
-    const energyImage = energy > 0 ? require(`./assets/energy/${energy}.png`) : null;  
+    const regenImage = regen > 0 ? require(`./assets/regen/${regen}.png`) : null;  
     const damageImage = damage > 0 ? require(`./assets/damage/${damage}.png`) : null;  
 
     const damageClassName = styles[`container_damageImage_${damage}`];
+    const regenClassName = styles[`container_regenImage_${regen}`];
     const tree_background = require('./assets/tree.png')
     const tree_snow = require('./assets/tree_snow.png')
 
@@ -41,7 +42,7 @@ export const TreeModule = ({shop, state}) => {
             }
 
             {
-                energyImage && <img className={styles.container_energyImage} src={energyImage} alt='img'/>
+                regenImage && <img className={regenClassName} src={regenImage} alt='img'/>
             }
         </div>
     )

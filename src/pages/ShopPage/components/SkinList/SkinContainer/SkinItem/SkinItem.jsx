@@ -53,7 +53,8 @@ export const SkinItem = ({
             dispatch(actionSetUserDamage(updatedPlayer.damage));
             dispatch(actionSetUserEnergy(updatedPlayer.energy));
             dispatch(actionSetUserMaxEnergy(updatedPlayer.maxEnergy));
-            handleAlertModalShow("Скин успешно куплен", "", "success");
+            handleAlertModalShow(`Скин успешно куплен", "", "success`);
+            handleAlertModalShow(`${res.data.message}`, "", "success");
 
             // осталось сделать апдейт бота
           })

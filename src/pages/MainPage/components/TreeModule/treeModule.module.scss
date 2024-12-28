@@ -5,7 +5,7 @@
     width: $page_width;
     z-index: 2;
     &_tree {
-        position: absolute;
+        position: relative;
         top: 11.08vh;
         left: 18.67%;
         width: 62.93vw;
@@ -59,36 +59,36 @@
     }
     &_regenImage_1 {
         position: absolute;
-        top: 46.4%;
-        left: 20.76%;
+        top: 65.4%;
+        left: 31.76%;
         width: 26.9vw;
         height: 26.9vw;
     }
     &_regenImage_2 {
         position: absolute;
-        top: 44.28%;
-        left: 20.76%;
+        top: 63.4%;
+        left: 31.76%;
         width: 37.3vw;
         height: 30.36vw;
     }
     &_regenImage_3 {
         position: absolute;
-        top: 44.28%;
-        left: 12.29%;
+        top: 61.28%;
+        left: 26.29%;
         width: 42.63vw;
         height: 31.7vw;
     }
     &_regenImage_4 {
         position: absolute;
-        top: 44.28%;
-        left: 12.29%;
+        top: 61.28%;
+        left: 28.29%;
         width: 45.83vw;
         height: 31.7vw;
     }
     &_regenImage_5 {
         position: absolute;
-        top: 44.28%;
-        left: 12.29%;
+        top: 61.28%;
+        left: 28.29%;
         width: 45.83vw;
         height: 31.7vw;
     }
