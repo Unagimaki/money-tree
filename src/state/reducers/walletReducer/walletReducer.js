@@ -2,7 +2,6 @@ import { REMOVE_USER_WALLET, SET_CONNECT_WALLET_VISIBLE, SET_USER_WALLET, SET_US
 
 const initialState = {
     isVisible: false,
-    walletAdress: {},
 }
 
 export const walletReducer = (state = initialState, action) => {
@@ -11,21 +10,18 @@ export const walletReducer = (state = initialState, action) => {
             return {...state, isVisible: action.payload}
         case SET_USER_WALLET:
             return {
-                ...state, walletAdress: action.payload
+                ...state, userWallet: action.payload
             }
         case SET_USER_WALLET_ADDRESS:
             return {
-                ...state, 
-                wallet: {
-                    ...state.wallet,
-                    walletAdress: {
-                    ...state.wallet.walletAdress,
-                        address: {
-                            ...state.wallet.walletAdress.address,
-                            address: action.payload, // Здесь указывайте новое значение для address.address
-                        }
-                    }
-                }
+                ...state,
+                userWallet: {
+                    ...state.userWallet,
+                    address: {
+                        ...state.userWallet.address,
+                        address: action.payload,  // Обновляем поле address в объекте address
+                    },
+                },
             };
         case REMOVE_USER_WALLET:
             return {...state, walletAdress: null}

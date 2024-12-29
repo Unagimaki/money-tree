@@ -11,7 +11,7 @@ export const WithdrawalBalance = () => {
     const currentCourse = useSelector(state => state?.season?.course)
     const balance = useSelector((state) => state.user.player.balance);
     const currentSum = balance * currentCourse
-    const daysLeft = useSelector(state => state.wallet.walletAdress.daysLeft)
+    const daysLeft = useSelector(state => state.wallet.userWallet.daysLeft)
 
     console.log(`daysLeft: ${daysLeft}`);
 

@@ -33,4 +33,4 @@ const rootReducer = combineReducers({
 
 export const store = createStore(rootReducer)
 
-// store.subscribe(() => console.log(store.getState()))
+store.subscribe(() => console.log(store.getState().wallet))
