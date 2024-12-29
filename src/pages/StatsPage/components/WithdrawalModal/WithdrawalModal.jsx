@@ -64,7 +64,7 @@ export const WithdrawalModal = ({ handleAlertModalShow }) => {
 
   useEffect(() => {
     if (tonWalletAddress) {
-      // dispatch(actionSetUserWallet(tonWalletAddress));
+      dispatch(actionSetUserWallet(tonWalletAddress));
       saveUserWallet(token, tonWalletAddress)
         .then(() => { handleAlertModalShow('Кошелек подключен') })
         .catch((e) => console.log(e));
