@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
 import styles from './withdrawalModal.module.scss'
-import { actionSetConnectModalVisible, actionSetUserWallet, actionSetWithdrawalTimeLimit } from '../../../../state/reducers/walletReducer/actions'
+import { actionSetConnectModalVisible, actionSetUserWallet, actionSetUserWalletAddress, actionSetWithdrawalTimeLimit } from '../../../../state/reducers/walletReducer/actions'
 import { useTonConnectModal, useTonConnectUI, useTonWallet } from '@tonconnect/ui-react'
 import { useCallback, useEffect, useState } from 'react'
 import { formatString } from '../../helpers/formatString'
@@ -64,7 +64,7 @@ export const WithdrawalModal = ({ handleAlertModalShow }) => {
 
   useEffect(() => {
     if (tonWalletAddress) {
-      dispatch(actionSetUserWallet(tonWalletAddress));
+      dispatch(actionSetUserWalletAddress(tonWalletAddress));
       saveUserWallet(token, tonWalletAddress)
         .then(() => { handleAlertModalShow('Кошелек подключен') })
         .catch((e) => console.log(e));

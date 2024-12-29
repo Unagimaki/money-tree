@@ -25,3 +25,9 @@ export const actionSetWithdrawalTimeLimit = () => {
         
     }
 }
+export const actionSetUserWalletAddress = (address) => {
+    return {
+        type: SET_WITHDRAWAL_TIME_LIMIT,
+        payload: address
+    }
+}
