@@ -35,7 +35,7 @@ export const AutoBot = ({ currentBotLevel, handleAlertModalShow }) => {
   const canCollect = useSelector(
     (state) => state.bot.launch?.playerAutoBot?.canCollect
   );
-
+  
   const collectMoneyFromAutobot = () => {
     collectMoneyFromBot(token)
       .then((res) => {
@@ -91,7 +91,7 @@ export const AutoBot = ({ currentBotLevel, handleAlertModalShow }) => {
   return (
     <div className={styles.bot}>
       <img className={styles.bot_dots} src={dots} alt="dots" />
-      {(charges || botLevel) && !bot.isActive && !canCollect && (
+      {(charges || botLevel) && !isActive && !canCollect && (
         <button onClick={lauchAutobot} className={styles.bot_button}>
           Фарм
         </button>
