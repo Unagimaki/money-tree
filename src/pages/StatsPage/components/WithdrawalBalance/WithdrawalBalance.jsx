@@ -67,7 +67,7 @@ export const WithdrawalBalance = () => {
                             daysLeft > 0 &&
                             <div>{daysLeft} дн.</div>
                         }
-                        <img src={withdrawalStatus === 'You can withdraw now!' ? available : clock} alt="clock" />
+                        <img src={withdrawalStatus == 'You can withdraw now!' ? available : clock} alt="clock" />
                     </div>
                 </div>
 
