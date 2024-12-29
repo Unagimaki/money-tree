@@ -13,6 +13,16 @@ export const WithdrawalBalance = () => {
     const currentSum = balance * currentCourse
     const daysLeft = useSelector(state => state.wallet.walletAdress?.daysLeft || null)
 
+    const [isAvailable, setIsAvailable] = useState(false)
+
+    useEffect(() => {
+        if (daysLeft) {
+            setIsAvailable(false)
+        } else {
+            setIsAvailable(true)
+        }
+    }, [daysLeft])
+
     console.log(`daysLeft: ${daysLeft}`);
     
 
@@ -68,7 +78,7 @@ export const WithdrawalBalance = () => {
                             daysLeft > 0 &&
                             <div>{daysLeft} дн.</div>
                         }
-                        <img src={!daysLeft ? available : clock} alt="clock" />
+                        <img src={isAvailable ? available : clock} alt="clock" />
                     </div>
                 </div>
 
