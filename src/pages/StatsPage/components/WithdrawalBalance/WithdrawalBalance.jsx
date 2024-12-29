@@ -13,8 +13,6 @@ export const WithdrawalBalance = () => {
     const currentSum = balance * currentCourse
     const daysLeft = useSelector(state => state.wallet.userWallet.daysLeft)
 
-    console.log(`daysLeft: ${daysLeft}`);
-
     // текущий баланс равен или больше безлимита
     const isBalanceAtOrAboveLimit = currentSum >= UNLIMITED
 
