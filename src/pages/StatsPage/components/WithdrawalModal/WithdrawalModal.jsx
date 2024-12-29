@@ -176,7 +176,7 @@ export const WithdrawalModal = ({ handleAlertModalShow }) => {
           </button>
         )
         }
-        {tonWalletAddress && (
+        {!tonWalletAddress && (
           <button
             onClick={handleWithdrawal}
             className={styles.container_wrapper_button}
@@ -188,7 +188,7 @@ export const WithdrawalModal = ({ handleAlertModalShow }) => {
         )}
         <WithdrawalBalance/>
         {
-          tonWalletAddress ?
+          !tonWalletAddress ?
           <WithDrawalModalInfo/> :
 
           <div className={styles.container_wrapper_text}>

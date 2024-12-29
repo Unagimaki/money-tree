@@ -8,7 +8,7 @@ export const WithDrawalModalInfo = () => {
       </div>
       <ul className={styles.container_wrapper_withdrawal_list}>
         <li className={styles.container_wrapper_withdrawal_list_item}>
-          1. Минимальная сумма вывода в любой момент $15
+          1. Каждую неделю можно выводить $35 и более <br/> (без ограничений), либо $5
         </li>
         <li className={styles.container_wrapper_withdrawal_list_item}>
           2. Минимальная сумма вывода после завершения сезона (примерно начало 2025) от $1

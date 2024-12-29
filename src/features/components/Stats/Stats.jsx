@@ -7,7 +7,7 @@ export const Stats = ({onDamageModalShow}) => {
     const damage = useSelector(state => state.user.player.damage)
     const energy = useSelector(state => state.user.player.energy)
     const currentStep = useSelector((state) => state.tutorial.currentStep);
-    const zIndex = currentStep === 2 ? 98 : 2
+    const zIndex = currentStep === 2 ? 98 : 3
     return(
         <div style={{zIndex: zIndex}} className={styles.stats}>
             <div className={styles.stats_wrapper}>
