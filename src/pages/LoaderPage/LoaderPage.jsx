@@ -50,6 +50,7 @@ const LoaderPage = () => {
       (data) => dispatch(actionSetOffers(data)),
       (data) => dispatch(actionSetDailyBonus(data)),
       (data) => dispatch(actionSetLeagues(data)),
+      (data) => dispatch(actionSetUserWallet(data)),
       
     ]    
     if (!dataFetched) {

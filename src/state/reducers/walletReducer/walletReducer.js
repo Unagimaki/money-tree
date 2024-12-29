@@ -1,4 +1,4 @@
-import { REMOVE_USER_WALLET, SET_CONNECT_WALLET_VISIBLE, SET_USER_WALLET } from "./types"
+import { REMOVE_USER_WALLET, SET_CONNECT_WALLET_VISIBLE, SET_USER_WALLET, SET_WITHDRAWAL_TIME_LIMIT } from "./types"
 
 const initialState = {
     isVisible: false,
@@ -14,6 +14,9 @@ export const walletReducer = (state = initialState, action) => {
             return {...state, walletAdress: action.payload}
         case REMOVE_USER_WALLET:
             return {...state, walletAdress: null}
+        case SET_WITHDRAWAL_TIME_LIMIT:
+            return {...state, walletAdress: { ...state.walletAdress, daysLeft: 3 }}
         default: return state
     }
 }
+

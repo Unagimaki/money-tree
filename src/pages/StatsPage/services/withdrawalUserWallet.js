@@ -2,7 +2,11 @@ import { baseURL } from "../../../App";
 import { axiosInstance } from "../../../services/axios";
 
 export const withdrawalUserWallet = (token, amount) => {
-        console.log(token);
+    
+    if (!token) {
+        console.log(`withdrawalUserWallet error: no token:` + token);
+        return
+    }
         
     const config = {
         headers: {

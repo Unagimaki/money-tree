@@ -1,4 +1,4 @@
-import { REMOVE_USER_WALLET, SET_CONNECT_WALLET_VISIBLE, SET_USER_WALLET } from "./types"
+import { REMOVE_USER_WALLET, SET_CONNECT_WALLET_VISIBLE, SET_USER_WALLET, SET_WITHDRAWAL_TIME_LIMIT } from "./types"
 
 export const actionSetConnectModalVisible = (visible) => {
     return {
@@ -10,12 +10,18 @@ export const actionSetConnectModalVisible = (visible) => {
 export const actionSetUserWallet = (wallet) => {
     return {
         type: SET_USER_WALLET,
-        wallet
+        payload: wallet
     }
 }
 
 export const actionRemoveUserWallet = (wallet) => {
     return {
         type: REMOVE_USER_WALLET,
+    }
+}
+export const actionSetWithdrawalTimeLimit = () => {
+    return {
+        type: SET_WITHDRAWAL_TIME_LIMIT,
+        
     }
 }

@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
 import styles from './withdrawalModal.module.scss'
-import { actionSetConnectModalVisible, actionSetUserWallet } from '../../../../state/reducers/walletReducer/actions'
+import { actionSetConnectModalVisible, actionSetUserWallet, actionSetWithdrawalTimeLimit } from '../../../../state/reducers/walletReducer/actions'
 import { useTonConnectModal, useTonConnectUI, useTonWallet } from '@tonconnect/ui-react'
 import { useCallback, useEffect, useState } from 'react'
 import { formatString } from '../../helpers/formatString'
@@ -9,6 +9,11 @@ import { removeUserWallet } from '../../services/removeUserWallet'
 import { withdrawalUserWallet } from '../../services/withdrawalUserWallet'
 import { actionSetUserBalance } from '../../../../state/reducers/userReducer/actions'
 import { WithdrawalBalance } from '../WithdrawalBalance/WithdrawalBalance'
+import { UNLIMITED, WEEK_LIMIT } from '../../../../utils/config'
+import { formatNumber } from '../../../../helpers/formatNumber'
+import { withdrawalResponse } from '../../helpers/withdrawalResponse'
+import { WithDrawalModalInfo } from '../WithDrawalInfo/WithDrawalModalInfo'
+import { getData } from '../../../../services/getData'
 
 export const WithdrawalModal = ({ handleAlertModalShow }) => {
   const dispatch = useDispatch();
@@ -25,6 +30,21 @@ export const WithdrawalModal = ({ handleAlertModalShow }) => {
   const [isWithdrawalProceed, setIsWithdrawalProceed] = useState(false)
   const token = useSelector((state) => state.user.token);
   const balance = useSelector((state) => state.user.player.balance);
+  const currentCourse = useSelector(state => state?.season?.course)
+  const usdtBalance = balance * currentCourse
+  const daysLeft = useSelector(state => state.wallet.walletAdress.daysLeft || null)
+
+  const getCurrentWithdrawalSum = () => {
+    if (usdtBalance >= WEEK_LIMIT && usdtBalance < UNLIMITED) {
+      console.log(`Текущий баланс в USDT равен ${usdtBalance}, это достаточно для недельного вывода и меньше безлимита, будет выведено ${formatNumber(WEEK_LIMIT / currentCourse)} лифов`)
+      return WEEK_LIMIT / currentCourse
+    } else if (usdtBalance < WEEK_LIMIT) {
+      console.log(`Текущего баланса не хватает для недельного вывода`)
+    } else {
+      console.log(`Текущего баланса хватает для безлимитного вывода будет выведено ${formatNumber(balance)} лифов`)
+      return balance
+    }
+  }
 
   const currentAccount = tonConnectUI.account;
   const currentWalletInfo = tonConnectUI.walletInfo;
@@ -70,16 +90,11 @@ export const WithdrawalModal = ({ handleAlertModalShow }) => {
     checkWalletConnection();
 
     const unsubscribe = tonConnectUI.onModalStateChange((wallet) => {
-      if (wallet) {
-        handleWalletConnection(wallet?.account?.address);
-      } else {
-        handleWalletDisconnection();
-      }
-    });
+      if (wallet) { handleWalletConnection(wallet?.account?.address) }
+      else { handleWalletDisconnection() }
+    })
 
-    return () => {
-      unsubscribe();
-    };
+    return () => { unsubscribe()};
   }, [
     tonConnectUI,
     handleWalletConnection,
@@ -105,47 +120,26 @@ export const WithdrawalModal = ({ handleAlertModalShow }) => {
       .catch((e) => console.log(e));
   };
 
-  const withdrawalResponse = (res) => {
-    switch (res) {
-      case "Withdrawal amount exceeds threshold, verification is required. Please wait for approval.":
-        return "Транзакцию надо верифицировать"
-      case 'Sum of withdrawal must be greater than 0':
-        return 'Сумма вывода 0'
-      case 'Player balance is not enough':
-        return 'Баланс игрока меньше указанного'
-      case 'Withdrawal amount is below minimum allowed':
-        return "Вывод при конвертации меньше указанного в сезоне"
-      case 'Player wallet address not found':
-        return 'Кошелек не найден'
-      case 'Withdraw not allowed yet!':
-        return 'Вывод средств закрыт в сезоне'
-      case 'Funds were successfully withdrawn':
-        return "Успешно"
-      default:
-        return res;
-    }
-  }
   const handleWithdrawal = () => {
+    if (daysLeft > 0) {
+      handleAlertModalShow('Лимит исчерпан', "", 'warning')
+      return
+    }
     if (isWithdrawalProceed) return
     setIsWithdrawalProceed(true)
-    console.log('Отправка');
     
-    withdrawalUserWallet(token, balance)
-      .then((res) => {
+    // запрос для вывода
+    withdrawalUserWallet(token, getCurrentWithdrawalSum())
+      .then(() => {
         handleAlertModalShow("Задача успешно поставлена на вывод, ожидайте!");
-        dispatch(actionSetUserBalance(0));
+
+        // получение обновленных данных кошелька
+        getData(token, 'wallet')
+          .then((res) => { dispatch(actionSetUserWallet(res.data)) })
+          dispatch(actionSetUserBalance(balance - getCurrentWithdrawalSum()));
       })
-      .catch(e => {      
-        handleAlertModalShow(
-          withdrawalResponse(e.response.data.message),
-          "",
-          "warning"
-        );
-      })
-      .finally(() => {
-        setIsWithdrawalProceed(false)
-      })
-      
+      .catch(e => { handleAlertModalShow(withdrawalResponse(e.response.data.message), "", "warning") })
+      .finally(() => setIsWithdrawalProceed(false))
   };
 
   return (
@@ -154,15 +148,13 @@ export const WithdrawalModal = ({ handleAlertModalShow }) => {
         <button onClick={() => dispatch(actionSetConnectModalVisible(false))} className={styles.container_wrapper_close_button}>
           <img src={close} alt="close" />
         </button>
-        <img
-          className={styles.container_wrapper_wallet_img}
-          src={wallet}
-          alt="wallet"
-        />
+        <img className={styles.container_wrapper_wallet_img} src={wallet} alt="wallet"/>
         <div className={styles.container_wrapper_title}>
           {tonWalletAddress ? ( "Ваш кошелек подключен" ) : ( <>Подключите свой <br /> кошелек</> )}
         </div>
-        {tonWalletAddress ? (
+
+        {
+        tonWalletAddress ? (
           <div className={styles.container_wrapper_wallet_panel}>
             <button onClick={handleDisconnectWallet} className={styles.container_wrapper_wallet_panel_remove_button}           >
               <img src={close_wallet_button} alt="close_wallet_button"/>
@@ -182,7 +174,8 @@ export const WithdrawalModal = ({ handleAlertModalShow }) => {
             <div>Подключите кошелек</div>
             <img src={wallet} alt="wallet_icon" />
           </button>
-        )}
+        )
+        }
         {tonWalletAddress && (
           <button
             onClick={handleWithdrawal}
@@ -194,35 +187,15 @@ export const WithdrawalModal = ({ handleAlertModalShow }) => {
           </button>
         )}
         <WithdrawalBalance/>
-        {tonWalletAddress ? (
-          <div className={styles.container_wrapper_withdrawal}>
-            <div className={styles.container_wrapper_withdrawal_title}>
-              Информация по выводу
-            </div>
-            <ul className={styles.container_wrapper_withdrawal_list}>
-              <li className={styles.container_wrapper_withdrawal_list_item}>
-                1. Минимальная сумма вывода в любой момент $15
-              </li>
-              <li className={styles.container_wrapper_withdrawal_list_item}>
-                2. Минимальная сумма вывода после завершения сезона (примерно начало 2025) от $1
-              </li>
-              <li className={styles.container_wrapper_withdrawal_list_item}>
-                3. Комиссию за вывод средств (10%) оплачивает игрок, то есть на баланс придет сумма с вычетом комиссии  
-              </li>
-              <li className={styles.container_wrapper_withdrawal_list_item}>
-                4. Обычно вывод происходит в течение 60 минут, в редких случаях может потребоваться до 72 часов на модерацию
-              </li>
-            </ul>
-          </div>
-        ) : (
+        {
+          tonWalletAddress ?
+          <WithDrawalModalInfo/> :
+
           <div className={styles.container_wrapper_text}>
             Подключите свой криптокошелек. Если у вас его нет, создайте его в{" "}
             <br /> своем аккаунте Telegram
           </div>
-        )}
-        {/* {!tonWalletAddress && (
-          <button className={styles.container_wrapper_button}>Проверить</button>
-        )} */}
+        }
         
       </div>
     </div>

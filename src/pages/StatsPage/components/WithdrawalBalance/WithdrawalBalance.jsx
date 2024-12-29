@@ -1,22 +1,20 @@
 import { useEffect, useState } from 'react'
 import styles from './withdrawalBalance.module.scss'
 import { calcProcentFromNum } from './helpers/calcProcentFromNum'
-import { Balance } from '../../../../features/components/Balance/Balance'
 import { useSelector } from 'react-redux'
+import { UNLIMITED, WEEK_LIMIT } from '../../../../utils/config'
 
 export const WithdrawalBalance = () => {
     const clock = require('../../assets/clock.png')
     const available = require('../../assets/available.png')
-    const isAvailable = useSelector(state => state.wallet.walletAdress?.withdrawStatus || null)
 
-    const WEEK_LIMIT = 5
-    const UNLIMITED = 35
     const currentCourse = useSelector(state => state?.season?.course)
     const balance = useSelector((state) => state.user.player.balance);
     const currentSum = balance * currentCourse
+    const daysLeft = useSelector(state => state.wallet.walletAdress.daysLeft || null)
 
+    // текущий баланс равен или больше безлимита
     const isBalanceAtOrAboveLimit = currentSum >= UNLIMITED
-    console.log(isBalanceAtOrAboveLimit);
 
     const [fullnessWidth, setFullnessWidth] = useState(0)
     const [limitLineLeftPos, setLimitLineLeft] = useState(0)
@@ -25,8 +23,8 @@ export const WithdrawalBalance = () => {
         const fullness = calcProcentFromNum(currentSum, UNLIMITED)
         const minLimit = calcProcentFromNum(WEEK_LIMIT, UNLIMITED)
         setFullnessWidth(fullness)
-        setLimitLineLeft(minLimit)  
-    }, []);
+        setLimitLineLeft(minLimit)
+    }, [balance]);
 
     return(
         <div className={styles.container}>
@@ -35,17 +33,15 @@ export const WithdrawalBalance = () => {
                 <div className={styles.container_inner_title}>Ваш баланс</div>
 
                 <div className={styles.container_inner_line}>
-                        {
-                            isBalanceAtOrAboveLimit ? 
-                            <div className={styles.container_inner_line_balance}>${currentSum.toFixed(1)}</div> :
-                            <>
-                                <div style={{left: `${limitLineLeftPos}%`}} className={styles.container_inner_line_limit_line}/>
-                                <div className={styles.container_inner_line_limit_num}>{WEEK_LIMIT}$</div>
-                                <div className={styles.container_inner_line_balance_num}>${currentSum.toFixed(3)} / {UNLIMITED}</div>
-                            </>
-
-                        }
-
+                    {
+                        isBalanceAtOrAboveLimit ? 
+                        <div className={styles.container_inner_line_balance}>${currentSum.toFixed(1)}</div> :
+                        <>
+                            <div style={{left: `${limitLineLeftPos}%`}} className={styles.container_inner_line_limit_line}/>
+                            <div className={styles.container_inner_line_limit_num}>{WEEK_LIMIT}$</div>
+                            <div className={styles.container_inner_line_balance_num}>${currentSum.toFixed(3)} / {UNLIMITED}</div>
+                        </>
+                    }
                     <div
                         style={{
                             width: `${fullnessWidth}%`,
@@ -56,7 +52,7 @@ export const WithdrawalBalance = () => {
                         }} 
                         className={styles.container_inner_line_fullness}
                     />
-
+                    
                 </div>
 
                 <div className={styles.container_inner_info}>
@@ -65,8 +61,11 @@ export const WithdrawalBalance = () => {
                         Безлимитно - от $35
                     </div>
                     <div className={styles.container_inner_info_time_left}>
-                        <div>3 дн.</div>
-                        <img src={isAvailable ? available : clock} alt="clock" />
+                        {
+                            daysLeft > 0 &&
+                            <div>{daysLeft} дн.</div>
+                        }
+                        <img src={!daysLeft ? available : clock} alt="clock" />
                     </div>
                 </div>
 

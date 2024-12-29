@@ -1,0 +1,18 @@
+@import '../../../../assets/styles/vars';
+
+.container_wrapper_withdrawal {
+    &_list {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            font-family: $MMedium;
+        }
+        &_title {
+            font-size: $fz18px;
+            margin-bottom: $br8px;
+        }
+        &_list {
+            text-align: left;
+            font-size: $fz12px;
+        }
+}

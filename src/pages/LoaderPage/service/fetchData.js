@@ -1,4 +1,5 @@
 import { getData } from "../../../services/getData";
+import { getDailyBonuses } from "../../MainPage/services/getDailyBonuses";
 
 export const fetchData = async (token) => {  
   try {
@@ -10,10 +11,10 @@ export const fetchData = async (token) => {
       getData(token, "boosts"),
       getData(token, "shop-item"),
       getData(token, "offers"),
-      getData(token, "daily-bonuses"),
+      getDailyBonuses(token),
+      // getData(token, "daily-bonuses"),
       getData(token, "player/top?league=bronze"),
       getData(token, "wallet"),
-      getData(token, "player/leagues"),
     ])       
       
     return results
