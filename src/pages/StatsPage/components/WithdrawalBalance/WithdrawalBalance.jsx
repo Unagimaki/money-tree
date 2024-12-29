@@ -11,9 +11,7 @@ export const WithdrawalBalance = () => {
     const currentCourse = useSelector(state => state?.season?.course)
     const balance = useSelector((state) => state.user.player.balance);
     const currentSum = balance * currentCourse
-    const daysLeft = useSelector(state => state.wallet.walletAdress.daysLeft)
-    const withdrawalStatus = useSelector(state => state.wallet.walletAdress.withdrawalStatus)
-
+    const daysLeft = useSelector(state => state.wallet.walletAdress?.daysLeft || null)
 
     // текущий баланс равен или больше безлимита
     const isBalanceAtOrAboveLimit = currentSum >= UNLIMITED
@@ -67,7 +65,7 @@ export const WithdrawalBalance = () => {
                             daysLeft > 0 &&
                             <div>{daysLeft} дн.</div>
                         }
-                        <img src={withdrawalStatus == 'You can withdraw now!' ? available : clock} alt="clock" />
+                        <img src={!daysLeft ? available : clock} alt="clock" />
                     </div>
                 </div>
 
