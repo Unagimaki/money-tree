@@ -14,17 +14,6 @@ export const actionSetUserWallet = (wallet) => {
     }
 }
 
-export const actionRemoveUserWallet = (wallet) => {
-    return {
-        type: REMOVE_USER_WALLET,
-    }
-}
-export const actionSetWithdrawalTimeLimit = () => {
-    return {
-        type: SET_WITHDRAWAL_TIME_LIMIT,
-        
-    }
-}
 export const actionSetUserWalletAddress = (address) => {
     return {
         type: SET_WITHDRAWAL_TIME_LIMIT,

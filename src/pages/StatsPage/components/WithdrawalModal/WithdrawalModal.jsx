@@ -32,7 +32,7 @@ export const WithdrawalModal = ({ handleAlertModalShow }) => {
   const balance = useSelector((state) => state.user.player.balance);
   const currentCourse = useSelector(state => state?.season?.course)
   const usdtBalance = balance * currentCourse
-    const daysLeft = useSelector(state => state.wallet.userWallet.daysLeft)
+  const daysLeft = useSelector(state => state.wallet.userWallet.daysLeft)
 
   const getCurrentWithdrawalSum = () => {
     if (usdtBalance >= WEEK_LIMIT && usdtBalance < UNLIMITED) {
@@ -113,7 +113,7 @@ export const WithdrawalModal = ({ handleAlertModalShow }) => {
   const handleDisconnectWallet = async () => {
     await tonConnectUI.disconnect();
     handleAlertModalShow("Кошелек отключен");
-    dispatch(actionSetUserWallet(null));
+    dispatch(actionSetUserWalletAddress(null));
     setTonWalletAddress(null);
     removeUserWallet(token, tonWalletAddress)
       .then((res) => console.log(res))
@@ -135,8 +135,11 @@ export const WithdrawalModal = ({ handleAlertModalShow }) => {
 
         // получение обновленных данных кошелька
         getData(token, 'wallet')
-          .then((res) => { dispatch(actionSetUserWallet(res.data)) })
-          dispatch(actionSetUserBalance(balance - getCurrentWithdrawalSum()));
+          .then((res) => {
+            dispatch(actionSetUserWallet(res.data))
+            dispatch(actionSetUserBalance(balance - getCurrentWithdrawalSum()));
+          })
+          
       })
       .catch(e => { handleAlertModalShow(withdrawalResponse(e.response.data.message), "", "warning") })
       .finally(() => setIsWithdrawalProceed(false))
