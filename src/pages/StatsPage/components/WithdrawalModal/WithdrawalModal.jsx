@@ -72,6 +72,11 @@ export const WithdrawalModal = ({ handleAlertModalShow }) => {
   }, [tonConnectUI, tonWalletAddress, tonConnectUI.onModalStateChange]);
 
   const handleWalletConnection = useCallback((address) => {
+    if (!address) {
+      console.log('Нет кошелька')
+      return
+      
+    }
     address && setTonWalletAddress(address);
   }, []);
   const handleWalletDisconnection = useCallback((address) => {
@@ -179,7 +184,7 @@ export const WithdrawalModal = ({ handleAlertModalShow }) => {
           </button>
         )
         }
-        {tonWalletAddress && (
+        {!tonWalletAddress && (
           <button
             onClick={handleWithdrawal}
             className={styles.container_wrapper_button}
@@ -191,7 +196,7 @@ export const WithdrawalModal = ({ handleAlertModalShow }) => {
         )}
         <WithdrawalBalance/>
         {
-          !tonWalletAddress ?
+          tonWalletAddress ?
           <WithDrawalModalInfo/> :
 
           <div className={styles.container_wrapper_text}>

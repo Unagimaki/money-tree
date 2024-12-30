@@ -14,7 +14,7 @@ export const actionSetUserWallet = (wallet) => {
     }
 }
 
-export const actionSetUserWalletAddress = (address) => {
+export const actionSetUserWalletAddress = (address = null) => {
     return {
         type: SET_USER_WALLET_ADDRESS,
         payload: address
