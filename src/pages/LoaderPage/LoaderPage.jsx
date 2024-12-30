@@ -16,6 +16,7 @@ import { actionSetUserWallet } from "../../state/reducers/walletReducer/actions"
 import { example_query, isDevelopment } from "../../utils/config";
 import { actionSetLeagues } from "../../state/reducers/leagueReducer/leagueReducer";
 import { actionSetDailyBonus } from "../../state/reducers/dailyBonusReducer/dailyBonusReducer";
+import { actionSetRef } from "../../state/reducers/referralsReducer/actions";
 
 const LoaderPage = () => {
   const dispatch = useDispatch();
@@ -51,6 +52,7 @@ const LoaderPage = () => {
       (data) => dispatch(actionSetDailyBonus(data)),
       (data) => dispatch(actionSetLeagues(data)),
       (data) => dispatch(actionSetUserWallet(data)),
+      (data) => dispatch(actionSetRef(data)),
       
     ]    
     if (!dataFetched) {

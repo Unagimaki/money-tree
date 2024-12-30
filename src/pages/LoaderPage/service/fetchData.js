@@ -15,6 +15,7 @@ export const fetchData = async (token) => {
       // getData(token, "daily-bonuses"),
       getData(token, "player/top?league=bronze"),
       getData(token, "wallet"),
+      getData(token, "referrals"),
     ])       
       
     return results
