@@ -32,7 +32,7 @@ export const WithdrawalModal = ({ handleAlertModalShow }) => {
   const balance = useSelector((state) => state.user.player.balance);
   const currentCourse = useSelector(state => state?.season?.course)
   const usdtBalance = balance * currentCourse
-  const daysLeft = useSelector(state => state.wallet.userWallet.daysLeft)
+  const daysLeft = useSelector(state => state.wallet?.userWallet?.daysLeft || null)
 
   const getCurrentWithdrawalSum = () => {
     if (usdtBalance >= WEEK_LIMIT && usdtBalance < UNLIMITED) {
