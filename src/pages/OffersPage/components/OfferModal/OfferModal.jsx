@@ -12,6 +12,7 @@ import { completeOffer } from '../../services/completeOffer'
 export const OfferModal = ({ handleAlertModalShow }) => {
   const [containerClass, setContainerClass] = useState(styles.container);
   const [isLoadingOffer, setIsLoadingOffer] = useState(false);
+  const [isChecking, setIsChecking] = useState(false)
   const state = useSelector((state) => state);
   console.log(state);
 
@@ -42,7 +43,8 @@ export const OfferModal = ({ handleAlertModalShow }) => {
   const handleClickDone = () => {
     if (isCompleted) return;
     setIsLoadingOffer(true);
-    completeOffer(token, id)
+    setIsChecking(true)
+    completeOffer(token, id)    
       .then(() => {
         handleAlertModalShow('Задание выполнено')
         dispatch(actionIncreaseUserBalance(reward));
@@ -53,7 +55,10 @@ export const OfferModal = ({ handleAlertModalShow }) => {
           ? handleAlertModalShow( "Внимание!", "Вы уже выполнили это задание!", "warning" )
           : handleAlertModalShow( "Ошибка при выполнении", "", "warning" );
       })
-      .finally(() => setIsLoadingOffer(false));
+      .finally(() => {
+        setIsChecking(false)
+        setIsLoadingOffer(false)
+      });
   };
   
   const handleCheck = () => {
@@ -126,6 +131,7 @@ export const OfferModal = ({ handleAlertModalShow }) => {
           <button
             onClick={handleClickDone}
             className={styles.container_wrapper_done_button}
+            disabled={isChecking}
           >
             Проверить
           </button>

@@ -184,7 +184,8 @@ export const WithdrawalModal = ({ handleAlertModalShow }) => {
           </button>
         )
         }
-        {tonWalletAddress && (
+        {
+          tonWalletAddress && 
           <button
             onClick={handleWithdrawal}
             className={styles.container_wrapper_button}
@@ -193,7 +194,7 @@ export const WithdrawalModal = ({ handleAlertModalShow }) => {
           >
             Вывод в USDT <img src={tether_icon} alt="tether_icon" />
           </button>
-        )}
+        }
         <WithdrawalBalance/>
         {
           tonWalletAddress ?

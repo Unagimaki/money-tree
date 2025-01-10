@@ -1,3 +1,4 @@
+import { UNLIMITED } from '../../../../utils/config'
 import styles from './withDrawalModalInfo.module.scss'
 
 export const WithDrawalModalInfo = () => {
@@ -8,16 +9,13 @@ export const WithDrawalModalInfo = () => {
       </div>
       <ul className={styles.container_wrapper_withdrawal_list}>
         <li className={styles.container_wrapper_withdrawal_list_item}>
-          1. Каждую неделю можно выводить $35 и более <br/> (без ограничений), либо $5
+          1. Каждую неделю можно выводить ${UNLIMITED} и более <br/> (без ограничений), либо $5
         </li>
         <li className={styles.container_wrapper_withdrawal_list_item}>
-          2. Минимальная сумма вывода после завершения сезона (примерно начало 2025) от $1
+          2. Комиссию за вывод средств (10%) оплачивает игрок, то есть на баланс придет сумма с вычетом комиссии  
         </li>
         <li className={styles.container_wrapper_withdrawal_list_item}>
-          3. Комиссию за вывод средств (10%) оплачивает игрок, то есть на баланс придет сумма с вычетом комиссии  
-        </li>
-        <li className={styles.container_wrapper_withdrawal_list_item}>
-          4. Обычно вывод происходит в течение 60 минут, в редких случаях может потребоваться до 72 часов на модерацию
+          3. Обычно вывод происходит в течение 60 минут, в редких случаях может потребоваться до 72 часов на модерацию
         </li>
       </ul>
     </div>

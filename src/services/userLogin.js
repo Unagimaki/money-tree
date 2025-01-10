@@ -1,8 +1,7 @@
 import axios from 'axios';
-import { baseURL } from '../App'
 import { isDevelopment } from '../utils/config';
-import { axiosInstance } from './axios'
 import { getUserInfo } from './getUserInfo'
+import { baseURL } from '../App';
 
 let playerData = null;
 

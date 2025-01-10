@@ -3,4 +3,4 @@ export const example_query = 'query_id=AAFkXtYUAAAAAGRe1hR90p4Y&user=%7B%22id%22
 export const isDevelopment = false
 
 export const WEEK_LIMIT = 5
-export const UNLIMITED = 35
+export const UNLIMITED = 20
