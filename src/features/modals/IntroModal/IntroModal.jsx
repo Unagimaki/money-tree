@@ -1,13 +1,23 @@
+import { useSelector } from 'react-redux'
 import styles from './introModal.module.scss'
+import { WebApp } from '../../../App'
+import { useEffect, useState } from 'react'
 
 
 export const IntroModal = ({handleIntroModalVisible}) => {
     const intro = require('../../assets/intro.png')
     const close_icon = require('../../assets/close_icon.png')
-
+    const [refLink, setRefLink] = useState('')
+    
+    const tgID = useSelector(state => state.user.player.tgId)
+    const botLink = `https://t.me/moneytree_game_bot?start=ref_${tgID}`
     const handleCloseIntro = () => {
         handleIntroModalVisible()
     }
+
+    useEffect(() => {
+        setRefLink(`https://t.me/share/url?url=${encodeURIComponent(botLink)}&text=${encodeURIComponent('\nПривет! 🤚🏻 Играю в Money Tree и моментально обмениваю лифы на доллары по честному курсу \n🤑 По моей ссылке ты получишь 100 000 лифов в подарок! \n🍃 Попробуй!')}`)
+    }, [])
 
     return(
         <div className={styles.container}>
@@ -26,7 +36,7 @@ export const IntroModal = ({handleIntroModalVisible}) => {
                     (учитывается как фарм с игры, <br/>
                     так и с выполненных заданий) 
                 </div>
-                <button className={styles.container_wrapper_button}>Пригласить друга</button>
+                <button onClick={() => WebApp.openTelegramLink(refLink)} className={styles.container_wrapper_button}>Пригласить друга</button>
             </div>
         </div>
     )
