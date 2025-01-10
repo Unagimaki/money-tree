@@ -1,3 +1,4 @@
+import { baseURL } from '../App';
 import { ApiUrl } from '../utils/config';
 import { axiosInstance } from './axios';
 
@@ -13,7 +14,7 @@ export const getData = async (token, url) => {
         Accept: 'application/json',
     };
 
-    const result = await axiosInstance.get(`https://${ApiUrl}/api/${url}`, { headers });
+    const result = await axiosInstance.get(`https://${baseURL}/api/${url}`, { headers });
     console.log(url);
     
     console.log(result.data);
