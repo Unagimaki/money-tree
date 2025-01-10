@@ -26,14 +26,12 @@ import { TwaAnalyticsProvider } from "@tonsolutions/telemetree-react";
 import OffersPage from './pages/OffersPage/OffersPage';
 import { isDevelopment } from './utils/config';
 import Snowfall from 'react-snowfall';
-import { IntroModal } from './features/modals/IntroModal/IntroModal';
 
 export const WebApp = window.Telegram.WebApp
 export const baseURL = process.env.REACT_APP_BASE_URL
 
 function App() {
   const [isLoaded, setIsLoaded] = useState(false);
-  const [isIntroModalVisible, setIsIntroModalVisible] = useState(false)
   const [isStatModalVisible, setIsStatModalVisible] = useState({isVisible: false, type: ""});
   const [isFreeBoostModalVisible, setIsFreeBoostModalVisible] = useState({isVisible: false, type: "", id: ""});
   const [isAlertModalVisible, setIsAlertModalVisible] = useState({isVisible: false, type: "", text: "", title: ""});
@@ -88,35 +86,6 @@ function App() {
   }, [token]);
 
   const timeoutRef = useRef(null); // Используем useRef для хранения идентификатора таймера
-
-  const handleIntroModalVisible = () => {
-    setIsIntroModalVisible(false)
-  }
-
-  useEffect(() => {
-    // Получаем значение introModal из localStorage
-    const savedTime = localStorage.getItem('introModal');
-
-    // Если в localStorage нет savedTime
-    if (!savedTime) {
-      // Показываем модалку и сохраняем текущее время
-      setIsIntroModalVisible(true);
-      localStorage.setItem('introModal', JSON.stringify(Date.now()));
-    } else {
-      // Если savedTime есть, проверяем прошел ли час
-      const currentTime = Date.now();
-      const lastTime = JSON.parse(savedTime);
-      const timeDifference = currentTime - lastTime;
-
-      // Если прошло больше 1 часа (3600000 миллисекунд), показываем модалку
-      if (timeDifference > 3600000) {
-        setIsIntroModalVisible(true);
-        localStorage.setItem('introModal', JSON.stringify(currentTime));
-      } else {
-        setIsIntroModalVisible(false);
-      }
-    }
-  }, []);
 
   const handleAlertModalShow = (title, text, type) => {
     // Если уведомление уже видно, скрываем его
@@ -306,7 +275,6 @@ function App() {
         {isStatModalVisible.isVisible && ( <StatModal onDamageModalShow={handleDamageStatModalShow} type={isStatModalVisible.type} /> )}
         {isWalletModalVisible && ( <WithdrawalModal handleAlertModalShow={handleAlertModalShow} /> )}
         {isFreeBoostModalVisible.isVisible && ( <FreeBoostModal handleAlertModalShow={handleAlertModalShow} id={isFreeBoostModalVisible.id} type={isFreeBoostModalVisible.type} handleFreeBoostModalShow={handleFreeBoostModalShow} /> )}
-        { isIntroModalVisible && <IntroModal handleIntroModalVisible={handleIntroModalVisible}/>}
       </div>
     </TwaAnalyticsProvider>
   );

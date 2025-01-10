@@ -14,7 +14,7 @@ import { actionHintButtonVisible, actionSetTutorialActive } from '../../state/re
 import { DailyBonusIcon } from './components/DailyBonus/DailyBonusIcon/DailyBonusIcon'
 import { DailyBonusWindow } from './components/DailyBonus/DailuBonusWindow/DailyBonusWindow'
 import { MainBackground } from './components/MainBackground/MainBackground'
-import Snowfall from 'react-snowfall'
+import { IntroModal } from '../../features/modals/IntroModal/IntroModal'
 
 
 const MainPage = ({ isStatModalVisible, onDamageModalShow, handleAlertModalShow }) => {
@@ -23,6 +23,7 @@ const MainPage = ({ isStatModalVisible, onDamageModalShow, handleAlertModalShow 
   const main_background = require("./assets/main_background.png");
   const snow_background = require("./assets/background_snow.png");
   const [isLoading, setIsLoading] = useState(true);
+  const [isIntroModalVisible, setIsIntroModalVisible] = useState(false)
 
   const currentBotLevel = useSelector(state => state.bot.autoBots[0].currentLevel > 0);
   const season = useSelector((state) => state?.season?.isActive);
@@ -50,6 +51,34 @@ const MainPage = ({ isStatModalVisible, onDamageModalShow, handleAlertModalShow 
     img.onerror = () => setIsLoading(false)
   }, [snow_background]);  
 
+  useEffect(() => {
+    // Получаем значение introModal из localStorage
+    const savedTime = localStorage.getItem('introModal');
+
+    // Если в localStorage нет savedTime
+    if (!savedTime) {
+      // Показываем модалку и сохраняем текущее время
+      setIsIntroModalVisible(true);
+      localStorage.setItem('introModal', JSON.stringify(Date.now()));
+    } else {
+      // Если savedTime есть, проверяем прошел ли час
+      const currentTime = Date.now();
+      const lastTime = JSON.parse(savedTime);
+      const timeDifference = currentTime - lastTime;
+
+      // Если прошло больше 1 часа (3600000 миллисекунд), показываем модалку
+      if (timeDifference > 3600000) {
+        setIsIntroModalVisible(true);
+        localStorage.setItem('introModal', JSON.stringify(currentTime));
+      } else {
+        setIsIntroModalVisible(false);
+      }
+    }
+  }, []);
+  const handleIntroModalVisible = () => {
+    setIsIntroModalVisible(false)
+  }
+
   return (
     <div>
       <div className={styles.main_page}>
@@ -61,6 +90,8 @@ const MainPage = ({ isStatModalVisible, onDamageModalShow, handleAlertModalShow 
         <DailyBonusIcon/>
         <DailyBonusWindow handleAlertModalShow={handleAlertModalShow}/>
         {isStatModalVisible && <BackButton onClick={handleButtonClick}/>}
+        {isIntroModalVisible && <IntroModal handleIntroModalVisible={handleIntroModalVisible}/>}
+
       </div>
     </div>
   );

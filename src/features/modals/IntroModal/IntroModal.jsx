@@ -11,6 +11,7 @@ export const IntroModal = ({handleIntroModalVisible}) => {
     
     const tgID = useSelector(state => state.user.player.tgId)
     const botLink = `https://t.me/moneytree_game_bot?start=ref_${tgID}`
+    
     const handleCloseIntro = () => {
         handleIntroModalVisible()
     }
