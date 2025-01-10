@@ -1,3 +1,4 @@
+import { baseURL } from "../../../App";
 import { axiosInstance } from "../../../services/axios";
 import { ApiUrl } from "../../../utils/config";
 
@@ -15,7 +16,7 @@ export const getDailyBonuses = async (token) => {
 
     const take = 30
 
-    const result = await axiosInstance.get(`https://${ApiUrl}/api/daily-bonuses`, {
+    const result = await axiosInstance.get(`https://${baseURL}/api/daily-bonuses`, {
         headers,
         params: {
             take,
