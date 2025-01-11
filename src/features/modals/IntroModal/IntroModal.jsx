@@ -32,10 +32,9 @@ export const IntroModal = ({handleIntroModalVisible}) => {
                     а имей 100 друзей
                 </div>
                 <div className={styles.container_wrapper_text}>
-                    Приводи друзей и получай 20% <br/>
-                    прибыли с их фарма <br/>
-                    (учитывается как фарм с игры, <br/>
-                    так и с выполненных заданий) 
+                    Приводи друзей <br/>
+                    и получай 20% прибыли <br/>
+                    с выполненных ими заданий 
                 </div>
                 <button onClick={() => WebApp.openTelegramLink(refLink)} className={styles.container_wrapper_button}>Пригласить друга</button>
             </div>

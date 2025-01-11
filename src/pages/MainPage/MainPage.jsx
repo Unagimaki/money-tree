@@ -24,7 +24,6 @@ const MainPage = ({ isStatModalVisible, onDamageModalShow, handleAlertModalShow 
   const snow_background = require("./assets/background_snow.png");
   const [isLoading, setIsLoading] = useState(true);
   const [isIntroModalVisible, setIsIntroModalVisible] = useState(false)
-
   const currentBotLevel = useSelector(state => state.bot.autoBots[0].currentLevel > 0);
   const season = useSelector((state) => state?.season?.isActive);
   const isHintActive = useSelector(state => state.tutorial.isHintVisible)
@@ -32,10 +31,11 @@ const MainPage = ({ isStatModalVisible, onDamageModalShow, handleAlertModalShow 
   const energy = shop?.find(item => item.shopItem.itemType === 'ENERGY').currentLevel
   const background = energy > 0 ? require(`./assets/energy_snow/${energy}.png`) : snow_background;
 
+  const isTutorialIsActive = useSelector(state => state.tutorial.isTutorialIsActive)
   console.log(store.getState());
   
   const handleButtonClick = () => { isStatModalVisible ? onDamageModalShow() : WebApp.close() };
- 
+
   useEffect(() => {
     const isTutorialDone = JSON.parse(localStorage.getItem('isTutorialDone')) || false;   
     !isTutorialDone && dispatch(actionSetTutorialActive(true))
@@ -54,12 +54,16 @@ const MainPage = ({ isStatModalVisible, onDamageModalShow, handleAlertModalShow 
   useEffect(() => {
     // Получаем значение introModal из localStorage
     const savedTime = localStorage.getItem('introModal');
-
+    const isTutorialDone = JSON.parse(localStorage.getItem('isTutorialDone')) || false;   
+    
+    if (!isTutorialDone) return
     // Если в localStorage нет savedTime
     if (!savedTime) {
       // Показываем модалку и сохраняем текущее время
-      setIsIntroModalVisible(true);
-      localStorage.setItem('introModal', JSON.stringify(Date.now()));
+      setTimeout(() => {
+        setIsIntroModalVisible(true);
+        localStorage.setItem('introModal', JSON.stringify(Date.now()));
+      }, 1000)
     } else {
       // Если savedTime есть, проверяем прошел ли час
       const currentTime = Date.now();
@@ -74,7 +78,8 @@ const MainPage = ({ isStatModalVisible, onDamageModalShow, handleAlertModalShow 
         setIsIntroModalVisible(false);
       }
     }
-  }, []);
+  }, [isTutorialIsActive]);
+
   const handleIntroModalVisible = () => {
     setIsIntroModalVisible(false)
   }

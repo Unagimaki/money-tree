@@ -14,10 +14,18 @@ export const FooterMenu = () => {
     const shop_img = require("./assets/basket_icon.png");
     const stat_img = require("./assets/medal_icon.png");
     const bonus_img = require("./assets/star_icon.png");
-    const tree_img = require("./assets/tree_img.png");
-    const game_img = require("./assets/game_img.png");
+    const tree_img = require("./assets/tree_img_winter.png");
+    const game_img = require("./assets/game_img_winter.png");
 
-    const zIndex = (currentStep === 3 || currentStep === 5) ? 99 : 5
+    const setMainButtonBackground = () => {
+      if (currentUrl !== PagesLinks.MAIN_URL) {
+        return tree_img
+      } else {
+        return game_img
+      }
+    }
+
+    const zIndex = (currentStep === 3 || currentStep === 5) ? 98 : 5
 
     return (
       <div className={styles.wrapper}>
@@ -42,7 +50,7 @@ export const FooterMenu = () => {
           className={styles.main_button}
           style={{ zIndex }}
         >
-          <img src={currentUrl === PagesLinks.GAME_URL ? game_img : tree_img} alt="tree_img" />
+          <img src={setMainButtonBackground()} alt="tree_img" />
         </div>
       </div>
     );
