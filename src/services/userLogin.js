@@ -38,6 +38,8 @@ export const UserLogin = data => {
 			if (newPlayerData !== playerData) {
 				playerData = newPlayerData;
 			}
+			console.log(playerData);
+			
 			return playerData;
 		})
 		.catch(e => {
