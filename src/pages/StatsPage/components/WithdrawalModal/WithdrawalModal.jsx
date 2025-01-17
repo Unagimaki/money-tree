@@ -33,7 +33,7 @@ export const WithdrawalModal = ({ handleAlertModalShow }) => {
   const currentCourse = useSelector(state => state?.season?.course)
   const usdtBalance = balance * currentCourse
   const daysLeft = useSelector(state => state.wallet?.userWallet?.daysLeft || null)
-  const adress = useSelector(state => state.wallet.userWallet.address)
+  const address = useSelector(state => state.wallet.userWallet.address)
 
   const getCurrentWithdrawalSum = () => {
     if (usdtBalance >= WEEK_LIMIT && usdtBalance < UNLIMITED) {
@@ -64,13 +64,13 @@ export const WithdrawalModal = ({ handleAlertModalShow }) => {
   ]);
 
   useEffect(() => {
-    if (tonWalletAddress && adress) {
+    if (tonWalletAddress && !address) {
       dispatch(actionSetUserWalletAddress(tonWalletAddress));
       saveUserWallet(token, tonWalletAddress)
         .then(() => { handleAlertModalShow('Кошелек подключен') })
         .catch((e) => console.log(e));
     } else {
-      console.log(`adress: ${adress}`);
+      console.log(`adress: ${address}`);
       console.log('Запрос не был отправлен, кошелек уже подлючен');
     }
   }, [tonConnectUI, tonWalletAddress, tonConnectUI.onModalStateChange]);
