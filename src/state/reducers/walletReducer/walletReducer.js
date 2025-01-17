@@ -3,7 +3,7 @@ import { SET_CONNECT_WALLET_VISIBLE, SET_USER_WALLET, SET_USER_WALLET_ADDRESS } 
 const initialState = {
     isVisible: false,
     userWallet: {
-        address: null,  // или {} если address должен быть объектом
+        address: null, 
     },
 };
 

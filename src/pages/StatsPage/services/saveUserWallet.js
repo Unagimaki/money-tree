@@ -1,9 +1,7 @@
 import { baseURL } from "../../../App";
 import { axiosInstance } from "../../../services/axios";
 
-export const saveUserWallet = (token, wallet) => {
-    console.log(wallet);
-    
+export const saveUserWallet = (token, wallet) => {    
     const config = {
         headers: {
             Authorization: `Bearer ${token}`,

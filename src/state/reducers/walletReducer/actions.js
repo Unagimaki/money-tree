@@ -7,9 +7,7 @@ export const actionSetConnectModalVisible = (visible) => {
     }
 }
 
-export const actionSetUserWallet = (wallet) => {
-    console.log(wallet);
-    
+export const actionSetUserWallet = (wallet) => {    
     return {
         type: SET_USER_WALLET,
         payload: wallet
