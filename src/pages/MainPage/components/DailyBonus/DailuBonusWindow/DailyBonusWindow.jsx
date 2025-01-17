@@ -48,24 +48,26 @@ export const DailyBonusWindow = ({handleAlertModalShow}) => {
             <div className={styles.container_dark_background}/>
 
             <div className={styles.container_wrapper}>
-                <button onClick={handleCloseDailyWindow} className={styles.container_wrapper_close_button}>
-                    <img src={close_icon} alt="close_icon" />
-                </button>
-            
-                <div className={styles.container_wrapper_dailymodal}>
-                    <div className={styles.container_wrapper_dailymodal_scroll}>
-                        {
-                            bonuses.map(item => {
-                                return <DailyBonusItem
-                                    day={item.day}
-                                    bonus={item.bonus}
-                                    key={item.id}
-                                    isAvailable={item.isAvailable}
-                                    isCurrentDay={currentStreak}
-                                    isCollected={item.isCollected}
-                                />
-                            })
-                        }
+                <div className={styles.container_wrapper_inner}>
+                    <button onClick={handleCloseDailyWindow} className={styles.container_wrapper_inner_close_button}>
+                        <img src={close_icon} alt="close_icon" />
+                    </button>
+                
+                    <div className={styles.container_wrapper_inner_dailymodal}>
+                        <div className={styles.container_wrapper_inner_dailymodal_scroll}>
+                            {
+                                bonuses.map(item => {
+                                    return <DailyBonusItem
+                                        day={item.day}
+                                        bonus={item.bonus}
+                                        key={item.id}
+                                        isAvailable={item.isAvailable}
+                                        isCurrentDay={currentStreak}
+                                        isCollected={item.isCollected}
+                                    />
+                                })
+                            }
+                        </div>
                     </div>
                 </div>
                 <div className={styles.container_wrapper_collect_button}>

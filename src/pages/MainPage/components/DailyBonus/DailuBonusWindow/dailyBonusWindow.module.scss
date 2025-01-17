@@ -19,38 +19,42 @@
         position: absolute;
         top: 0;
         z-index: 97;
-        display: flex;
         align-items: center;
         justify-content: center;
-        &_close_button {
-            position: absolute;
-            width: min(7.47vw, 28px);
-            height: min(7.47vw, 28px);
-            background-color: $card_background;
-            z-index: 98;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            top: min(25.12vh, 204px);
-            right: 0%;
-        }
-        &_dailymodal {
-            overflow: auto;
-            padding: $size12px;
+        &_inner {
             width: 91.47%;
             max-width: 343px;
-            top: min(29.56vh, 240px);
-            left: 0;
-            height: min(65.6vw, 246px);
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: min(4.8vw, 18px);
-            backdrop-filter: blur(8px);
-            animation: entry_modal .5s linear;
-            &_scroll {
+            height: 100vh;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            justify-content: center;
+            &_close_button {
+                width: min(7.47vw, 28px);
+                height: min(7.47vw, 28px);
+                background-color: $card_background;
                 display: flex;
-                flex-wrap: wrap;
-                gap: $size10px;
+                align-items: center;
+                justify-content: center;
+                border-radius: 50%;
+            }
+            &_dailymodal {
+                margin-top: $size8px;
+                overflow: auto;
+                padding: $size12px;
+                width: 100%;
+                top: min(29.56vh, 240px);
+                height: min(65.6vw, 246px);
+                background: rgba(255, 255, 255, 0.1);
+                border-radius: min(4.8vw, 18px);
+                backdrop-filter: blur(8px);
+                animation: entry_modal .5s linear;
+                &_scroll {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: $size10px;
+                }
             }
         }
         &_collect_button {

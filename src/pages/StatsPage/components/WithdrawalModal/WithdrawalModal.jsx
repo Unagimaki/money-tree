@@ -33,7 +33,7 @@ export const WithdrawalModal = ({ handleAlertModalShow }) => {
   const currentCourse = useSelector(state => state?.season?.course)
   const usdtBalance = balance * currentCourse
   const daysLeft = useSelector(state => state.wallet?.userWallet?.daysLeft || null)
-  const address = useSelector(state => state.wallet.userWallet.address.address)
+  const address = useSelector(state => state.wallet.userWallet.address?.address)
 
   const getCurrentWithdrawalSum = () => {
     if (usdtBalance >= WEEK_LIMIT && usdtBalance < UNLIMITED) {
