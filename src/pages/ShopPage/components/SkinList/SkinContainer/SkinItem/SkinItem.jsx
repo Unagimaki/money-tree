@@ -59,22 +59,20 @@ export const SkinItem = ({
             // осталось сделать апдейт бота
           })
           .catch(() => handleAlertModalShow("Ошибка при покупке", "", "warning"))
-          .finally(() => {
-            setIsLoading(false);
-          });
+          .finally(() => setIsLoading(false));
     }
 
     const setDescription = () => {
-        switch (type) {
-            case 'DAMAGE':
-                return 'Лифов за тап'
-            case 'REGENERATION':
-                return 'Энергия в сек'
-            case 'ENERGY':
-                return 'Объем'
-            case 'AUTOBOT':
-                return 'Эффективность'
-        }
+      switch (type) {
+        case 'DAMAGE':
+            return 'Лифов за тап'
+        case 'REGENERATION':
+            return 'Энергия в сек'
+        case 'ENERGY':
+            return 'Объем'
+        case 'AUTOBOT':
+            return 'Эффективность'
+      }
     }
 
     return (
@@ -96,7 +94,7 @@ export const SkinItem = ({
           alt="shopImg"
         />
         <div className={styles.skin_item_name}>{title}</div>
-        {isPreviousLevelPurchased && (
+        {(
           <div className={styles.skin_item_description}>
             <div className={styles.skin_item_description_text}>
               {setDescription()}

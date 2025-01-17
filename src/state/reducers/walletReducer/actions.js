@@ -8,6 +8,8 @@ export const actionSetConnectModalVisible = (visible) => {
 }
 
 export const actionSetUserWallet = (wallet) => {
+    console.log(wallet);
+    
     return {
         type: SET_USER_WALLET,
         payload: wallet

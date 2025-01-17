@@ -97,8 +97,12 @@ export const OfferModal = ({ handleAlertModalShow }) => {
 
         <div className={styles.container_wrapper_title}>{title}</div>
         <div className={styles.container_wrapper_text}>{text}</div>
-        {terms !== ("_" && "terms") && (
-          <div className={styles.container_wrapper_terms}>{terms}</div>
+        {terms !== "_" && terms !== "terms" && (
+          <div className={styles.container_wrapper_terms}>
+            {terms.replace(/\/n\//g, '\n').split('\n').map((line, index) => (
+              <p key={index}>{line}</p>
+            ))}
+          </div>
         )}
 
         <button

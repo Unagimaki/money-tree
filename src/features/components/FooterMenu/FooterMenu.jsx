@@ -14,14 +14,15 @@ export const FooterMenu = () => {
     const shop_img = require("./assets/basket_icon.png");
     const stat_img = require("./assets/medal_icon.png");
     const bonus_img = require("./assets/star_icon.png");
-    const tree_img = require("./assets/tree_img_winter.png");
-    const game_img = require("./assets/game_img_winter.png");
+    const game_yellow_img = require("./assets/game_yellow_img.png");
+    const game_blue_img = require("./assets/game_blue_img.png");
+    
 
     const setMainButtonBackground = () => {
-      if (currentUrl !== PagesLinks.MAIN_URL) {
-        return tree_img
+      if (currentUrl !== PagesLinks.GAME_URL) {
+        return game_blue_img
       } else {
-        return game_img
+        return game_yellow_img
       }
     }
 
@@ -48,9 +49,8 @@ export const FooterMenu = () => {
               : navigate(PagesLinks.MAIN_URL)
           }
           className={styles.main_button}
-          style={{ zIndex }}
+          style={{ zIndex, backgroundImage: `url(${setMainButtonBackground()})` }}
         >
-          <img src={setMainButtonBackground()} alt="tree_img" />
         </div>
       </div>
     );

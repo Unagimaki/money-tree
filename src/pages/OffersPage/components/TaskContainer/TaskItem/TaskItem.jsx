@@ -11,6 +11,7 @@ export const TaskItem = ({
   title,
   id,
   imgUrl,
+  count,
 }) => {
   const arrow_img = require("../../../assets/arrow.png");
   const money = require("../../../assets/money.png");
@@ -22,6 +23,8 @@ export const TaskItem = ({
     dispatch(actionSetOfferModalVisible(true));
     dispatch(actionSetOfferReward(reward));
   };
+
+  if (count === 0) return
 
   return (
     <div onClick={handleClick} className={styles.container}>
