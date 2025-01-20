@@ -1,7 +1,7 @@
 import { axiosInstance } from "../../../services/axios";
 import { ApiUrl } from "../../../utils/config";
 
-export const getPlayersTop = async (token, league) => {
+export const getPlayersTop = async (token, league, take = 50) => {	
 	if (!token) {
 		console.log(`Error: Missing pars in getPlayersTop func`);
 		return;
@@ -12,8 +12,9 @@ export const getPlayersTop = async (token, league) => {
 		'Content-Type': 'application/json',
 		Accept: 'application/json',
 	};
-
-	const result = await axiosInstance.get(`https://${ApiUrl}/api/player/top?league=${league}`, {
+	console.log(`https://${ApiUrl}/api/player/top?league=${league}&take=${take}`);
+	
+	const result = await axiosInstance.get(`https://${ApiUrl}/api/player/top?league=${league}&take=${take}`, {
 		headers,
 	});
 	

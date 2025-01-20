@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
 import styles from './withdrawalModal.module.scss'
-import { actionSetConnectModalVisible, actionSetUserWallet, actionSetUserWalletAddress, actionSetWithdrawalTimeLimit } from '../../../../state/reducers/walletReducer/actions'
+import { actionSetConnectModalVisible, actionSetUserWallet, actionSetUserWalletAddress } from '../../../../state/reducers/walletReducer/actions'
 import { useTonConnectModal, useTonConnectUI, useTonWallet } from '@tonconnect/ui-react'
 import { useCallback, useEffect, useState } from 'react'
 import { formatString } from '../../helpers/formatString'
@@ -37,7 +37,6 @@ export const WithdrawalModal = ({ handleAlertModalShow }) => {
 
   const getCurrentWithdrawalSum = () => {
     if (usdtBalance >= WEEK_LIMIT && usdtBalance < UNLIMITED) {
-      console.log(`Текущий баланс в USDT равен ${usdtBalance}, это достаточно для недельного вывода и меньше безлимита, будет выведено ${formatNumber(WEEK_LIMIT / currentCourse)} лифов`)
       return WEEK_LIMIT / currentCourse
     } else if (usdtBalance < WEEK_LIMIT) {
       console.log(`Текущего баланса не хватает для недельного вывода`)

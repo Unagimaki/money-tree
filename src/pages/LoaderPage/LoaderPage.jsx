@@ -14,7 +14,7 @@ import { PagesLinks } from "../../shared/PagesLinks";
 import { UserLogin } from "../../services/userLogin";
 import { actionSetUserWallet } from "../../state/reducers/walletReducer/actions";
 import { example_query, isDevelopment } from "../../utils/config";
-import { actionSetLeagues } from "../../state/reducers/leagueReducer/leagueReducer";
+import { actionSetCurrentLeague, actionSetLeagues } from "../../state/reducers/leagueReducer/leagueReducer";
 import { actionSetDailyBonus } from "../../state/reducers/dailyBonusReducer/dailyBonusReducer";
 import { actionSetRef } from "../../state/reducers/referralsReducer/actions";
 
@@ -50,7 +50,7 @@ const LoaderPage = () => {
       (data) => dispatch(actionSetShopItems(data)),
       (data) => dispatch(actionSetOffers(data)),
       (data) => dispatch(actionSetDailyBonus(data)),
-      (data) => dispatch(actionSetLeagues(data)),
+      (data) => dispatch(actionSetCurrentLeague(data.currentUser.league)),
       (data) => dispatch(actionSetUserWallet(data)),
       (data) => dispatch(actionSetRef(data)),
       
@@ -71,10 +71,8 @@ const LoaderPage = () => {
                   console.log(`Ошибка при получении данных: ${result.reason.response.data.path}`);                  
                 }
               });
-              setTimeout(() => {
-                setDataFetched(true);
-                navigate(PagesLinks.MAIN_URL)
-              }, isDevelopment ? 0 : 0);
+              setDataFetched(true);
+              navigate(PagesLinks.MAIN_URL)
             })
             .catch((e) => console.log("fetchData error: " + e));
         })

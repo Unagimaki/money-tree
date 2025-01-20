@@ -1,12 +1,21 @@
 const initialState = {
-    showCurrentLeague: 'bronze',
+    showCurrentLeague: null,
     leagues: [],
-    friends: []
+    friends: [],
+    currentPage: 1,
 }
 
 export const SET_CURRENT_LEAGUE = 'SET_CURRENT_LEAGUE'
 export const SET_LEAGUES = 'SET_LEAGUES'
 export const SET_FRIENDS = 'SET_FRIENDS'
+export const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
+
+export const actionSetCurrentPage = (page) => {    
+    return {
+        type: SET_CURRENT_PAGE,
+        payload: page
+    }
+}
 
 export const actionSetCurrentLeague = (league) => {       
     return {
@@ -35,6 +44,8 @@ export const leagueReducer = (state = initialState, action) => {
             return {...state, leagues: action.payload}
         case SET_FRIENDS:
             return {...state, friends: action.payload}
+        case SET_CURRENT_PAGE:
+            return {...state, currentPage: action.payload}
         default: return state
     }
 }

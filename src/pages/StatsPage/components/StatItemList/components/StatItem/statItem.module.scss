@@ -9,6 +9,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 0 $size8px;
+
     &_profile {
         width: min(8.53vw, 32px);
         height: min(8.53vw, 32px);
@@ -23,6 +24,7 @@
             width: $size24px;
             height: $size24px;
             margin-right: $br8px;
+            animation: width 0.5s forwards;
         }
         &_info {
             display: flex;
@@ -60,4 +62,13 @@
 
 .item:not(:last-child) {
     margin-bottom: $size8px;
+}
+
+@keyframes width {
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: $size24px;
+    }
 }

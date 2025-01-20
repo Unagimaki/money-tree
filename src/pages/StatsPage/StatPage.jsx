@@ -13,15 +13,18 @@ import { StatItemListType } from './components/StatItemList/components/StatItemL
 const StatPage = ({navigate}) => {
     const dispatch = useDispatch()
     const connectWalletVisible = useSelector(state => state.wallet.isVisible)
+    
     const [currentListType, setCurrentListType] = useState('all')
+    const [isLoading, setIsLoading] = useState(true)
 
-    const handleChangeListType = (type = 'all') => {      
+    const handleChangeListType = (type) => {      
       setCurrentListType(type)
     }
+    const handleChangeLoading = (boolean) => {
+      setIsLoading(boolean)
+    }
     const handleBackButtonClick = () => {
-      connectWalletVisible ?
-      dispatch(actionSetConnectModalVisible(false)) :
-      navigate('/main')
+      connectWalletVisible ? dispatch(actionSetConnectModalVisible(false)) : navigate('/main')
     }
     
     return (
@@ -29,9 +32,9 @@ const StatPage = ({navigate}) => {
         <StatTitle/>
         <StatCount/>
         <StatCourse/>
-        <ChooseLeagueContainer/>
-        <StatItemListType handleChangeListType={handleChangeListType} currentListType={currentListType}/>
-        <StatItemList currentListType={currentListType}/>
+        <ChooseLeagueContainer handleChangeLoading={handleChangeLoading} isLoading={isLoading}/>
+        <StatItemListType isLoading={isLoading} handleChangeLoading={handleChangeLoading} handleChangeListType={handleChangeListType} currentListType={currentListType}/>
+        <StatItemList handleChangeLoading={handleChangeLoading} isLoading={isLoading} currentListType={currentListType}/>
         <BackButton onClick={handleBackButtonClick} />
       </div>
     );

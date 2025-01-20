@@ -20,16 +20,15 @@ import { IntroModal } from '../../features/modals/IntroModal/IntroModal'
 const MainPage = ({ isStatModalVisible, onDamageModalShow, handleAlertModalShow }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch()
-  const main_background = require("./assets/main_background.png");
   const snow_background = require("./assets/background_snow.png");
   const [isLoading, setIsLoading] = useState(true);
   const [isIntroModalVisible, setIsIntroModalVisible] = useState(false)
-  const currentBotLevel = useSelector(state => state.bot.autoBots[0].currentLevel > 0);
+  const currentBotLevel = useSelector(state => state.bot?.autoBots[0]?.currentLevel > 0 );
   const season = useSelector((state) => state?.season?.isActive);
   const isHintActive = useSelector(state => state.tutorial.isHintVisible)
   const shop = useSelector(state => state.shop)
   const energy = shop?.find(item => item.shopItem.itemType === 'ENERGY').currentLevel
-  const background = energy > 0 ? require(`./assets/energy_snow/${energy}.png`) : snow_background;
+  const background = (energy && energy > 0) ? require(`./assets/energy_snow/${energy}.png`) : snow_background;
 
   const isTutorialIsActive = useSelector(state => state.tutorial.isTutorialIsActive)
   console.log(store.getState());

@@ -1,65 +1,96 @@
 import { useDispatch, useSelector } from 'react-redux'
 import styles from './statItemList.module.scss'
 import { StatItem } from './components/StatItem/StatItem'
-import { useEffect, useState } from 'react'
-import { actionSetCurrentLeague, actionSetFriends, actionSetLeagues } from '../../../../state/reducers/leagueReducer/leagueReducer'
+import { useEffect, useRef } from 'react'
+import { actionSetCurrentPage, actionSetCurrentLeague, actionSetFriends, actionSetLeagues } from '../../../../state/reducers/leagueReducer/leagueReducer'
 import { getPlayersTop } from '../../services/getPlayersTop'
 import { getData } from '../../../../services/getData'
+import { Loader } from '../Loader/Loader'
+import { Link, animateScroll as scroll, scroller } from 'react-scroll';
 
-export const StatItemList = ({currentListType}) => {
-  const players = useSelector(state => state.league?.leagues.topPlayers)
+export const StatItemList = ({handleChangeLoading, isLoading, currentListType}) => {
+  const topPlayers = useSelector(state => state.league?.leagues.topPlayers)
   const friends = useSelector(state => state.league.friends.topPlayers)
-   
   const currentUser = useSelector(state => state.league.leagues.currentUser)
   const currentLeague = useSelector(state => state.league.showCurrentLeague)
+  const currentPage = useSelector(state => state.league.currentPage)
   const token = useSelector(state => state.user.token)
-
-  const [loading, setLoading] = useState(false)
+  const listRef = useRef(null);
+  const wrapperRef = useRef(null);
   const dispatch = useDispatch()
 
-  useEffect(() => {
-    if (currentListType === 'friends') {
-      return
-    }
-    dispatch(actionSetCurrentLeague(currentLeague))
+  const loadMoreData = () => {       
+    getPlayersTop(token, currentLeague, 50 * (currentPage + 1))
+      .then(res => {
+        dispatch(actionSetLeagues(res.data));  // Обновляем данные в Redux
+        dispatch(actionSetCurrentPage(currentPage + 1))        
+      })
+      .catch(() => console.log('Страниц нет'));
+  };
 
+  const handleScroll = () => {
+    const bottom = listRef.current.scrollHeight === listRef.current.scrollTop + listRef.current.clientHeight;
+    if (bottom) { loadMoreData() }
+  };
+
+  useEffect(() => {
+    if (isLoading) return
+    const listElement = listRef.current;
+    if (listElement) {
+      listElement.addEventListener('scroll', handleScroll);
+    }
+
+    // Убираем обработчик при размонтировании компонента
+    return () => {
+      if (listElement) {
+        listElement.removeEventListener('scroll', handleScroll);
+      }
+    };
+  }, [isLoading, currentPage]);
+
+  // при переключении номера лиги или типа, сбрасываем счетчик страниц
+  useEffect(() => {
+    dispatch(actionSetCurrentPage(1))
+  }, [currentListType, currentLeague])
+
+  // если нужно показать друзей
+  useEffect(() => {
+    handleChangeLoading(true)
+    if (currentListType === 'friends') return
+
+    dispatch(actionSetCurrentLeague(currentLeague))
     getPlayersTop(token, currentLeague)
     .then((res) => {
       dispatch(actionSetLeagues(res.data))
       console.log(`Получены общие лиги ${currentLeague}`);
     })
     .catch(e => console.log('StatPage: get players stats error: ' + e))
-    .finally(() => setLoading(false))
+    .finally(() => handleChangeLoading(false))
 
   }, [currentLeague, currentListType])
   
-  // получение списка друзей текущей лиги
+  // если нужно показать топ игроков
   useEffect(() => {
-    if (currentListType === 'all') {
-      return
-    }
+    handleChangeLoading(true)
+    if (currentListType === 'all') return
+
     getData(token, `player/top?league=${currentLeague}&isFriends=true`)
     .then(res => {
-      console.log(`Получены друзья лиги ${currentLeague}`);
-      console.log(res.data);
-      
       dispatch(actionSetFriends(res.data))     
+      console.log(`Получены друзья лиги ${currentLeague}`);      
     })
     .catch(e => console.log(e))
+    .finally(() => handleChangeLoading(false))
   }, [currentListType, currentLeague])
+
   
 
   return (
-    <div className={styles.list}>
-      <div className={styles.list_wrapper}>
+    <div style={{transition: 'all 1s linear'}} ref={listRef} className={styles.list}>
+      <div ref={wrapperRef} className={styles.list_wrapper}>
+        { isLoading && <Loader/> }
         {
-          loading &&
-          <div className={styles.list_wrapper_loader_wrapper}>
-            <div className={styles.list_wrapper_loader_wrapper_loader}/>
-          </div>
-        }
-        {
-          currentUser && !loading &&
+          currentUser && !isLoading && currentLeague === currentUser.league &&
           <div className={styles.list_wrapper_item}>
             <StatItem
               balance={currentUser.balance}
@@ -71,26 +102,30 @@ export const StatItemList = ({currentListType}) => {
         }
         {
           currentListType === 'all' ?
-          players && !loading &&
-          players.map((player, index) => {
-            return <StatItem
-              balance={player.balance}
-              name={player.userName}
-              rank={player.rank}
-              imgUrl={player.profileImageUrl}
-              key={index}
-            />
+          topPlayers && !isLoading &&
+          topPlayers.map((player, index) => {
+            return (
+              <StatItem
+                balance={player.balance}
+                name={player.userName}
+                rank={player.rank}
+                imgUrl={player.profileImageUrl}
+                key={index}
+              />
+            )
           })
           :
-          friends && !loading &&
+          friends && !isLoading &&
           friends.map((player, index) => {
-            return <StatItem
-              balance={player.balance}
-              name={player.userName}
-              rank={player.rank}
-              imgUrl={player.profileImageUrl}
-              key={index}
-            />
+            return (
+              <StatItem
+                balance={player.balance}
+                name={player.userName}
+                rank={player.rank}
+                imgUrl={player.profileImageUrl}
+                key={index}
+              />
+            )  
           })
         }
       </div>

@@ -10,6 +10,7 @@ body {
 	background: url('../public/images/background_snow.png') no-repeat;
 	background-size: cover;
 	overflow: hidden;
+	transition: scroll 1s linear;
 }
 
 .app {

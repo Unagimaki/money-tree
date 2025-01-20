@@ -6,13 +6,13 @@ export const StatItem = ({rank, name, balance, imgUrl}) => {
 
     const first = require('../../../../assets/medal-star.png')
     const second = require('../../../../assets/award.png')
-    const third = require('../../../../assets/medal.png')
+    const third = require('../../../../assets/medal.png')    
     
     return(
         <div className={styles.item}>
             <div className={styles.item_profile}>
                 {
-                    imgUrl && <img src={imgUrl} alt="imgUrl" />
+                    imgUrl && <img src={imgUrl} alt="imgUrl"/> 
                 }
                 {
                     (rank === 1 || rank === 2 || rank === 3) &&

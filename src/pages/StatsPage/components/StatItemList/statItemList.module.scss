@@ -16,21 +16,6 @@
             border-radius: $br8px;
             margin-bottom: 5%;
         }
-        &_loader_wrapper {
-            width: inherit;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            &_loader {
-                border: min(1.07vw, 4px) solid #d1d1d1;
-                border-top: min(1.07vw, 4px) solid #a3a3a3;
-                border-radius: 50%;
-                width: $fz40px;
-                height: $fz40px;
-                animation: spin 1s linear infinite;
-            }
-        }
     }
 }
 @media (max-height: 797px) {
