@@ -29,7 +29,7 @@ import Snowfall from 'react-snowfall';
 
 export const WebApp = window.Telegram.WebApp
 // export const baseURL = process.env.REACT_APP_BASE_URL
-export const baseURL = 'moneytree-stage.extensi.one'
+export const baseURL = 'moneytree.extensi.one'
 
 function App() {
   const [isLoaded, setIsLoaded] = useState(false);

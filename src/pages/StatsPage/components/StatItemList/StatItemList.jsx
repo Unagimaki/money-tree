@@ -2,11 +2,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import styles from './statItemList.module.scss'
 import { StatItem } from './components/StatItem/StatItem'
 import { useEffect, useRef } from 'react'
-import { actionSetCurrentPage, actionSetCurrentLeague, actionSetFriends, actionSetLeagues } from '../../../../state/reducers/leagueReducer/leagueReducer'
+import { actionSetCurrentPage, actionSetCurrentLeague, actionSetFriends, actionSetLeagues, actionUpdateLeagues } from '../../../../state/reducers/leagueReducer/leagueReducer'
 import { getPlayersTop } from '../../services/getPlayersTop'
 import { getData } from '../../../../services/getData'
 import { Loader } from '../Loader/Loader'
-import { Link, animateScroll as scroll, scroller } from 'react-scroll';
 
 export const StatItemList = ({handleChangeLoading, isLoading, currentListType}) => {
   const topPlayers = useSelector(state => state.league?.leagues.topPlayers)
@@ -20,17 +19,22 @@ export const StatItemList = ({handleChangeLoading, isLoading, currentListType}) 
   const dispatch = useDispatch()
 
   const loadMoreData = () => {       
-    getPlayersTop(token, currentLeague, 50 * (currentPage + 1))
+    getPlayersTop(token, currentLeague, 1 * (currentPage + 1))
       .then(res => {
-        dispatch(actionSetLeagues(res.data));  // Обновляем данные в Redux
+        console.log(res.data.topPlayers);
+        
+        dispatch(actionUpdateLeagues(res.data.topPlayers));  // Обновляем данные в Redux
         dispatch(actionSetCurrentPage(currentPage + 1))        
       })
-      .catch(() => console.log('Страниц нет'));
+      .catch((e) => console.log(e));
   };
 
   const handleScroll = () => {
     const bottom = listRef.current.scrollHeight === listRef.current.scrollTop + listRef.current.clientHeight;
-    if (bottom) { loadMoreData() }
+    if (bottom) {
+      console.log('Прокручено');
+      loadMoreData()
+    }
   };
 
   useEffect(() => {
@@ -86,7 +90,7 @@ export const StatItemList = ({handleChangeLoading, isLoading, currentListType}) 
   
 
   return (
-    <div style={{transition: 'all 1s linear'}} ref={listRef} className={styles.list}>
+    <div ref={listRef} className={styles.list}>
       <div ref={wrapperRef} className={styles.list_wrapper}>
         { isLoading && <Loader/> }
         {
