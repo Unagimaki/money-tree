@@ -11,9 +11,12 @@
     z-index: 99;
     font-family: $MMedium;
     text-align: center;
-    animation: enter .5s forwards;
+    animation: show .5s forwards;
     box-sizing: content-box;
     padding: $size8px $size12px;
+    &.container_hide {
+        animation: hide .5s forwards;
+    }
     &_inner {
         width: min(88.27vw, 331px);
         height: 100%;
@@ -30,6 +33,7 @@
         }
         &_text {
             text-align: left;
+            padding-left: $size12px;
             &_title {
                 font-size: $size16px;
             }
@@ -45,8 +49,10 @@
         height: min-content;
     }
 }
-
-@keyframes enter {
+.hide {
+    display: none;
+}
+@keyframes show {
     0% {
         opacity: 0;
     }
@@ -54,3 +60,13 @@
         opacity: 1;
     }
 }
+@keyframes hide {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        display: none;
+    }
+}
+

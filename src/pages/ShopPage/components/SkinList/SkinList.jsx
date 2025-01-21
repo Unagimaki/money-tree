@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux'
 import { SkinContainer } from './SkinContainer/SkinContainer'
 import styles from './skinList.module.scss'
 
-export const SkinList = ({ handleAlertModalShow }) => {
+export const SkinList = () => {
   const shop = useSelector((state) => state.shop);
 
   return (
@@ -11,7 +11,6 @@ export const SkinList = ({ handleAlertModalShow }) => {
         {shop.map((item) => {
           return (
             <SkinContainer
-              handleAlertModalShow={handleAlertModalShow}
               key={item.shopItem.id}
               obj={item}
             />

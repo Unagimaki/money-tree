@@ -14,8 +14,9 @@ import { PagesLinks } from '../../shared/PagesLinks'
 import { baseURL, WebApp } from '../../App'
 import { randomNum } from './helpers/randomNum'
 import { actionHintButtonVisible } from '../../state/reducers/tutorialReducer/tutorialReducer'
+import { actionShowModal } from '../../state/reducers/alertModalReducer/alertModalReducer'
 
-const GamePage = ({ navigate, onDamageModalShow, handleAlertModalShow }) => {
+const GamePage = ({ navigate, onDamageModalShow }) => {
   const SOCKET_URL = `wss://${baseURL}/game`;
   const ICON_SIZE = 50;
   const ICON_SPAWN_INTERVAL = 250;
@@ -52,8 +53,7 @@ const GamePage = ({ navigate, onDamageModalShow, handleAlertModalShow }) => {
         dispatch(actionSetUserDamage(damage / BOOST_DAMAGE_DIVISOR));
         dispatch(actionSetDamageBoostActive(false));
         navigate(PagesLinks.MAIN_URL);
-		handleAlertModalShow("Время буста вышло", '');
-        
+        dispatch(actionShowModal('', 'Время буста вышло'))        
       }
     }, BOOST_DURATION_MS);
   }, [isDamageBoostActive, damage, dispatch, navigate]);
@@ -179,7 +179,7 @@ const GamePage = ({ navigate, onDamageModalShow, handleAlertModalShow }) => {
 
 const handleClick = e => {
 	if (!isDamageBoostActive && energy < damage) {
-    handleAlertModalShow('Недостаточно энергии', '', 'warning')
+    dispatch(actionShowModal('Недостаточно энергии'))
     return
   };
 

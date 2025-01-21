@@ -7,6 +7,7 @@ import { buyAutoBotLevel } from '../../../service/buyAutoBotLevel'
 import { actionUpdateAutoBotLevel } from '../../../../../state/reducers/autobotReducer/action'
 import { formatNumber } from '../../../../../helpers/formatNumber'
 import { useState } from 'react'
+import { actionShowModal } from '../../../../../state/reducers/alertModalReducer/alertModalReducer'
 
 export const BoostItem = ({
   currentLevel,
@@ -16,9 +17,7 @@ export const BoostItem = ({
   boostId,
   boostLevelId,
   token,
-  text,
   title,
-  handleAlertModalShow,
 }) => {
   const money_icon = require("../../../assets/money_icon.png");
   const autobot = require("../../../assets/autobot.png");
@@ -43,16 +42,12 @@ export const BoostItem = ({
         dispatch(actionSetUserMaxEnergy(updatedPlayer.maxEnergy));
         dispatch(actionSetUserRegeneration(updatedPlayer.regeneration));
         setIsLoading(false);
-        handleAlertModalShow("Буст успешно куплен", "", "success");
+        dispatch(actionShowModal('Буст успешно куплен'))
       })
       .catch((e) => {
-        e.response.status === 409
-          ? handleAlertModalShow(
-              "Недостаточно средств!",
-              "Продолжайте копить лифы!",
-              "warning"
-            )
-          : handleAlertModalShow("Ошибка при покупке", "", "warning");
+        e.response.status === 409 ?
+        dispatch(actionShowModal('Недостаточно средств!', 'Продолжайте копить лифы!')) :
+        dispatch(actionShowModal('Ошибка при покупке'))
         setIsLoading(false);
       })
   };
@@ -64,16 +59,12 @@ export const BoostItem = ({
         dispatch(actionUpdateAutoBotLevel());
         dispatch(actionSetUserBalance(res.data.updatedPlayer.balance));
         setIsLoading(false);
-        handleAlertModalShow("Буст успешно куплен", "", "success");
+        dispatch(actionShowModal('Буст успешно куплен'))
       })
       .catch((e) => {
-        e.response.status === 409
-          ? handleAlertModalShow(
-              "Недостаточно средств!",
-              "Продолжайте копить лифы!",
-              "warning"
-            )
-          : handleAlertModalShow("Ошибка при покупке", "", "warning");
+        e.response.status === 409 ?
+        dispatch(actionShowModal('Недостаточно средств!', 'Продолжайте копить лифы!')) :
+        dispatch(actionShowModal('Ошибка при покупке'))
         setIsLoading(false);
       })
   };

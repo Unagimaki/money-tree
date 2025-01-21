@@ -3,7 +3,7 @@ import { BoostItem } from './BoostItem/BoostItem'
 import styles from './boostsContainer.module.scss'
 import { useSelector } from 'react-redux'
 
-export const BoostsContainer = ({ handleAlertModalShow, handleCloseAlert }) => {
+export const BoostsContainer = ({ handleCloseAlert }) => {
   const boosts = useSelector((state) => state.boosts.boosts);
   const token = useSelector((state) => state.user.token);
   const bot = useSelector((state) => state.bot.autoBots[0]);
@@ -27,7 +27,6 @@ export const BoostsContainer = ({ handleAlertModalShow, handleCloseAlert }) => {
                 boostLevelId={item.boost.levels[item.currentLevel]?.id}
                 token={token}
                 key={index}
-                handleAlertModalShow={handleAlertModalShow}
                 handleCloseAlert={handleCloseAlert}
               />
             );
@@ -41,7 +40,6 @@ export const BoostsContainer = ({ handleAlertModalShow, handleCloseAlert }) => {
               boostId={bot.id}
               token={token}
               title={bot.title}
-              handleAlertModalShow={handleAlertModalShow}
               handleCloseAlert={handleCloseAlert}
             />
         </div>

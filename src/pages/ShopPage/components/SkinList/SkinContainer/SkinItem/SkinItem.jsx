@@ -6,6 +6,7 @@ import { actionIncrementShopItemLevel } from '../../../../../../state/reducers/s
 import { actionSetUserBalance, actionSetUserDamage, actionSetUserEnergy, actionSetUserMaxEnergy } from '../../../../../../state/reducers/userReducer/actions'
 import { formatNumber } from '../../../../../../helpers/formatNumber'
 import { baseURL } from '../../../../../../App'
+import { actionShowModal } from '../../../../../../state/reducers/alertModalReducer/alertModalReducer'
 
 export const SkinItem = ({
     currentLevel,
@@ -20,7 +21,6 @@ export const SkinItem = ({
     shopItemId,
     userBalance,
     fileId,
-    handleAlertModalShow,
     type
 }) => {
     const dispatch = useDispatch()
@@ -53,12 +53,11 @@ export const SkinItem = ({
             dispatch(actionSetUserDamage(updatedPlayer.damage));
             dispatch(actionSetUserEnergy(updatedPlayer.energy));
             dispatch(actionSetUserMaxEnergy(updatedPlayer.maxEnergy));
-            handleAlertModalShow(`Скин успешно куплен", "", "success`);
-            handleAlertModalShow(`${res.data.message}`, "", "success");
+            dispatch(actionShowModal('Скин успешно куплен!'))
 
             // осталось сделать апдейт бота
           })
-          .catch(() => handleAlertModalShow("Ошибка при покупке", "", "warning"))
+          .catch(() => dispatch(actionShowModal('Ошибка при покупке')))
           .finally(() => setIsLoading(false));
     }
 

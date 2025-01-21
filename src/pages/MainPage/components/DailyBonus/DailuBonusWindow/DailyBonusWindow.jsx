@@ -5,8 +5,9 @@ import { actionSetBonusCollected, actionSetBonusWindowVisible } from '../../../.
 import { collectDailyBonus } from '../../../services/collectDailyBonus'
 import { useEffect, useState } from 'react'
 import { actionIncreaseUserBalance } from '../../../../../state/reducers/userReducer/actions'
+import { actionShowModal } from '../../../../../state/reducers/alertModalReducer/alertModalReducer'
 
-export const DailyBonusWindow = ({handleAlertModalShow}) => {
+export const DailyBonusWindow = () => {
     const close_icon = require('../../../assets/close_daily_icon.png')
     const dispatch = useDispatch()
 
@@ -16,22 +17,17 @@ export const DailyBonusWindow = ({handleAlertModalShow}) => {
     const bonuses = useSelector(state => state.dailyBonus.bonus.dailyBonuses || null)
     const currentStreak = useSelector(state => state.dailyBonus.bonus.currentStreak || null)
 
-     
     const handleCloseDailyWindow = () => {
         dispatch(actionSetBonusWindowVisible(false))        
     }
     const handleCollectDailyBonus = () => {
-        
         collectDailyBonus(token)
         .then(res => {
-            console.log(res)
             dispatch(actionSetBonusCollected(bonuses[currentStreak-1].id))
             dispatch(actionIncreaseUserBalance(bonuses[currentStreak-1].bonus))
-            handleAlertModalShow("Бонус собран", "", "success");
-
         })
         .catch(e => {
-            handleAlertModalShow("Ошибка", "", "warning");
+            dispatch(actionShowModal('Ошибка'))
             console.log(e)            
         })
     }

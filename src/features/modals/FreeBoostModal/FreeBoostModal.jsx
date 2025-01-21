@@ -6,14 +6,10 @@ import { useNavigate } from 'react-router-dom'
 import { PagesLinks } from '../../../shared/PagesLinks'
 import { actionSetBoostsChargers, actionSetDamageBoostActive } from '../../../state/reducers/freeBoostsReducer/action'
 import { useState } from 'react'
+import { actionShowModal } from '../../../state/reducers/alertModalReducer/alertModalReducer'
 
 
-export const FreeBoostModal = ({
-  handleAlertModalShow,
-  handleFreeBoostModalShow,
-  id,
-  type,
-}) => {
+export const FreeBoostModal = ({handleFreeBoostModalShow, id, type }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
@@ -33,7 +29,7 @@ export const FreeBoostModal = ({
         if (type === "ENERGY_BOOST") {
           dispatch(actionSetUserEnergy(maxEnergy));
           handleFreeBoostModalShow();
-          handleAlertModalShow('Энергия восполнена')
+          dispatch(actionShowModal("Энергия восполнена"))
         } else {
           dispatch(actionSetDamageBoostActive(true));
           dispatch(actionSetUserDamage(damage * 10));
@@ -43,10 +39,7 @@ export const FreeBoostModal = ({
         dispatch(actionSetBoostsChargers(id));
       })
       .catch((e) => {
-            handleAlertModalShow(
-            "Сегодня вы уже использовали Супербуст!",
-            "Набирайтесь сил и приходите завтра!"
-            )
+        dispatch(actionShowModal("Сегодня вы уже использовали Супербуст!", "Набирайтесь сил и приходите завтра!"))
         })
       .finally(() => setIsLoading(false));
   };

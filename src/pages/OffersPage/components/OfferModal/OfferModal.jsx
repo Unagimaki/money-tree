@@ -8,8 +8,9 @@ import { updatedUrl } from '../../helpers/updatedUrl'
 import { hasTargetWord } from '../../helpers/hasTargetWord'
 import { formatNumber } from '../../../../helpers/formatNumber'
 import { completeOffer } from '../../services/completeOffer'
+import { actionShowModal } from '../../../../state/reducers/alertModalReducer/alertModalReducer'
 
-export const OfferModal = ({ handleAlertModalShow }) => {
+export const OfferModal = () => {
   const [containerClass, setContainerClass] = useState(styles.container);
   const [isLoadingOffer, setIsLoadingOffer] = useState(false);
   const [isChecking, setIsChecking] = useState(false)
@@ -46,14 +47,14 @@ export const OfferModal = ({ handleAlertModalShow }) => {
     setIsChecking(true)
     completeOffer(token, id)    
       .then(() => {
-        handleAlertModalShow('Задание выполнено')
+        dispatch(actionShowModal('Задание выполнено'))
         dispatch(actionIncreaseUserBalance(reward));
         dispatch(actionSetOfferDone(id));
       })
       .catch((e) => {
         e.response.status === 409
-          ? handleAlertModalShow( "Внимание!", "Вы уже выполнили это задание!", "warning" )
-          : handleAlertModalShow( "Ошибка при выполнении", "", "warning" );
+          ? dispatch(actionShowModal('Вы уже выполнили это задание!'))
+          : dispatch(actionShowModal('Ошибка при проверке!'))
       })
       .finally(() => {
         setIsChecking(false)

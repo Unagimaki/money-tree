@@ -14,8 +14,9 @@ import { formatNumber } from '../../../../helpers/formatNumber'
 import { withdrawalResponse } from '../../helpers/withdrawalResponse'
 import { WithDrawalModalInfo } from '../WithDrawalInfo/WithDrawalModalInfo'
 import { getData } from '../../../../services/getData'
+import { actionShowModal } from '../../../../state/reducers/alertModalReducer/alertModalReducer'
 
-export const WithdrawalModal = ({ handleAlertModalShow }) => {
+export const WithdrawalModal = () => {
   const dispatch = useDispatch();
 
   const wallet = require("../../assets/wallet.png");
@@ -66,20 +67,13 @@ export const WithdrawalModal = ({ handleAlertModalShow }) => {
     if (tonWalletAddress && !address) {
       dispatch(actionSetUserWalletAddress(tonWalletAddress));
       saveUserWallet(token, tonWalletAddress)
-        .then(() => { handleAlertModalShow('Кошелек подключен') })
+        .then(() => { dispatch(actionShowModal('Кошелек подключен!')) })
         .catch((e) => console.log(e));
-    } else {
-      console.log(`adress: ${address}`);
-      console.log('Запрос не был отправлен, кошелек уже подлючен');
     }
   }, [tonConnectUI, tonWalletAddress, tonConnectUI.onModalStateChange]);
 
   const handleWalletConnection = useCallback((address) => {
-    if (!address) {
-      console.log('Нет кошелька')
-      return
-      
-    }
+    if (!address) return
     address && setTonWalletAddress(address);
   }, []);
   const handleWalletDisconnection = useCallback((address) => {
@@ -120,7 +114,7 @@ export const WithdrawalModal = ({ handleAlertModalShow }) => {
 
   const handleDisconnectWallet = async () => {
     await tonConnectUI.disconnect();
-    handleAlertModalShow("Кошелек отключен");
+    dispatch(actionShowModal('Кошелек отключен'))
     dispatch(actionSetUserWalletAddress(null));
     setTonWalletAddress(null);
     removeUserWallet(token, tonWalletAddress)
@@ -130,7 +124,7 @@ export const WithdrawalModal = ({ handleAlertModalShow }) => {
 
   const handleWithdrawal = () => {
     if (daysLeft > 0) {
-      handleAlertModalShow('Лимит исчерпан', "", 'warning')
+      dispatch(actionShowModal('Лимит исчерпан'))
       return
     }
     if (isWithdrawalProceed) return
@@ -139,7 +133,7 @@ export const WithdrawalModal = ({ handleAlertModalShow }) => {
     // запрос для вывода
     withdrawalUserWallet(token, getCurrentWithdrawalSum())
       .then(() => {
-        handleAlertModalShow("Задача успешно поставлена на вывод, ожидайте!");
+        dispatch(actionShowModal('Задача успешно поставлена на вывод, ожидайте!'))
 
         // получение обновленных данных кошелька
         getData(token, 'wallet')
@@ -149,7 +143,7 @@ export const WithdrawalModal = ({ handleAlertModalShow }) => {
           })
           
       })
-      .catch(e => { handleAlertModalShow(withdrawalResponse(e.response.data.message), "", "warning") })
+      .catch(e => { dispatch(actionShowModal(withdrawalResponse(e.response.data.message))) })
       .finally(() => setIsWithdrawalProceed(false))
   };
 

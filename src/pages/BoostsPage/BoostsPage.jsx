@@ -4,7 +4,7 @@ import { BackButton } from '@vkruglikov/react-telegram-web-app'
 import { BoostsContainer } from './components/BoostsContainer/BoostsContainer'
 import { FreeBoostsContainer } from './components/FreeBoostsContainer/FreeBoostsContainer'
 
-const BoostsPage = ({ handleAlertModalShow, handleCloseAlert, isFreeBoostModalVisible, navigate, handleFreeBoostModalShow }) => {
+const BoostsPage = ({isFreeBoostModalVisible, navigate, handleFreeBoostModalShow }) => {
 
   const handleBackButtonClick = () => { isFreeBoostModalVisible ? handleFreeBoostModalShow() : navigate("/main") }
   
@@ -12,8 +12,8 @@ const BoostsPage = ({ handleAlertModalShow, handleCloseAlert, isFreeBoostModalVi
     <div className={styles.boosts_page}>
       <Balance top={"min(11.73vw, 44px"}/>
       <div className={styles.boosts_page_wrapper}>
-        <FreeBoostsContainer handleAlertModalShow={handleAlertModalShow} handleFreeBoostModalShow={handleFreeBoostModalShow}/>
-        <BoostsContainer handleCloseAlert={handleCloseAlert} handleAlertModalShow={handleAlertModalShow}/>
+        <FreeBoostsContainer handleFreeBoostModalShow={handleFreeBoostModalShow}/>
+        <BoostsContainer/>
       </div>
       <BackButton onClick={handleBackButtonClick} />
     </div>

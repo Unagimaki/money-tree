@@ -6,7 +6,7 @@ import { FriendsCountContainer } from './components/FriendsCountContainer/Friend
 import { SkinList } from './components/SkinList/SkinList';
 import { useSelector } from 'react-redux';
 
-const ShopPage = ({ navigate, handleAlertModalShow }) => {
+const ShopPage = ({ navigate }) => {
   const state = store.getState();
   const handleBackButtonClick = () => {
     navigate("/main");
@@ -17,7 +17,7 @@ const ShopPage = ({ navigate, handleAlertModalShow }) => {
     <div className={styles.shop_page}>
       <Balance top={"min(11.73vw, 43.99px)"} />
       <FriendsCountContainer referralsCount={playerReferralsCount}/>
-      <SkinList handleAlertModalShow={handleAlertModalShow} shop={state.shop} />
+      <SkinList shop={state.shop} />
       <BackButton onClick={handleBackButtonClick} />
     </div>
   );

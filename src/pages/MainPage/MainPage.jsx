@@ -17,7 +17,7 @@ import { MainBackground } from './components/MainBackground/MainBackground'
 import { IntroModal } from '../../features/modals/IntroModal/IntroModal'
 
 
-const MainPage = ({ isStatModalVisible, onDamageModalShow, handleAlertModalShow }) => {
+const MainPage = ({ isStatModalVisible, onDamageModalShow }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch()
   const snow_background = require("./assets/background_snow.png");
@@ -87,15 +87,14 @@ const MainPage = ({ isStatModalVisible, onDamageModalShow, handleAlertModalShow 
     <div>
       <div className={styles.main_page}>
         <MainBackground main_background={snow_background} img={background} isLoading={isLoading}/>
-        <AutoBot currentBotLevel={currentBotLevel} handleAlertModalShow={handleAlertModalShow}/>
+        <AutoBot currentBotLevel={currentBotLevel}/>
         <Stats onDamageModalShow={onDamageModalShow}/>
         <Balance />
         <TreeModule shop={shop} state={store.getState()}/>
         <DailyBonusIcon/>
-        <DailyBonusWindow handleAlertModalShow={handleAlertModalShow}/>
+        <DailyBonusWindow/>
         {isStatModalVisible && <BackButton onClick={handleButtonClick}/>}
         {isIntroModalVisible && <IntroModal handleIntroModalVisible={handleIntroModalVisible}/>}
-
       </div>
     </div>
   );

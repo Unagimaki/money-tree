@@ -28,14 +28,13 @@ import { isDevelopment } from './utils/config';
 import Snowfall from 'react-snowfall';
 
 export const WebApp = window.Telegram.WebApp
-// export const baseURL = process.env.REACT_APP_BASE_URL
-export const baseURL = 'moneytree-stage.extensi.one'
+export const baseURL = process.env.REACT_APP_BASE_URL
+// export const baseURL = 'moneytree.extensi.one'
 
 function App() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isStatModalVisible, setIsStatModalVisible] = useState({isVisible: false, type: ""});
   const [isFreeBoostModalVisible, setIsFreeBoostModalVisible] = useState({isVisible: false, type: "", id: ""});
-  const [isAlertModalVisible, setIsAlertModalVisible] = useState({isVisible: false, type: "", text: "", title: ""});
 
   const state = store.getState();
   const token = state.user.token;
@@ -51,6 +50,7 @@ function App() {
   const maxEnergy = useSelector((state) => state?.user?.player?.maxEnergy);
   const energy = useSelector((state) => state?.user?.player?.energy);
   const SOCKET_URL = `wss://${baseURL}/notification`;
+
   
   useEffect(() => {
     if (socketRef.current || !token) return;
@@ -86,51 +86,7 @@ function App() {
     };
   }, [token]);
 
-  const timeoutRef = useRef(null); // Используем useRef для хранения идентификатора таймера
 
-  const handleAlertModalShow = (title, text, type) => {
-    // Если уведомление уже видно, скрываем его
-    if (isAlertModalVisible.isVisible) {
-      setIsAlertModalVisible({ ...isAlertModalVisible, isVisible: false });
-    }
-
-    // Устанавливаем новое состояние уведомления
-    setIsAlertModalVisible({
-      title,
-      text,
-      type,
-      isVisible: true,
-    });
-
-    // Очищаем предыдущий таймер, если он существует
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-    }
-
-    // Устанавливаем новый таймер
-    timeoutRef.current = setTimeout(() => {
-      setIsAlertModalVisible((prevState) => ({
-        ...prevState,
-        isVisible: false,
-      }));
-    }, 3000);
-  };
-  const handleCloseAlert = () => {
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current); // Очищаем таймер при закрытии
-    }
-    setIsAlertModalVisible((prevState) => ({
-      ...prevState,
-      isVisible: false,
-    }));
-  };
-  useEffect(() => {
-    return () => {
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
-      }
-    };
-  }, []);
   const handleDamageStatModalShow = (type) => {
     if (currentUrl === PagesLinks.GAME_URL) return;
     setIsStatModalVisible({
@@ -195,8 +151,6 @@ function App() {
         {isTutorialActive && <Tutorial />}
         <Routes>
           <Route path={PagesLinks.BOOSTS_URL} element={<BoostsPage
-            handleCloseAlert={handleCloseAlert}
-            handleAlertModalShow={handleAlertModalShow}
             isFreeBoostModalVisible={isFreeBoostModalVisible.isVisible}
             handleFreeBoostModalShow={handleFreeBoostModalShow}
             navigate={navigate}
@@ -207,7 +161,6 @@ function App() {
             path={PagesLinks.GAME_URL}
             element={
               <GamePage
-                handleAlertModalShow={handleAlertModalShow}
                 onDamageModalShow={handleDamageStatModalShow}
                 navigate={navigate}
                 state={state}
@@ -216,7 +169,6 @@ function App() {
           />
           <Route path={PagesLinks.SHOP_URL} element={
               <ShopPage
-                handleAlertModalShow={handleAlertModalShow}
                 navigate={navigate}
                 state={state}
               />
@@ -226,7 +178,6 @@ function App() {
             path={PagesLinks.STATS_URL}
             element={
               <StatPage
-                handleAlertModalShow={handleAlertModalShow}
                 navigate={navigate}
                 state={state}
               />
@@ -236,7 +187,6 @@ function App() {
             path={PagesLinks.BONUS_URL}
             element={
               <OffersPage
-                handleAlertModalShow={handleAlertModalShow}
                 navigate={navigate}
                 state={state}
               />
@@ -246,7 +196,6 @@ function App() {
             path={PagesLinks.MAIN_URL}
             element={
               <MainPage
-                handleAlertModalShow={handleAlertModalShow}
                 isStatModalVisible={isStatModalVisible.isVisible}
                 onDamageModalShow={handleDamageStatModalShow}
                 state={state}
@@ -260,22 +209,13 @@ function App() {
           <Route path={PagesLinks.SEASON_URL} element={<SeasonEnd />} />
           <Route path="/" element={<LoaderPage />} />
         </Routes>
-
-        {isAlertModalVisible.isVisible && (
-          <Alert
-            handleCloseAlert={handleCloseAlert}
-            handleAlertModalShow={handleAlertModalShow}
-            title={isAlertModalVisible.title}
-            text={isAlertModalVisible.text}
-            type={isAlertModalVisible.type}
-          />
-        )}
         {currentUrl !== "/" && currentUrl !== PagesLinks.LOADING_URL && currentUrl !== PagesLinks.SEASON_URL && <FooterMenu />}
         {(currentUrl === PagesLinks.STATS_URL || currentUrl === PagesLinks.SEASON_URL) && <StatButton />}
-        {offerModalVisible && ( <OfferModal handleAlertModalShow={handleAlertModalShow} /> )}
+        {offerModalVisible && <OfferModal/> }
         {isStatModalVisible.isVisible && ( <StatModal onDamageModalShow={handleDamageStatModalShow} type={isStatModalVisible.type} /> )}
-        {isWalletModalVisible && ( <WithdrawalModal handleAlertModalShow={handleAlertModalShow} /> )}
-        {isFreeBoostModalVisible.isVisible && ( <FreeBoostModal handleAlertModalShow={handleAlertModalShow} id={isFreeBoostModalVisible.id} type={isFreeBoostModalVisible.type} handleFreeBoostModalShow={handleFreeBoostModalShow} /> )}
+        {isWalletModalVisible && <WithdrawalModal/> }
+        {isFreeBoostModalVisible.isVisible && <FreeBoostModal id={isFreeBoostModalVisible.id} type={isFreeBoostModalVisible.type} handleFreeBoostModalShow={handleFreeBoostModalShow} />}
+        <Alert/>
       </div>
     </TwaAnalyticsProvider>
   );

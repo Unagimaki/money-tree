@@ -3,7 +3,7 @@ import styles from './skinContainer.module.scss'
 import { SkinItem } from './SkinItem/SkinItem'
 import { SkinTitle } from './SkinTitle/SkinTitle'
 
-export const SkinContainer = ({ obj, handleAlertModalShow }) => {
+export const SkinContainer = ({ obj }) => {
   const playerReferralsCount = useSelector((state) => state.referrals.playerReferralsCount || 0)
   const token = useSelector((state) => state.user.token);
   const title = obj.shopItem.title;
@@ -34,7 +34,6 @@ export const SkinContainer = ({ obj, handleAlertModalShow }) => {
                 userBalance={balance}
                 fileId={shopItemLevel.media.fileId}
                 type={obj.shopItem.itemType}
-                handleAlertModalShow={handleAlertModalShow}
                 key={shopItemLevel.id}
               />
             );

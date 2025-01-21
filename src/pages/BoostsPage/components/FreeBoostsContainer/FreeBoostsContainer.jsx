@@ -3,10 +3,7 @@ import { BoostsTitle } from '../BoostsContainer/BoostsTitle/BoostsTitle'
 import { FreeBoostItem } from './FreeBoostItem/FreeBoostItem'
 import styles from './freeBoostsContainer.module.scss'
 
-export const FreeBoostsContainer = ({
-  handleAlertModalShow, 
-  handleFreeBoostModalShow,
-}) => {
+export const FreeBoostsContainer = ({handleFreeBoostModalShow}) => {
   const boosts = useSelector((state) => state.freeBoosts.freeBoosts);
 
   return (
@@ -16,7 +13,6 @@ export const FreeBoostsContainer = ({
         boosts.map((item, index) => {
           return (
             <FreeBoostItem
-              handleAlertModalShow={handleAlertModalShow}
               handleFreeBoostModalShow={handleFreeBoostModalShow}
               title={item.title}
               type={item.boostType}

@@ -1,15 +1,16 @@
 import styles from './autoBot.module.scss'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
-import { actionSetAutobotLastLaunchTime, actionSetAutobotLauchInfo, actionSetAutobotReadyToCollect, actionSetAutobotReadyToLaunch, actionSetAutobotStart, actionSetAutobotStop } from '../../../../state/reducers/autobotReducer/action'
+import { actionSetAutobotLastLaunchTime, actionSetAutobotLauchInfo, actionSetAutobotReadyToCollect, actionSetAutobotReadyToLaunch, actionSetAutobotStop } from '../../../../state/reducers/autobotReducer/action'
 import { convertTimeToIso } from '../../helpers/convertTimeToIso'
 import { convertMillisecondsToTime } from '../../helpers/convertMillisecondsToTime'
 import { collectMoneyFromBot } from '../../services/collectMoneyFromBot'
 import { autobotLaunch } from '../../services/autobotLaunch'
 import { getData } from '../../../../services/getData'
-import { actionIncreaseUserBalance, actionSetUserBalance } from '../../../../state/reducers/userReducer/actions'
+import { actionIncreaseUserBalance } from '../../../../state/reducers/userReducer/actions'
+import { actionShowModal } from '../../../../state/reducers/alertModalReducer/alertModalReducer'
 
-export const AutoBot = ({ currentBotLevel, handleAlertModalShow }) => {
+export const AutoBot = ({ currentBotLevel }) => {
   const [time, setTime] = useState({ hours: 0, minutes: 0, seconds: 0 });
   const isInitialValue =
     time.hours === 0 && time.minutes === 0 && time.seconds === 0;
@@ -42,12 +43,12 @@ export const AutoBot = ({ currentBotLevel, handleAlertModalShow }) => {
         getData(token, "auto-bot/player").then((res) => {
           dispatch(actionSetAutobotLauchInfo(res.data));
         });
-        handleAlertModalShow("Profit collected", '');
+        dispatch(actionShowModal('Лифы собраны'))
         dispatch(actionIncreaseUserBalance(res.data.profit));
         dispatch(actionSetAutobotReadyToLaunch());
       })
       .catch((e) => {
-        console.log("Ошибка при сборе: " + e);
+        dispatch(actionShowModal('Ошибка'))
       });
   };
 
