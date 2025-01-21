@@ -10,20 +10,20 @@ export const FooterMenu = () => {
     const currentUrl = useLocation().pathname
     const currentStep = useSelector((state) => state.tutorial.currentStep);
     const isHintActive = useSelector((state) => state.tutorial.isHintVisible); 
+     
+    const tree_blue_img = require("./assets/tree_blue_img.png");
     const boosts_img = require("./assets/boosts_icon.png");
     const shop_img = require("./assets/basket_icon.png");
     const stat_img = require("./assets/medal_icon.png");
     const bonus_img = require("./assets/star_icon.png");
     const game_yellow_img = require("./assets/game_yellow_img.png");
     const game_blue_img = require("./assets/game_blue_img.png");
-    
-
+  
     const setMainButtonBackground = () => {
-      if (currentUrl !== PagesLinks.GAME_URL) {
-        return game_blue_img
-      } else {
-        return game_yellow_img
-      }
+      if (currentUrl !== PagesLinks.GAME_URL && currentUrl !== PagesLinks.MAIN_URL) {
+        return tree_blue_img
+      } else if (currentUrl === PagesLinks.GAME_URL) { return game_yellow_img } 
+      return game_blue_img
     }
 
     const zIndex = (currentStep === 3 || currentStep === 5) ? 98 : 5
