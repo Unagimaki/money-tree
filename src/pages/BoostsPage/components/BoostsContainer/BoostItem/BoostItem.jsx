@@ -109,7 +109,7 @@ export const BoostItem = ({
         </div>
         {currentLevel !== 10 && (
           <div className={styles.item_text_info}>
-            <div>+{level}</div>
+            <div>{type !== 'AUTOBOT' && '+'}{level}</div>
             <img
               src={type === "AUTOBOT" ? money_icon : setImage()}
               alt="imgURL"

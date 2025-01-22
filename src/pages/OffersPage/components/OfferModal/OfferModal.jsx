@@ -98,7 +98,7 @@ export const OfferModal = () => {
 
         <div className={styles.container_wrapper_title}>{title}</div>
         <div className={styles.container_wrapper_text}>{text}</div>
-        {terms !== "_" && terms !== "terms" && (
+        {terms !== "_" && terms !== "terms" && terms && (
           <div className={styles.container_wrapper_terms}>
             {terms.replace(/\/n\//g, '\n').split('\n').map((line, index) => (
               <p key={index}>{line}</p>

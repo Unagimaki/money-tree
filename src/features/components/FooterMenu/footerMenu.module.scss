@@ -22,3 +22,13 @@
     left: 4.27vw;
     border-radius: $size8px;
 }
+.background_video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: inherit;
+    height: inherit;
+    object-fit: cover;
+    z-index: 2;
+    border-radius: 50%;
+}

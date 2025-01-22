@@ -12,8 +12,9 @@ import { actionShowModal } from '../../../../state/reducers/alertModalReducer/al
 
 export const AutoBot = ({ currentBotLevel }) => {
   const [time, setTime] = useState({ hours: 0, minutes: 0, seconds: 0 });
-  const isInitialValue =
-    time.hours === 0 && time.minutes === 0 && time.seconds === 0;
+  const [isLoading, setIsLoading] = useState(true)
+  const botSkinLevel = useSelector(state => state.shop).find(item => item?.shopItem?.itemType === 'AUTOBOT')?.currentLevel
+  const isInitialValue = time.hours === 0 && time.minutes === 0 && time.seconds === 0;
 
   const dispatch = useDispatch();
   const lvl1 = require("../../assets/bot/autobot-snow.png");
@@ -23,19 +24,12 @@ export const AutoBot = ({ currentBotLevel }) => {
 
   const bot = useSelector((state) => state.bot);
   const token = useSelector((state) => state.user.token);
-  const lastLauch = useSelector(
-    (state) => state.bot.launch?.playerAutoBot?.lastShutdownTime
-  );
+  const lastLauch = useSelector((state) => state.bot.launch?.playerAutoBot?.lastShutdownTime);
   const botLevel = useSelector((state) => state.bot.autoBots[0].currentLevel);
-  const charges = useSelector(
-    (state) => state.bot.launch?.playerAutoBot?.charges
-  );
-  const isActive = useSelector(
-    (state) => state.bot.launch?.playerAutoBot?.isActive
-  );
-  const canCollect = useSelector(
-    (state) => state.bot.launch?.playerAutoBot?.canCollect
-  );
+  
+  const charges = useSelector((state) => state.bot.launch?.playerAutoBot?.charges);
+  const isActive = useSelector((state) => state.bot.launch?.playerAutoBot?.isActive);
+  const canCollect = useSelector((state) => state.bot.launch?.playerAutoBot?.canCollect);
   
   const collectMoneyFromAutobot = () => {
     collectMoneyFromBot(token)
@@ -92,6 +86,13 @@ export const AutoBot = ({ currentBotLevel }) => {
   return (
     <div className={styles.bot}>
       <img className={styles.bot_dots} src={dots} alt="dots" />
+      {
+        isLoading &&
+        <button className={styles.bot_button}>
+          <div className={styles.bot_button_loader}/>
+        </button>
+
+      }
       {(charges || botLevel) && !isActive && !canCollect && (
         <button onClick={lauchAutobot} className={styles.bot_button}>
           Фарм
@@ -114,7 +115,7 @@ export const AutoBot = ({ currentBotLevel }) => {
       {!isActive && !canCollect && charges === 0 && (
         <button className={styles.bot_button}>Приходи завтра</button>
       )}
-      <img src={lvl1} alt="bot" />
+      <img src={botSkinLevel === 2 ? lvl2 : lvl1} alt="bot" />
     </div>
   );
 };
