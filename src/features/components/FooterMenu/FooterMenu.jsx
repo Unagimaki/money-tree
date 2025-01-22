@@ -53,7 +53,7 @@ export const FooterMenu = () => {
         className={styles.main_button}
         style={{ zIndex, backgroundImage: `url(${setMainButtonBackground()})` }}
       >
-        {
+        {/* {
           currentUrl === PagesLinks.MAIN_URL &&
           <video style={{border: 'min(1.27vw, 4.75px) solid #1492A5'}} autoPlay loop muted className={styles.background_video}>
             <source src={leaf_fall_blue} type="video/mp4" />
@@ -66,7 +66,7 @@ export const FooterMenu = () => {
             <source src={leaf_fall_orange} type="video/mp4" />
              Ваш браузер не поддерживает видео.
             </video>
-        }
+        } */}
       </div>
     </div>
   )

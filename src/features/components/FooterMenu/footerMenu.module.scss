@@ -26,8 +26,8 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: inherit;
-    height: inherit;
+    width: min(18.67vw, 70px);
+    height: min(18.67vw, 70px);
     object-fit: cover;
     z-index: -1;
     border-radius: 50%;
