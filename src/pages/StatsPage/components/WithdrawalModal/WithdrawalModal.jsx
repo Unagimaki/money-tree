@@ -52,7 +52,7 @@ export const WithdrawalModal = () => {
   const currentIsConnectedStatus = tonConnectUI.connected;
   const walletTon = useTonWallet();
   const { state, open, closeModal } = useTonConnectModal();
- 
+   
   useEffect(() => { setTonWalletAddress(currentAccount?.address) }, [
     currentIsConnectedStatus,
     currentWalletInfo,
@@ -155,11 +155,11 @@ export const WithdrawalModal = () => {
         </button>
         <img className={styles.container_wrapper_wallet_img} src={wallet} alt="wallet"/>
         <div className={styles.container_wrapper_title}>
-          {tonWalletAddress ? ( "Ваш кошелек подключен" ) : ( <>Подключите свой <br /> кошелек</> )}
+          {address ? ( "Ваш кошелек подключен" ) : ( <>Подключите свой <br /> кошелек</> )}
         </div>
 
         {
-        tonWalletAddress ? (
+        address ? (
           <div className={styles.container_wrapper_wallet_panel}>
             <button onClick={handleDisconnectWallet} className={styles.container_wrapper_wallet_panel_remove_button}           >
               <img src={close_wallet_button} alt="close_wallet_button"/>
@@ -168,7 +168,7 @@ export const WithdrawalModal = () => {
               <div className={styles.container_wrapper_wallet_panel_info_adress}>
                 <img className={ styles.container_wrapper_wallet_panel_info_adress_wallet_img } src={wallet_icon} alt="wallet_icon"/>
                 <div className={ styles.container_wrapper_wallet_panel_info_adress_stroke }>
-                  {formatString(tonWalletAddress)}
+                  {formatString(address)}
                 </div>
               </div>
               <img className={ styles.container_wrapper_wallet_panel_info_wallet_copy_button } src={copy_icon} alt="copy_icon" />
@@ -182,7 +182,7 @@ export const WithdrawalModal = () => {
         )
         }
         {
-          tonWalletAddress && 
+          address && 
           <button
             onClick={handleWithdrawal}
             className={styles.container_wrapper_button}
@@ -194,7 +194,7 @@ export const WithdrawalModal = () => {
         }
         <WithdrawalBalance/>
         {
-          tonWalletAddress ?
+          address ?
           <WithDrawalModalInfo/> :
 
           <div className={styles.container_wrapper_text}>
