@@ -59,7 +59,9 @@ export const FooterMenu = () => {
           currentUrl === PagesLinks.MAIN_URL
             ? navigate(PagesLinks.GAME_URL)
             : navigate(PagesLinks.MAIN_URL)
-          } style={{border: 'min(1.27vw, 4.75px) solid #1492A5'}} autoPlay loop muted className={styles.main_button}>
+          } style={{border: 'min(1.27vw, 4.75px) solid #1492A5'}} autoPlay loop muted
+            onLoadedData={() => console.log('loaded')} // Вызываем при загрузке видео
+            className={styles.main_video}>
             <source src={leaf_fall_blue} type="video/mp4" />
             Ваш браузер не поддерживает видео.
           </video>
@@ -72,7 +74,7 @@ export const FooterMenu = () => {
               ? navigate(PagesLinks.GAME_URL)
               : navigate(PagesLinks.MAIN_URL)
               }
-            style={{border: 'min(1.27vw, 4.75px) solid #F9F117'}} autoPlay loop muted className={styles.main_button}>
+            style={{border: 'min(1.27vw, 4.75px) solid #F9F117'}} autoPlay loop muted className={styles.main_video}>
             <source src={leaf_fall_orange} type="video/mp4" />
              Ваш браузер не поддерживает видео.
           </video>

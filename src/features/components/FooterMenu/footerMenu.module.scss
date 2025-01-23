@@ -23,16 +23,22 @@
     left: 4.27vw;
     border-radius: $size8px;
 }
-.background_video {
-    position: absolute;
-    top: 0;
-    left: 0;
+.main_video {
+    position: fixed;
+    bottom: 5.2vw;
+    left: 40.53vw;
     width: min(18.67vw, 70px);
+    /* Ограничиваем ширину видео */
     height: min(18.67vw, 70px);
-    object-fit: cover;
-    z-index: 5;
+    /* Ограничиваем высоту видео */
     border-radius: 50%;
+    /* Круглая форма для видео */
+    background-size: contain;
+    z-index: 5;
+    /* Тот же z-index, чтобы видео не перекрывало другие элементы */
+    border: min(1.27vw, 4.75px) solid #1492A5;
 }
+
 
 @keyframes opacity {
     0% {
