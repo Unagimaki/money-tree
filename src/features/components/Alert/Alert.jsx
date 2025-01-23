@@ -36,7 +36,7 @@ export const Alert = () => {
 
   if (!isVisible && !isExiting) return null; // Компонент исчезает только после завершения анимации
 
-  // Класс с анимацией исчезновения, если компонент не видим
+  // Определяем класс для анимации отображения/скрытия
   const containerClass = isExiting ? `${styles.container} ${styles.container_hide}` : styles.container;
 
   return (

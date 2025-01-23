@@ -24,8 +24,7 @@ export const FooterMenu = () => {
   const setMainButtonBackground = () => {
     if (currentUrl !== PagesLinks.GAME_URL && currentUrl !== PagesLinks.MAIN_URL) {
       return tree_blue_img
-    } else if (currentUrl === PagesLinks.GAME_URL) { return game_yellow_img } 
-    return game_blue_img
+    }
   }
 
   const zIndex = (currentStep === 3 || currentStep === 5) ? 98 : 5
@@ -52,22 +51,32 @@ export const FooterMenu = () => {
         }
         className={styles.main_button}
         style={{ zIndex, backgroundImage: `url(${setMainButtonBackground()})` }}
-      >
-        {/* {
+      />
+        {
           currentUrl === PagesLinks.MAIN_URL &&
-          <video style={{border: 'min(1.27vw, 4.75px) solid #1492A5'}} autoPlay loop muted className={styles.background_video}>
+          <video
+          onClick={() =>
+          currentUrl === PagesLinks.MAIN_URL
+            ? navigate(PagesLinks.GAME_URL)
+            : navigate(PagesLinks.MAIN_URL)
+          } style={{border: 'min(1.27vw, 4.75px) solid #1492A5'}} autoPlay loop muted className={styles.main_button}>
             <source src={leaf_fall_blue} type="video/mp4" />
             Ваш браузер не поддерживает видео.
           </video>
         }
         {
           currentUrl === PagesLinks.GAME_URL &&
-          <video style={{border: 'min(1.27vw, 4.75px) solid #F9F117'}} autoPlay loop muted className={styles.background_video}>
+          <video
+            onClick={() =>
+              currentUrl === PagesLinks.MAIN_URL
+              ? navigate(PagesLinks.GAME_URL)
+              : navigate(PagesLinks.MAIN_URL)
+              }
+            style={{border: 'min(1.27vw, 4.75px) solid #F9F117'}} autoPlay loop muted className={styles.main_button}>
             <source src={leaf_fall_orange} type="video/mp4" />
              Ваш браузер не поддерживает видео.
-            </video>
-        } */}
-      </div>
+          </video>
+        }
     </div>
   )
 }
