@@ -31,8 +31,6 @@ export const FreeBoostModal = ({handleFreeBoostModalShow, id, type }) => {
           handleFreeBoostModalShow();
           dispatch(actionShowModal("Энергия восполнена"))
         } else {
-          dispatch(actionShowModal('Ведутся технические работы'))
-          return
           dispatch(actionSetDamageBoostActive(true));
           dispatch(actionSetUserDamage(damage * 10));
           navigate(PagesLinks.GAME_URL);

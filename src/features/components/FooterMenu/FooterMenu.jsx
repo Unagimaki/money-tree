@@ -2,12 +2,10 @@ import { useLocation, useNavigate } from "react-router-dom"
 import FooterMenuButton from "./FooterMenuButton/FooterMenuButton"
 import styles from './footerMenu.module.scss'
 import { PagesLinks } from "../../../shared/PagesLinks"
-import { useDispatch, useSelector } from "react-redux"
+import { useSelector } from "react-redux"
 import { FooterHintButton } from "./FooterHintButton/FooterHintButton"
-import { actionShowModal } from "../../../state/reducers/alertModalReducer/alertModalReducer"
 
 export const FooterMenu = () => {
-  const dispatch = useDispatch()
   const navigate = useNavigate()
   const currentUrl = useLocation().pathname
   const currentStep = useSelector((state) => state.tutorial.currentStep);
@@ -49,7 +47,7 @@ export const FooterMenu = () => {
       <div
         onClick={() =>
           currentUrl === PagesLinks.MAIN_URL
-            ? dispatch(actionShowModal('Ведутся технические работы'))
+            ? navigate(PagesLinks.GAME_URL)
             : navigate(PagesLinks.MAIN_URL)
         }
         className={styles.main_button}
