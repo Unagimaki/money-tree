@@ -40,7 +40,7 @@ export const Alert = () => {
   const containerClass = isExiting ? `${styles.container} ${styles.container_hide}` : styles.container;
 
   return (
-    <div className={containerClass}>
+    <div style={{display: !isVisible && !isExiting && 'none'}} className={containerClass}>
       <div className={styles.container_inner}>
         <img className={styles.container_inner_icon} src={money_icon} alt="money_icon"/>
         <div className={styles.container_inner_text}>
