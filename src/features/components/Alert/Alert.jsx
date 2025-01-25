@@ -11,36 +11,16 @@ export const Alert = () => {
   const text = useSelector(state => state.alert.text);
   const title = useSelector(state => state.alert.title);
 
-  const [isExiting, setIsExiting] = useState(false); // Состояние для отслеживания выхода компонента
-
   const handleCloseAlert = () => {
-    setIsExiting(true); // Запускаем анимацию исчезновения
-    setTimeout(() => {
-      dispatch(actionHideModal()); // Прячем компонент после окончания анимации
-    }, 500); // Время анимации (должно совпадать с длительностью анимации в SCSS)
-  };
+    dispatch(actionHideModal()); // Прячем компонент после окончания анимации
+  }
 
-  useEffect(() => {
-    if (isVisible) {
-      setIsExiting(false); // Когда компонент снова видим, сбрасываем состояние
-
-      // Запускаем таймер, чтобы компонент сам скрылся через 3 секунды
-      const timer = setTimeout(() => {
-        handleCloseAlert();
-      }, 3000); // Таймер на 3 секунды
-
-      // Очищаем таймер, если компонент снова стал невидимым
-      return () => clearTimeout(timer);
-    }
-  }, [isVisible]);
-
-  if (!isVisible && !isExiting) return null; // Компонент исчезает только после завершения анимации
+  if (!isVisible) return null; // Компонент исчезает только после завершения анимации
 
   // Определяем класс для анимации отображения/скрытия
-  const containerClass = isExiting ? `${styles.container} ${styles.container_hide}` : styles.container;
 
   return (
-    <div style={{display: !isVisible && !isExiting && 'none'}} className={containerClass}>
+    <div className={styles.container}>
       <div className={styles.container_inner}>
         <img className={styles.container_inner_icon} src={money_icon} alt="money_icon"/>
         <div className={styles.container_inner_text}>

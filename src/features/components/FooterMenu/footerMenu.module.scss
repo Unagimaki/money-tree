@@ -37,6 +37,7 @@
     z-index: 5;
     /* Тот же z-index, чтобы видео не перекрывало другие элементы */
     border: min(1.27vw, 4.75px) solid #1492A5;
+    animation: opacity 1s linear;
 }
 
 
