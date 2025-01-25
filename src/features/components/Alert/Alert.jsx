@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './alert.module.scss';
 import { actionHideModal } from '../../../state/reducers/alertModalReducer/alertModalReducer';
-import { useEffect, useState } from 'react';
 
 export const Alert = () => {
   const money_icon = require("./assets/money_icon.png");
@@ -12,12 +11,11 @@ export const Alert = () => {
   const title = useSelector(state => state.alert.title);
 
   const handleCloseAlert = () => {
-    dispatch(actionHideModal()); // Прячем компонент после окончания анимации
+    dispatch(actionHideModal())
   }
 
-  if (!isVisible) return null; // Компонент исчезает только после завершения анимации
+  if (!isVisible) return null; 
 
-  // Определяем класс для анимации отображения/скрытия
 
   return (
     <div className={styles.container}>
