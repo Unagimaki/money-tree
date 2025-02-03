@@ -8,17 +8,17 @@
     &_title {
         text-align: center;
         font-family: $MBold;
-        font-size: min(6.93vw, 26px);
+        font-size: min(3.2vh, 26px);
         margin-bottom: $size18px;
     }
     &_inner {
         display: flex;
         justify-content: space-between;
         &_first {
-            font-size: $size16px;
+            font-size: min(1.97vh, 16px);
         }
         &_second {
-            font-size: min(2.67vw, 10px);
+            font-size: min(1.23vh, 10px);
         }
     }
 }

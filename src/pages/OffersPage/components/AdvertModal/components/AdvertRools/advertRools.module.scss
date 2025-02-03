@@ -1,22 +1,21 @@
 @import '../../../../../../assets/styles/vars';
 
 .container {
-    margin-bottom: $size24px;
     &_title {
         text-align: center;
         font-family: $MBold;
-        font-size: min(6.93vw, 26px);
+        font-size: min(3.2vh, 26px);
         margin-bottom: $size18px;
     }
     &_list {
         display: flex;
         flex-direction: column;
         font-family: $MMedium;
-        font-size: $size16px;
+        font-size: min(1.97vh, 16px);
         list-style-type: decimal;
         line-height: 1;
     li {
-        margin-bottom: $size8px;
+        margin-bottom: min(0.99vh, 8px);
     }
     li:nth-last-child(2),
     li:nth-last-child(1) {
