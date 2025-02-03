@@ -1,0 +1,43 @@
+@import '../../../../assets/styles/vars';
+
+.container {
+    width: 100%;
+    height: min(19.47vw, 73px);
+    display: flex;
+    justify-content: center;
+    &_inner {
+        height: inherit;
+        width: $size343px;
+        background: linear-gradient(to right, #2F4422, #171E17);border-top: none;
+        border-left: min(1.07vw, 2px) solid $green;
+        border-right: min(1.07vw, 2px) solid $green;
+        border-bottom: none;
+        border-radius: $size8px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        &_img {
+            position: absolute;
+            width: inherit;
+        }
+        &_title {
+            color: #fff;
+            font-family: $MMedium;
+            font-size: $size16px;
+            margin-bottom: 1%;
+        }
+        &_subtitle {
+            color: #fff;
+            font-family: $MMedium;
+            font-size: min(1.87vw, 7px);
+            margin-bottom: $size8px;
+        }
+        &_text {
+            color: $green;
+            font-family: $MMedium;
+            font-size: min(2.67vw, 10px);
+        }
+    }
+}

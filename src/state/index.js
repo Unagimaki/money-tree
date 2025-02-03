@@ -14,6 +14,7 @@ import { tutorialReducer } from "./reducers/tutorialReducer/tutorialReducer";
 import { leagueReducer } from "./reducers/leagueReducer/leagueReducer";
 import { dailyBonusReducer } from "./reducers/dailyBonusReducer/dailyBonusReducer";
 import { alertModalReducer } from "./reducers/alertModalReducer/alertModalReducer";
+import { advertModalReducer } from "./reducers/advertModalReducer/advertModalReducer";
 
 const rootReducer = combineReducers({
   user: userReducer,
@@ -30,7 +31,8 @@ const rootReducer = combineReducers({
   tutorial: tutorialReducer,
   league: leagueReducer,
   dailyBonus: dailyBonusReducer,
-  alert: alertModalReducer
+  alert: alertModalReducer,
+  advert: advertModalReducer
 });
 
 export const store = createStore(rootReducer)

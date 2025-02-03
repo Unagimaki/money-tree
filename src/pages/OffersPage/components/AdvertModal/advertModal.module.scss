@@ -1,0 +1,80 @@
+@import '../../../../assets//styles/vars';
+
+.container {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    z-index: 99;
+    top: 0;
+    left: 0;
+    background: $dark_gradient;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    border-top-left-radius: min(8.53vw, 32px);
+    border-top-right-radius: min(8.53vw, 32px);
+    animation: enter 1s ease;
+    transition: opacity 1s ease, transform 1s ease;
+    &.hide {
+            opacity: 0;
+            transform: translateY(100vh);
+        }
+    &_chips {
+        position: absolute;
+        width: 100%;
+        max-width: 375px;
+    }
+    &_orange {
+        position: absolute;
+        max-width: 375px;
+    }
+    &_inner {
+        background-image: url('../../assets/chips.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        padding-top: min(29.6vw, 111px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        max-width: 375px;
+        border-top-left-radius: min(8.53vw, 32px);
+        border-top-right-radius: min(8.53vw, 32px);
+        padding-left: $size16px;
+        padding-right: $size16px;
+        &_logo {
+            width: min(59.73vw, 224px);
+            margin-bottom: min(15.2vw, 57px);
+            z-index: -1;
+        }
+        &_button {
+            width: 100%;
+            height: min(15.47vw, 58px);
+            background-color: $green;
+            color: #000;
+            border-radius: $size12px;
+            font-size: $size16px;
+            font-family: $MBold;
+            margin-top: $size14px;
+        }
+        &_close {
+            position: absolute;
+            width: min(8.53vw, 32px);
+            height: min(8.53vw, 32px);
+            top: 2%;
+            right: 5%;
+        }
+    }
+
+}
+
+@keyframes enter {
+    0% {
+        opacity: 0;
+        transform: translateY(100vh);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(0vh);
+    }
+}

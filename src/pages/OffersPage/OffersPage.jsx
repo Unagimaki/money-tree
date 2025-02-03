@@ -6,6 +6,7 @@ import { Balance } from '../../features/components/Balance/Balance'
 import { BackButton } from '@vkruglikov/react-telegram-web-app'
 import { useDispatch, useSelector } from 'react-redux'
 import { actionSetOfferModalVisible } from '../../state/reducers/offersReducer/actions'
+import { Advert } from './components/Advert/Advert'
 
 
 const OffersPage = ({navigate}) => {
@@ -24,6 +25,7 @@ const OffersPage = ({navigate}) => {
             <Balance top={'min(11.73vw, 44px'}/>
             <InviteInfo/>
             <InviteButtons/>
+            <Advert/>
             <TaskContainer />
             <BackButton onClick={handleBackButtonClick}/>
         </div>

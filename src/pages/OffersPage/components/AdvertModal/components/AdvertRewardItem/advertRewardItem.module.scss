@@ -1,0 +1,17 @@
+@import '../../../../../../assets/styles/vars';
+
+.container {
+    display: flex;
+    align-items: center;
+    gap: 0.1vw;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    &_count {
+        span {
+            font-weight: bold;
+        }
+    }
+    img {
+        width: min(4.8vw, 18px);
+    }
+}

@@ -26,6 +26,7 @@ import { TwaAnalyticsProvider } from "@tonsolutions/telemetree-react";
 import OffersPage from './pages/OffersPage/OffersPage';
 import { isDevelopment } from './utils/config';
 import Snowfall from 'react-snowfall';
+import { AdvertModal } from './pages/OffersPage/components/AdvertModal/AdvertModal';
 
 export const WebApp = window.Telegram.WebApp
 export const baseURL = isDevelopment ? 'moneytree-stage.extensi.one' : process.env.REACT_APP_BASE_URL
@@ -45,7 +46,7 @@ function App() {
   const offerModalVisible = useSelector((state) => state.offers.isVisible);
   const isTutorialActive = useSelector((state) => state.tutorial.isTutorialIsActive);
   const regeneration = useSelector((state) => state?.user?.player?.regeneration);
-
+  const isAdvertModalVisible = useSelector(state => state.advert.isVisible)
   const maxEnergy = useSelector((state) => state?.user?.player?.maxEnergy);
   const energy = useSelector((state) => state?.user?.player?.energy);
   const SOCKET_URL = `wss://${baseURL}/notification`;
@@ -215,6 +216,7 @@ function App() {
         {isWalletModalVisible && <WithdrawalModal/> }
         {isFreeBoostModalVisible.isVisible && <FreeBoostModal id={isFreeBoostModalVisible.id} type={isFreeBoostModalVisible.type} handleFreeBoostModalShow={handleFreeBoostModalShow} />}
         <Alert/>
+        {isAdvertModalVisible && <AdvertModal/>}        
       </div>
     </TwaAnalyticsProvider>
   );
