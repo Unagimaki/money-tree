@@ -5,7 +5,7 @@ import { baseURL } from '../App';
 
 let playerData = null;
 
-const example = {
+export const example = {
 	tgId: '123456789',
 	isPremium: true,
 	userName: 'johndoe',

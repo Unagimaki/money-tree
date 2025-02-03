@@ -16,6 +16,7 @@
         line-height: 1;
     li {
         margin-bottom: min(0.99vh, 8px);
+        font-family: $MRegular;
     }
     li:nth-last-child(2),
     li:nth-last-child(1) {
