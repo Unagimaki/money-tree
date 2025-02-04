@@ -15,10 +15,10 @@
         display: flex;
         justify-content: space-between;
         &_first {
-            font-size: min(1.97vh, 16px);
+            font-size: $size12px;
         }
         &_second {
-            font-size: min(1.23vh, 10px);
+            font-size: $size12px;
         }
     }
 }

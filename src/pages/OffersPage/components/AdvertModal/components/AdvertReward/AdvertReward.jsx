@@ -14,10 +14,10 @@ export const AdvertReward = () => {
                     <AdvertRewardItem place={'5.'} count={10} type={'млн'} color={'#8CDB4E'}/>
                 </div>
                 <div className={styles.container_inner_second}>
-                    <AdvertRewardItem place={'6-100'} count={5} type={'млн'}/>
-                    <AdvertRewardItem place={'101-500'} count={1} type={'млн'}/>
-                    <AdvertRewardItem place={'501-1000'} count={500} type={'тыс'}/>
-                    <AdvertRewardItem place={'1001+'} count={100} type={'тыс'}/>
+                    <AdvertRewardItem place={'6-100'} count={5} type={'млн'} color={'#8CDB4E'}/>
+                    <AdvertRewardItem place={'101-500'} count={1} type={'млн'} color={'#8CDB4E'}/>
+                    <AdvertRewardItem place={'501-1000'} count={500} type={'тыс'} color={'#8CDB4E'}/>
+                    <AdvertRewardItem place={'1001+'} count={100} type={'тыс'} color={'#8CDB4E'}/>
                 </div>
             </div>
         </div>
