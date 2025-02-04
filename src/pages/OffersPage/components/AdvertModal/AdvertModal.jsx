@@ -30,7 +30,7 @@ export const AdvertModal = () => {
 
     const handleHideAdvertModal = () => {
         setIsHiding(true)
-        setTimeout(() => { dispatch(actionHideAdvertModal()) }, 1000)
+        setTimeout(() => { dispatch(actionHideAdvertModal()) }, 500)
     }
 
     useEffect(() => {
@@ -42,18 +42,12 @@ export const AdvertModal = () => {
     }, [status])
 
     useEffect(() => {
-        // проверка статуса
         checkStatus(initData)
         .then((res) => {
             if (res.data.is_bind) {
                 setStatus(BIND_STATUS)
-                // если привязан, проверяем, сделал ли ставку
                 checkBet(initData)
-                .then(res => {
-                    if (res.data.count > 0) {
-                        setStatus(MADE_A_BET_STATUS)
-                    }
-                })
+                .then(res => { if (res.data.count > 0) setStatus(MADE_A_BET_STATUS) })
             }
         })
         .catch(e => console.log(e))
@@ -63,12 +57,8 @@ export const AdvertModal = () => {
     const linkAccount = () => {
         setIsLoading(true)
         createWlUrl(initData)
-        .then(() => {
-            setStatus(BIND_STATUS)
-        })
-        .finally(() => {
-            setIsLoading(false)
-        })
+        .then((res) => window.location.href = res.data)
+        .finally(() => setIsLoading(false))
     }
 
     return(
@@ -76,11 +66,13 @@ export const AdvertModal = () => {
             <img className={styles.container_orange} src={orange} alt="orange"/>
             <div className={styles.container_inner}>
                 <img className={styles.container_inner_logo} src={logo} alt="logo"/>
-                <AdvertRools rules={data}/>
-                <AdvertReward/>
-                <button style={{opacity: isLoading || BIND_STATUS ? 0.6 : 1}} onClick={linkAccount} disabled={isLoading} className={styles.container_inner_button}>
-                    {status === BIND_STATUS ? 'Аккаунт привязан' : 'Привязать аккаунт'}                    
+                <div className={styles.container_inner_info}>
+                    <AdvertRools rules={data}/>
+                    <AdvertReward/>
+                    <button style={{opacity: (isLoading || status === BIND_STATUS) ? 0.6 : 1}} onClick={linkAccount} disabled={isLoading} className={styles.container_inner_button}>
+                        {status === BIND_STATUS ? 'Аккаунт привязан' : 'Привязать аккаунт'}                    
                     </button>
+                </div>
                 <button onClick={handleHideAdvertModal} className={styles.container_inner_close}>
                     <img src={close} alt="close" />
                 </button>

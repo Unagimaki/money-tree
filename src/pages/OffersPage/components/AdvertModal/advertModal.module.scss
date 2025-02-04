@@ -13,36 +13,39 @@
     justify-content: center;
     border-top-left-radius: min(8.53vw, 32px);
     border-top-right-radius: min(8.53vw, 32px);
-    animation: enter 1s ease;
-    transition: opacity 1s ease, transform 1s ease;
+    animation: enter .5s ease;
+    transition: opacity .5s ease, transform .5s ease;
     &.hide {
-            opacity: 0;
-            transform: translateY(100vh);
-        }
-    &_chips {
-        position: absolute;
-        width: 100%;
-        max-width: 375px;
+        opacity: 0;
+        transform: translateY(100vh);
     }
     &_orange {
         position: absolute;
-        max-width: 375px;
+        width: 49.87vw;
+        top: 4.8vh;
+    }
+    &_chips {
+        position: fixed;
+        width: min(136.53vw, 512px);
     }
     &_inner {
         background-image: url('../../assets/chips.png');
-        background-size: contain;
+        background-size: 134%;
+        background-position-x: 50%;
+        background-position-y: -17%;
         background-repeat: no-repeat;
         padding-top: min(13.67vh, 111px);
-        padding-bottom: min(5.54vh, 45px);
         display: flex;
         flex-direction: column;
         align-items: center;
         width: 100%;
-        max-width: 375px;
         border-top-left-radius: min(8.53vw, 32px);
         border-top-right-radius: min(8.53vw, 32px);
-        padding-left: $size16px;
-        padding-right: $size16px;
+        &_info {
+            width: 100%;
+            max-width: 375px;
+            padding: 0 $size16px;
+        }
         &_logo {
             width: min(59.73vw, 224px);
             margin-bottom: min(7.02vh, 57px);
@@ -56,7 +59,7 @@
             border-radius: $size12px;
             font-size: min(1.97vh, 16px);
             font-family: $MBold;
-            margin-top: $size14px;
+            margin-top: min(3.45vh, 812px);
             padding-top: min(2.09vh, 17px);
             padding-bottom: min(2.09vh, 17px);
         }
