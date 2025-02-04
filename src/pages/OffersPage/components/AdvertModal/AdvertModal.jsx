@@ -58,7 +58,7 @@ export const AdvertModal = () => {
     const linkAccount = () => {
         setIsLoading(true)
         createWlUrl(initData)
-        .then((res) => WebApp.openTelegramLink(res.data))
+        .then((res) => WebApp.openLink(res.data))
         .finally(() => setTimeout(() => setIsLoading(false), 1000))
     }
 
