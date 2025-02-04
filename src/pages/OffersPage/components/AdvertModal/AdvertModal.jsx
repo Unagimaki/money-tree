@@ -10,6 +10,7 @@ import { isDevelopment } from '../../../../utils/config'
 import { checkBet } from './service/checkBet'
 import { rules } from './service/data'
 import { createWlUrl } from './service/createWlUrl'
+import { WebApp } from '../../../../App'
 
 export const AdvertModal = () => {
     const logo = require('../../assets/winline_rect.png')
@@ -43,7 +44,7 @@ export const AdvertModal = () => {
 
     useEffect(() => {
         checkStatus(initData)
-        .then((res) => {
+        .then((res) => {            
             if (res.data.is_bind) {
                 setStatus(BIND_STATUS)
                 checkBet(initData)
@@ -51,14 +52,14 @@ export const AdvertModal = () => {
             }
         })
         .catch(e => console.log(e))
-        .finally(() => setIsLoading(false))
+        .finally(() => setTimeout(() => setIsLoading(false), 1000))
     }, [])
 
     const linkAccount = () => {
         setIsLoading(true)
         createWlUrl(initData)
-        .then((res) => window.location.href = res.data)
-        .finally(() => setIsLoading(false))
+        .then((res) => WebApp.openTelegramLink(res.data))
+        .finally(() => setTimeout(() => setIsLoading(false), 1000))
     }
 
     return(
@@ -67,10 +68,14 @@ export const AdvertModal = () => {
             <div className={styles.container_inner}>
                 <img className={styles.container_inner_logo} src={logo} alt="logo"/>
                 <div className={styles.container_inner_info}>
-                    <AdvertRools rules={data}/>
+                    <AdvertRools status={status} rules={data}/>
                     <AdvertReward/>
-                    <button style={{opacity: (isLoading || status === BIND_STATUS) ? 0.6 : 1}} onClick={linkAccount} disabled={isLoading} className={styles.container_inner_button}>
-                        {status === BIND_STATUS ? 'Аккаунт привязан' : 'Привязать аккаунт'}                    
+                    <button style={{opacity: (!isLoading || status === NOT_BIND_STATUS) ? 1 : 0.6}} onClick={linkAccount} disabled={status !== NOT_BIND_STATUS} className={styles.container_inner_button}>
+                        {isLoading ? (
+                            <div className={styles.container_inner_button_loader}/>
+                        ) : (
+                            status === NOT_BIND_STATUS ? 'Привязать аккаунт' : 'Аккаунт привязан'
+                        )}
                     </button>
                 </div>
                 <button onClick={handleHideAdvertModal} className={styles.container_inner_close}>

@@ -62,6 +62,17 @@
             margin-top: min(3.45vh, 812px);
             padding-top: min(2.09vh, 17px);
             padding-bottom: min(2.09vh, 17px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            &_loader {
+                border: min(0.53vw, 2px) solid #fff;
+                border-top: min(0.53vw, 2px) solid #000;
+                border-radius: 50%;
+                width: min(8.53vw, 32px);
+                height: min(8.53vw, 32px);
+                animation: spin 1s linear infinite;
+            }
         }
         &_close {
             position: absolute;
@@ -82,5 +93,13 @@
     100% {
         opacity: 1;
         transform: translate(0vh);
+    }
+}
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
     }
 }
