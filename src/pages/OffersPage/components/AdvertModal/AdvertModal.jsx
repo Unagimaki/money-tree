@@ -70,7 +70,7 @@ export const AdvertModal = () => {
                 <div className={styles.container_inner_info}>
                     <AdvertRools status={status} rules={data}/>
                     <AdvertReward/>
-                    <button style={{opacity: (!isLoading || status === NOT_BIND_STATUS) ? 1 : 0.6}} onClick={linkAccount} disabled={status !== NOT_BIND_STATUS} className={styles.container_inner_button}>
+                    <button style={{opacity: status === NOT_BIND_STATUS ? 1 : 0.6}} onClick={linkAccount} disabled={status !== NOT_BIND_STATUS} className={styles.container_inner_button}>
                         {isLoading ? (
                             <div className={styles.container_inner_button_loader}/>
                         ) : (
