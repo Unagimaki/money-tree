@@ -15,10 +15,18 @@
         display: flex;
         justify-content: space-between;
         &_first {
-            font-size: $size12px;
+            font-size: min(1.48vh, 12px);
         }
         &_second {
-            font-size: $size12px;
+            font-size: min(1.48vh, 12px);
         }
     }
 }
+
+@media (max-width: 319px) {
+
+    .container_inner {
+        flex-direction: column;
+    }
+}
+

@@ -15,3 +15,11 @@
         width: min(4.8vw, 18px);
     }
 }
+
+@media (max-width: 319px) {
+
+    .container {
+        width: 100%;
+        justify-content: center;
+    }
+}
