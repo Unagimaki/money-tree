@@ -1,5 +1,4 @@
 import { baseURL } from '../App';
-import { ApiUrl } from '../utils/config';
 import { axiosInstance } from './axios';
 
 export const getData = async (token, url) => {

@@ -14,13 +14,15 @@
         font-size: min(1.97vh, 16px);
         list-style-type: decimal;
         line-height: 1;
+        &_info {
+            display: flex;
+            flex-direction: column;
+            gap: $size8px;
+        }
     li {
         margin-bottom: min(0.99vh, 8px);
         font-family: $MRegular;
     }
-    li:nth-last-child(2),
-    li:nth-last-child(1) {
-        list-style-type: disc;
-    }
+    
     margin-bottom: $size18px;
 }}

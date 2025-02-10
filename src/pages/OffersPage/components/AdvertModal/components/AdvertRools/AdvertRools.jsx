@@ -1,6 +1,9 @@
 import styles from './advertRools.module.scss'
+import { InfoItem } from './InfoItem/InfoItem'
 
 export const AdvertRools = ({status, rules}) => { 
+    const menu = require('../../../../assets/note.png')
+    const people = require('../../../../assets/people.png')
     return(
         <div className={styles.container}>
             {
@@ -22,8 +25,10 @@ export const AdvertRools = ({status, rules}) => {
                     })
                 }
                 <br/>
-                <li>Победитель выбирается случайным образом среди всех участников</li>
-                <li>Розыгрыш продлится до 10 февраля</li>
+                <div className={styles.container_list_info}>
+                    <InfoItem text={'Победитель выбирается случайным образом среди всех участников'} img={people}/>
+                    <InfoItem text={'Розыгрыш продлится до 10 февраля'} img={menu}/>
+                </div>
             </div>
         </div>
     )

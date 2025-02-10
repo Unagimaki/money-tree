@@ -25,7 +25,8 @@ export const AdvertModal = () => {
     const [isHiding, setIsHiding] = useState(false)
     const [isLoading, setIsLoading] = useState(true)
     const [status, setStatus] = useState(NOT_BIND_STATUS)
-    const [data, setData] = useState(rules.option1)
+    const [currentRules, setRules] = useState(rules.option1)
+    const [data, setData] = useState(null)
 
     const initData = isDevelopment ? example.initData : window.Telegram.WebApp.initData
 
@@ -36,9 +37,9 @@ export const AdvertModal = () => {
 
     useEffect(() => {
         if (status === BIND_STATUS) {
-            setData(rules.option2)
+            setRules(rules.option2)
         } else if (status === MADE_A_BET_STATUS) {
-            setData(rules.option3)
+            setRules(rules.option3)
         }
     }, [status])
 
@@ -48,7 +49,11 @@ export const AdvertModal = () => {
             if (res.data.is_bind) {
                 setStatus(BIND_STATUS)
                 checkBet(initData)
-                .then(res => { if (res.data.count > 0) setStatus(MADE_A_BET_STATUS) })
+                .then(res => {
+                    if (res.data.count > 0) setStatus(MADE_A_BET_STATUS)
+                    setData(res.data)
+                    }
+                )
             }
         })
         .catch(e => console.log(e))
@@ -68,8 +73,8 @@ export const AdvertModal = () => {
             <div className={styles.container_inner}>
                 <img className={styles.container_inner_logo} src={logo} alt="logo"/>
                 <div className={styles.container_inner_info}>
-                    <AdvertRools status={status} rules={data}/>
-                    <AdvertReward/>
+                    { data && <AdvertReward data={data}/> }
+                    <AdvertRools status={status} rules={currentRules}/>
                     <button style={{opacity: status === NOT_BIND_STATUS ? 1 : 0.6}} onClick={linkAccount} disabled={status !== NOT_BIND_STATUS} className={styles.container_inner_button}>
                         {isLoading ? (
                             <div className={styles.container_inner_button_loader}/>

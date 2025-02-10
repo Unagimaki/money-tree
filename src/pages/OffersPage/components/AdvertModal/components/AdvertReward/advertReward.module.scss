@@ -5,6 +5,7 @@
     display: flex;
     flex-direction: column;
     font-family: $MRegular;
+    margin-bottom: min(8.53vw, 32px);
     &_title {
         text-align: center;
         font-family: $MBold;
@@ -12,14 +13,11 @@
         margin-bottom: $size18px;
     }
     &_inner {
-        display: flex;
-        justify-content: space-between;
-        &_first {
-            font-size: min(1.48vh, 12px);
-        }
-        &_second {
-            font-size: min(1.48vh, 12px);
-        }
+        display: grid;
+        width: 100%;
+        grid-template-columns: repeat(2, 1fr);
+        gap: min(3.2vw, 12px);
+        margin-top: min(3.2vw, 12px);
     }
 }
 

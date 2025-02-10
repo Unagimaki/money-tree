@@ -1,0 +1,18 @@
+@import '../../../../../../../assets/styles/vars';
+
+.container {
+    display: flex;
+    align-items: center;
+    background-color: rgb(0, 0, 0, 0.2);
+    border-radius: $size12px;
+    height: min(17.07vw, 64px);
+    padding: $size14px;
+    gap: $size12px;
+    img {
+        width: $size24px;
+        height: $size24px;
+    }
+    &_text {
+        font-size: $size14px;
+    }
+}
