@@ -11,6 +11,7 @@ import { checkBet } from './service/checkBet'
 import { rules } from './service/data'
 import { createWlUrl } from './service/createWlUrl'
 import { WebApp } from '../../../../App'
+import { BackButton } from '@vkruglikov/react-telegram-web-app'
 
 export const AdvertModal = () => {
     const logo = require('../../assets/winline_rect.png')
@@ -101,6 +102,7 @@ export const AdvertModal = () => {
                     <img src={close} alt="close" />
                 </button>
             </div>
+            <BackButton onClick={handleHideAdvertModal} />
         </div>
     )
 }
