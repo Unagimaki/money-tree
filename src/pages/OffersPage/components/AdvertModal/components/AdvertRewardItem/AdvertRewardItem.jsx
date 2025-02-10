@@ -2,7 +2,7 @@ import { getBackgroundColor } from '../../helpers/getBackgroundColor'
 import { getFontColor } from '../../helpers/getFontColor'
 import styles from './advertRewardItem.module.scss'
 
-export const AdvertRewardItem = ({place, prize, chance}) => {
+export const AdvertRewardItem = ({place, prize, chance = null}) => {
     const money = require('../../../../assets/money.png')
 
     return(
@@ -13,7 +13,6 @@ export const AdvertRewardItem = ({place, prize, chance}) => {
                     {
                         chance &&
                         <div style={{backgroundColor: getBackgroundColor(chance), color: getFontColor(chance)}} className={styles.container_inner_info_chance}>Шанс {chance}%</div>
-
                     }
                     <div className={styles.container_inner_info_reward}>{prize}</div>
                 </div>

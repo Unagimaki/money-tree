@@ -2,7 +2,7 @@ import { getBackgroundColor } from '../../helpers/getBackgroundColor'
 import { getFontColor } from '../../helpers/getFontColor'
 import styles from './advertRewardItemMain.module.scss' 
 
-export const AdvertRewardItemMain = ({place, chance, prize}) => {
+export const AdvertRewardItemMain = ({place, chance = null, prize}) => {
     const money = require('../../../../assets/money.png')
     const chip = require('../../../../assets/chip.png')
 
