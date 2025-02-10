@@ -45,7 +45,7 @@
         &_info {
             width: 100%;
             max-width: 375px;
-            padding: 0 $size16px;
+            padding: 0 $size16px min(11.2vw, 42px) $size16px;
         }
         &_logo {
             width: min(59.73vw, 224px);

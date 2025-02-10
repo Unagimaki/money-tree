@@ -22,11 +22,25 @@ export const AdvertModal = () => {
     const NOT_BIND_STATUS = 'NOT_BIND_STATUS'
     const BIND_STATUS = 'BIND_STATUS'
 
+    const defaultData = {
+        chance: [
+            { place: '1', prize: '4 млрд.' },
+            { place: '2', prize: '2 млрд.' },
+            { place: '3', prize: '1 млрд.' },
+            { place: '4', prize: '500 млн.' },
+            { place: '5', prize: '200 млн.' },
+            { place: '6-100', prize: '10 млн.' },
+            { place: '101-500', prize: '2 млн.' },
+            { place: '501-1000', prize: '1 млн.' },
+            { place: '1001+', prize: '200 тыс.' }
+        ]
+    }
+
     const [isHiding, setIsHiding] = useState(false)
     const [isLoading, setIsLoading] = useState(true)
     const [status, setStatus] = useState(NOT_BIND_STATUS)
     const [currentRules, setRules] = useState(rules.option1)
-    const [data, setData] = useState(null)
+    const [data, setData] = useState(defaultData)
 
     const initData = isDevelopment ? example.initData : window.Telegram.WebApp.initData
 
@@ -73,7 +87,7 @@ export const AdvertModal = () => {
             <div className={styles.container_inner}>
                 <img className={styles.container_inner_logo} src={logo} alt="logo"/>
                 <div className={styles.container_inner_info}>
-                    { data && <AdvertReward data={data}/> }
+                    <AdvertReward data={data}/>
                     <AdvertRools status={status} rules={currentRules}/>
                     <button style={{opacity: status === NOT_BIND_STATUS ? 1 : 0.6}} onClick={linkAccount} disabled={status !== NOT_BIND_STATUS} className={styles.container_inner_button}>
                         {isLoading ? (

@@ -14,7 +14,10 @@ export const AdvertRewardItemMain = ({place, chance, prize}) => {
                     <div className={styles.container_inner_info_place}>{place} место</div>
                     <div className={styles.container_inner_info_inner}>
                         <div className={styles.container_inner_info_inner_reward}>{prize}</div>
-                        <div style={{backgroundColor: getBackgroundColor(chance), color: getFontColor(chance)}} className={styles.container_inner_info_inner_chance}>Шанс {chance}%</div>
+                        {
+                            chance &&
+                            <div style={{backgroundColor: getBackgroundColor(chance), color: getFontColor(chance)}} className={styles.container_inner_info_inner_chance}>Шанс {chance}%</div>
+                        }
                     </div>
                 </div>
             </div>
