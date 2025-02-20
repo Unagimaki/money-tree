@@ -27,7 +27,6 @@ export const AdvertRewardItem = ({place, prize, chance = null}) => {
     
     return unit && multipliers[unit] ? number * multipliers[unit] : number;
     }
-    console.log(convertStringToNumber(prize));
   
     return(
         <div className={styles.container}>
