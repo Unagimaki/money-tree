@@ -15,6 +15,8 @@ import { DailyBonusIcon } from './components/DailyBonus/DailyBonusIcon/DailyBonu
 import { DailyBonusWindow } from './components/DailyBonus/DailuBonusWindow/DailyBonusWindow'
 import { MainBackground } from './components/MainBackground/MainBackground'
 import { IntroModal } from '../../features/modals/IntroModal/IntroModal'
+import { IntroModalSecond } from '../../features/modals/IntroModalSecond/IntroModalSecond'
+import { IntroModalThird } from '../../features/modals/IntroModalThird/IntroModalThird'
 
 
 const MainPage = ({ isStatModalVisible, onDamageModalShow }) => {
@@ -23,6 +25,7 @@ const MainPage = ({ isStatModalVisible, onDamageModalShow }) => {
   const snow_background = require("./assets/background_snow.png");
   const [isLoading, setIsLoading] = useState(true);
   const [isIntroModalVisible, setIsIntroModalVisible] = useState(false)
+  const [currentModal, setCurrentModal] = useState(null)
   const currentBotLevel = useSelector(state => state.bot?.autoBots[0]?.currentLevel > 0 );
   const season = useSelector((state) => state?.season?.isActive);
   const isHintActive = useSelector(state => state.tutorial.isHintVisible)
@@ -51,33 +54,44 @@ const MainPage = ({ isStatModalVisible, onDamageModalShow }) => {
   }, [snow_background]);  
 
   useEffect(() => {
-    // Получаем значение introModal из localStorage
-    const savedTime = localStorage.getItem('introModal');
-    const isTutorialDone = JSON.parse(localStorage.getItem('isTutorialDone')) || false;   
-    
-    if (!isTutorialDone) return
-    // Если в localStorage нет savedTime
-    if (!savedTime) {
-      // Показываем модалку и сохраняем текущее время
-      setTimeout(() => {
-        setIsIntroModalVisible(true);
-        localStorage.setItem('introModal', JSON.stringify(Date.now()));
-      }, 1000)
-    } else {
-      // Если savedTime есть, проверяем прошел ли час
-      const currentTime = Date.now();
-      const lastTime = JSON.parse(savedTime);
-      const timeDifference = currentTime - lastTime;
+    const isTutorialDone = JSON.parse(localStorage.getItem('isTutorialDone')) || false;
 
-      // Если прошло больше 1 часа (3600000 миллисекунд), показываем модалку
-      if (timeDifference > 3600000) {
-        setIsIntroModalVisible(true);
-        localStorage.setItem('introModal', JSON.stringify(currentTime));
-      } else {
-        setIsIntroModalVisible(false);
-      }
+    if (!isTutorialDone) return;
+
+    const lastModalTime = localStorage.getItem("last_modal_time");
+    const currentTime = new Date().getTime();
+
+    // Проверяем, если lastModalTime существует, вычисляем прошедшее время в минутах
+    if (lastModalTime) {
+      const minutesPassed = Math.floor((currentTime - lastModalTime) / (60 * 1000)); // Переводим миллисекунды в минуты
+      console.log(`Прошло ${minutesPassed} минут с последнего показа модалки.`);
     }
+
+    const oneHourInMillis = 60 * 60 * 1000;
+    const oneMinuteInMillis = 60 * 1000; // 1 минута в миллисекундах
+
+    // Проверяем, прошло ли больше часа с последнего показа
+    if (lastModalTime && (currentTime - lastModalTime) < oneHourInMillis) {
+      setIsIntroModalVisible(false);
+      return;
+    }
+
+    // Логика показа модалки и обновления времени
+    const currentModalIndex = parseInt(localStorage.getItem("current_modal_index"), 10) || 0;
+    const modals = ['first_modal', 'second_modal', 'third_modal'];
+    const nextModalIndex = (currentModalIndex + 1) % modals.length;
+    localStorage.setItem("current_modal_index", nextModalIndex);
+    setCurrentModal(modals[nextModalIndex]);
+    setIsIntroModalVisible(true);
+    localStorage.setItem("last_modal_time", currentTime);
+
   }, [isTutorialIsActive]);
+
+
+    useEffect(() => {
+      console.log(currentModal);
+    }, [currentModal])
+
 
   const handleIntroModalVisible = () => {
     setIsIntroModalVisible(false)
@@ -94,7 +108,11 @@ const MainPage = ({ isStatModalVisible, onDamageModalShow }) => {
         <DailyBonusIcon/>
         <DailyBonusWindow/>
         {isStatModalVisible && <BackButton onClick={handleButtonClick}/>}
-        {isIntroModalVisible && <IntroModal handleIntroModalVisible={handleIntroModalVisible}/>}
+        {
+          isIntroModalVisible && (
+            currentModal === 'first_modal' ? <IntroModal handleIntroModalVisible={handleIntroModalVisible}/> : currentModal === 'second_modal' ? <IntroModalSecond handleIntroModalVisible={handleIntroModalVisible}/> : currentModal === 'third_modal' ? <IntroModalThird handleIntroModalVisible={handleIntroModalVisible}/> : ''
+          )
+        }
       </div>
     </div>
   );
