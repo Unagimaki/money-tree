@@ -1,9 +1,12 @@
+import { useNavigate } from 'react-router-dom'
 import styles from './introModalSecond.module.scss'
+import { PagesLinks } from '../../../shared/PagesLinks'
 
 export const IntroModalSecond = ({handleIntroModalVisible}) => {
     const close_icon = require('../../assets/close_icon.png')
     const orange = require('../../assets/orange.png')
     const intro = require('../../assets/intro_second.png')
+    const navigate = useNavigate();
 
     const handleCloseIntro = () => {
         handleIntroModalVisible()
@@ -28,7 +31,7 @@ export const IntroModalSecond = ({handleIntroModalVisible}) => {
                         <li>3000₽ фрибетами от Winline</li>
                     </div>
                 </div>
-                <button onClick={() => {}} className={styles.container_wrapper_button}>К заданию</button>
+                <button onClick={() => {navigate(PagesLinks.BONUS_URL)}} className={styles.container_wrapper_button}>К заданию</button>
             </div>
         </div>
     )

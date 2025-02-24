@@ -5,6 +5,7 @@ export const IntroModalThird = ({handleIntroModalVisible}) => {
     const orange = require('../../assets/orange.png')
     const leaf_back = require('../../assets/leaf_back.png')
     const intro = require('../../assets/intro_third.png')
+    const navigate = useNavigate();
 
     const handleCloseIntro = () => {
         handleIntroModalVisible()
@@ -29,7 +30,7 @@ export const IntroModalThird = ({handleIntroModalVisible}) => {
                         Привяжи аккаунт Winline к Гонке <br/> ставок и участвуй в розыгрыше <br/> ценных призов!
                     </div>
                 </div>
-                <button onClick={() => {}} className={styles.container_wrapper_button}>К заданию</button>
+                <button onClick={() => {navigate(PagesLinks.BONUS_URL)}} className={styles.container_wrapper_button}>К заданию</button>
             </div>
         </div>
     )
