@@ -1,4 +1,6 @@
+import { useNavigate } from 'react-router-dom'
 import styles from './introModalThird.module.scss'
+import { PagesLinks } from '../../../shared/PagesLinks'
 
 export const IntroModalThird = ({handleIntroModalVisible}) => {
     const close_icon = require('../../assets/close_icon.png')
