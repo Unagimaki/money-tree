@@ -71,7 +71,7 @@ const MainPage = ({ isStatModalVisible, onDamageModalShow }) => {
     const oneMinuteInMillis = 60 * 1000; // 1 минута в миллисекундах
 
     // Проверяем, прошло ли больше часа с последнего показа
-    if (lastModalTime && (currentTime - lastModalTime) < oneMinuteInMillis) {
+    if (lastModalTime && (currentTime - lastModalTime) < oneHourInMillis) {
       setIsIntroModalVisible(false);
       return;
     }
@@ -85,7 +85,7 @@ const MainPage = ({ isStatModalVisible, onDamageModalShow }) => {
     setIsIntroModalVisible(true);
     localStorage.setItem("last_modal_time", currentTime);
 
-  }, [isTutorialIsActive]);
+  }, []);
 
 
     useEffect(() => {

@@ -32,7 +32,7 @@ export const IntroModalThird = ({handleIntroModalVisible}) => {
                         Привяжи аккаунт Winline к Гонке <br/> ставок и участвуй в розыгрыше <br/> ценных призов!
                     </div>
                 </div>
-                <button onClick={() => {navigate(PagesLinks.BONUS_URL)}} className={styles.container_wrapper_button}>К заданию</button>
+                <button onClick={() => {navigate(PagesLinks.BONUS_URL)}} className={styles.container_wrapper_button}>К гонке ставок</button>
             </div>
         </div>
     )
