@@ -145,7 +145,7 @@ function App() {
   if (!isLoaded) return null;
 
   return (
-    // <TwaAnalyticsProvider projectId="59a2dcea-5236-4c30-888c-93c99eea7a19" apiKey="fb8e3102-1c0c-4751-8b14-6f687520c638" appName="Money tree">
+    <TwaAnalyticsProvider projectId="59a2dcea-5236-4c30-888c-93c99eea7a19" apiKey="fb8e3102-1c0c-4751-8b14-6f687520c638" appName="Money tree">
       <div className={styles.app}>
         <Snowfall style={{width: '100vw', height: '100vh', zIndex: 2}}/>
         {isTutorialActive && <Tutorial />}
@@ -218,7 +218,7 @@ function App() {
         <Alert/>
         {isAdvertModalVisible && <AdvertModal/>}        
       </div>
-    // </TwaAnalyticsProvider>
+    </TwaAnalyticsProvider>
   );
 }
 
