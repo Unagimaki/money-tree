@@ -12,9 +12,11 @@ export const TaskItem = ({
   id,
   imgUrl,
   count,
+  isNew
 }) => {
   const arrow_img = require("../../../assets/arrow.png");
   const money = require("../../../assets/money.png");
+  const newOffer = require("../../../assets/newOffer.png");
   const course = useSelector((state) => state.season?.course);
   const dispatch = useDispatch();
 
@@ -38,7 +40,7 @@ export const TaskItem = ({
         <div className={styles.container_info_title}>{title}</div>
         <div className={styles.container_info_reward}>
           <img src={money} alt="money" />
-          <div>+{formatNumber(reward)}</div>
+          <div>+ {isNew && 'до '}{formatNumber(reward)}</div>
           <div className={styles.container_info_reward_money}>
             &nbsp; ({(course * reward).toFixed(5).replace(/\.?0+$/, "")} $)
           </div>

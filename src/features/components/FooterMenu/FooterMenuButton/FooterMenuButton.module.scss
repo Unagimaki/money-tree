@@ -8,6 +8,15 @@
     width: min(15.73vw, 59px);
     z-index: 5;
     bottom: 6.94vw;
+    &_checked {
+        position: absolute;
+        width: min(1.33vw, 5px);
+        height: min(1.33vw, 5px);
+        background-color: $green;
+        top: 0;
+        right: 0;
+        border-radius: 50%;
+    }
     &_img {
         width: 67.8%;
         height: auto;

@@ -1,6 +1,7 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import styles from './FooterMenuButton.module.scss'
 import { useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
 
 const FooterMenuButton = ({text, to, img, left}) => {
     const navigate = useNavigate();
@@ -9,9 +10,17 @@ const FooterMenuButton = ({text, to, img, left}) => {
     const isTutorialActive = useSelector(
       (state) => state.tutorial.isTutorialIsActive
     );
+    const offers = useSelector(state => state.offers)
+    const [taskCompleted, setTaskCompleted] = useState(false);
+
+    useEffect(() => {
+      const storedStatus = localStorage.getItem("taskCompleted");
+      if (storedStatus === "true") {
+        setTaskCompleted(true);
+      }
+    }, [offers]);
 
     const calcIndex = () => {
-      
         return (currentStep === 6 && text === "Бусты") ||
         (currentStep === 7 && text === "Скины") ||
         (currentStep === 8 && text === "Стата") ||
@@ -25,6 +34,9 @@ const FooterMenuButton = ({text, to, img, left}) => {
         onClick={() => !isTutorialActive && navigate(to)}
         className={styles.button}
       >
+        {
+          text === 'Бонусы' && !taskCompleted && <div className={styles.button_checked}/>
+        }
         <img className={styles.button_img} src={img} alt={text} />
         <div
           style={{ color: `${currentUrl === to ? "#8CDB4E" : "#fff"}` }}

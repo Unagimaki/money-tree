@@ -1,4 +1,4 @@
-import { SET_OFFER_DONE, SET_OFFER_INFO, SET_OFFER_MODAL_VISIBLE, SET_OFFER_REWARD, SET_OFFERS } from "./types"
+import { ADD_NEW_OFFER, SET_OFFER_DONE, SET_OFFER_INFO, SET_OFFER_MODAL_VISIBLE, SET_OFFER_REWARD, SET_OFFERS } from "./types"
 
 export const actionSetOffers = (offers) => {
     return {
@@ -29,5 +29,11 @@ export const actionSetOfferDone = (id) => {
     return {
         type: SET_OFFER_DONE,
         payload: id
+    }
+}
+export const actionAddNewOffer = (offer) => {
+    return {
+        type: ADD_NEW_OFFER,
+        payload: offer
     }
 }

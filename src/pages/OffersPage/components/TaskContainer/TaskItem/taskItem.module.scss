@@ -11,9 +11,12 @@
     padding: 0 min(1.33vw, 5px);
     border-radius: $br8px;
     font-size: $fz12px;
+    &_newOfferImg {
+        position: absolute;
+        width: min(38.67vw, 145px);
+    }
     &_info {
         width: 57.99%;
-        // width: min-content;
         &_title {
             font-family: $MMedium;
             white-space: nowrap;

@@ -1,4 +1,4 @@
-import { SET_OFFER_DONE, SET_OFFER_INFO, SET_OFFER_MODAL_VISIBLE, SET_OFFER_REWARD, SET_OFFERS } from "./types"
+import { ADD_NEW_OFFER, SET_OFFER_DONE, SET_OFFER_INFO, SET_OFFER_MODAL_VISIBLE, SET_OFFER_REWARD, SET_OFFERS } from "./types"
 
 const initialState = {
     isVisible: false,
@@ -8,6 +8,8 @@ const initialState = {
     reward: '',
     url: '',
     imgUrl: '',
+    isNew: '',
+    linkToComplete: '',
     offers: []
 }
 
@@ -28,6 +30,8 @@ export const offersReducer = (state = initialState, action) => {
                 url: foundItem ? foundItem.url : '',
                 imgUrl: foundItem ? foundItem.media.fileId : '',
                 terms: foundItem ? foundItem.terms : '',
+                isNew: foundItem ? foundItem.isNew : '',
+                linkToComplete: foundItem ? foundItem.linkToComplete : '',
                 offers: state.offers
             }
         case SET_OFFER_MODAL_VISIBLE:
@@ -41,6 +45,11 @@ export const offersReducer = (state = initialState, action) => {
                 }
                 return offer
             })}
+        case ADD_NEW_OFFER:
+            return {
+                ...state,
+                offers: [...state.offers, action.payload] // Добавляем новый объект в массив
+            }
         default: return state
     }
 }

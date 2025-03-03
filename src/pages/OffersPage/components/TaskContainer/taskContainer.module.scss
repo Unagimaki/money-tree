@@ -13,7 +13,7 @@
         margin-bottom: $br8px;
     }
     &_tasks_wrapper {
-        max-height: 45vh;
+        max-height: 42vh;
         overflow-y: scroll;
         &_list {
             display: flex;
@@ -23,24 +23,24 @@
         }
     }
 }
-@media (max-height: 770px) {
-    .container_tasks_wrapper {
-        max-height: 42vh;
-    }
-}
-@media (max-height: 730px) {
+@media (max-height: 802px) {
     .container_tasks_wrapper {
         max-height: 40vh;
     }
 }
-@media (max-height: 710px) {
+@media (max-height: 778px) {
     .container_tasks_wrapper {
-        max-height: 37vh;
+        max-height: 38vh;
     }
 }
-@media (max-height: 675px) {
+@media (max-height: 754px) {
     .container_tasks_wrapper {
-        max-height: 34vh;
+        max-height: 36vh;
+    }
+}
+@media (max-height: 730px) {
+    .container_tasks_wrapper {
+        max-height: 33vh;
     }
 }
 @media (max-height: 645px) {

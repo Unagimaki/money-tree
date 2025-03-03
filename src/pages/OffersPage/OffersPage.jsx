@@ -26,7 +26,7 @@ const OffersPage = ({navigate}) => {
             <InviteInfo/>
             <InviteButtons/>
             <Advert/>
-            <TaskContainer />
+            <TaskContainer/>
             <BackButton onClick={handleBackButtonClick}/>
         </div>
     )

@@ -1,11 +1,21 @@
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import styles from './taskContainer.module.scss'
 import { TaskItem } from './TaskItem/TaskItem'
 import { sortByWinline } from '../../helpers/sortByWinline'
+import { useEffect } from 'react'
+import { actionAddNewOffer } from '../../../../state/reducers/offersReducer/actions'
+import { offerData } from '../../services/newOfferData.js'
 
 export const TaskContainer = () => {
     const offers = useSelector(state => state?.offers?.offers)
     const winlineSortedOffers = sortByWinline(offers)
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(actionAddNewOffer(offerData))
+    }, [])
+
+
     return(
         <div className={styles.container}>
             <div className={styles.container_title}>
@@ -25,6 +35,7 @@ export const TaskContainer = () => {
                                 imgUrl={item.media.fileId}
                                 key={item.id}
                                 count={item.count}
+                                isNew={item?.isNew}
                             />
                         })
                     }
