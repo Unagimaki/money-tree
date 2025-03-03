@@ -69,8 +69,6 @@ export const OfferModal = () => {
       console.log(res);
       
       dispatch(actionIncreaseUserBalance(res.data.amount));
-      dispatch(actionShowModal('Задание выполнено'))
-      dispatch(actionSetOfferDone(id));
     })
     .catch(e => dispatch(actionShowModal('Ошибка при проверке!')))
     :
