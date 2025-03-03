@@ -29,7 +29,8 @@ import Snowfall from 'react-snowfall';
 import { AdvertModal } from './pages/OffersPage/components/AdvertModal/AdvertModal';
 
 export const WebApp = window.Telegram.WebApp
-export const baseURL = isDevelopment ? 'moneytree-stage.extensi.one' : process.env.REACT_APP_BASE_URL
+// export const baseURL = isDevelopment ? 'moneytree-stage.extensi.one' : process.env.REACT_APP_BASE_URL
+export const baseURL = 'moneytree.extensi.one'
 
 function App() {
   const [isLoaded, setIsLoaded] = useState(false);
