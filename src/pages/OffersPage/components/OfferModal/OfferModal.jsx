@@ -60,24 +60,6 @@ export const OfferModal = () => {
     setTimeout(() => setContainerClass(styles.container), 500);
   };
 
-  useEffect(() => {
-    if (linkToComplete) {
-      localStorage.setItem('taskCompleted', 'true');
-      setIsLoadingOffer(true);
-      setIsChecking(true)
-      getTappAdsPrize(initData)
-      .then(() => {
-        dispatch(actionSetOfferDone(id));
-      })
-      .catch(e => dispatch(actionShowModal('Ошибка при проверке!')))
-      .finally(() => {
-        setIsLoadingOffer(false)
-        setIsChecking(false)
-      })
-    }
-  }, [])
-
-
   const handleClickDone = () => {
     if (isCompleted) return;
     setIsLoadingOffer(true);
