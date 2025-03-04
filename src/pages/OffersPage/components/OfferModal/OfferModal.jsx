@@ -49,6 +49,7 @@ export const OfferModal = () => {
     })
     .then(response => response)
     .catch(error => {
+      dispatch(actionShowModal('Ошибка при проверке!'))
       console.error('Ошибка запроса:', error);
     });
   };
@@ -65,10 +66,14 @@ export const OfferModal = () => {
     linkToComplete ? getTappAdsPrize(initData)
     .then(res => {
       console.log(res);
-      
-      dispatch(actionIncreaseUserBalance(res.data.amount));
+    dispatch(actionShowModal('Задание выполнено'))
+    dispatch(actionIncreaseUserBalance(res.data.amount));
     })
     .catch(e => dispatch(actionShowModal('Ошибка при проверке!')))
+    .finally(() => {
+      setIsChecking(false)
+      setIsLoadingOffer(false)
+    })
     :
     completeOffer(token, id)    
       .then(() => {
@@ -161,7 +166,7 @@ export const OfferModal = () => {
             alt="money_icon"
           />
           <div className={styles.container_wrapper_reward_title}>
-            {formatNumber(reward)}
+            {isNew && 'до '}{formatNumber(reward)}
           </div>
         </div>
         {!isCompleted && (

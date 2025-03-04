@@ -87,6 +87,9 @@
             align-items: center;
             font-size: min(6.88vw, 25.8px);
             font-family: $MExtra;
+            &_title {
+                white-space: nowrap;
+            }
             &_discount {
                 opacity: .5;
                 display: flex;

@@ -87,12 +87,6 @@ const MainPage = ({ isStatModalVisible, onDamageModalShow }) => {
 
   }, []);
 
-
-    useEffect(() => {
-      console.log(currentModal);
-    }, [currentModal])
-
-
   const handleIntroModalVisible = () => {
     setIsIntroModalVisible(false)
   }
