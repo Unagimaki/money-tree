@@ -66,7 +66,7 @@ export const OfferModal = () => {
     linkToComplete ? getTappAdsPrize(initData)
     .then(res => {
       console.log(res);
-    dispatch(actionShowModal('Задание выполнено'))
+    dispatch(actionShowModal(res.data.message))
     dispatch(actionIncreaseUserBalance(res.data.amount));
     })
     .catch(e => dispatch(actionShowModal('Ошибка при проверке!')))
