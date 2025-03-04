@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux'
 import styles from './offerModal.module.scss'
 import { actionSetOfferDone, actionSetOfferModalVisible } from '../../../../state/reducers/offersReducer/actions'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { actionIncreaseUserBalance } from '../../../../state/reducers/userReducer/actions'
 import { baseURL, WebApp } from '../../../../App'
 import { updatedUrl } from '../../helpers/updatedUrl'
@@ -16,8 +16,6 @@ export const OfferModal = () => {
   const [containerClass, setContainerClass] = useState(styles.container);
   const [isLoadingOffer, setIsLoadingOffer] = useState(false);
   const [isChecking, setIsChecking] = useState(false)
-  const state = useSelector((state) => state);
-  console.log(state);
   const webApp_query = window.Telegram.WebApp.initData;
   const dispatch = useDispatch();
   const offers = useSelector((state) => state.offers);
@@ -41,18 +39,18 @@ export const OfferModal = () => {
   const newOffer_img = require("../../assets/newOffer.png");
 
   const getTappAdsPrize = (initData) => {
-      const url = 'https://mtree-wl-binding.extensi.one/getTappAdsPrize';
+    const url = 'https://mtree-wl-binding.extensi.one/getTappAdsPrize';
 
-      return axios.get(url, {
-          params: { initData }, 
-          headers: {
-            'Accept': 'application/json'
-          }
-      })
-      .then(response => response)
-      .catch(error => {
-          console.error('Ошибка запроса:', error);
-      });
+    return axios.get(url, {
+      params: { initData }, 
+        headers: {
+          'Accept': 'application/json'
+      }
+    })
+    .then(response => response)
+    .catch(error => {
+      console.error('Ошибка запроса:', error);
+    });
   };
   const handleClickClose = () => {
     setContainerClass(styles.container_hide);

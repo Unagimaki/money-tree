@@ -12,7 +12,7 @@
     min-height: min(155.73vw, 584px);
     width: 100vw;
     background: $dark_gradient;
-    z-index: 10;
+    z-index: 99;
     border-radius: $br8px $br8px 0 0;
     border-top: min(0.53vw, 2px) solid $green;
     animation: offerShow .5s forwards;

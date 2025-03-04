@@ -16,7 +16,6 @@ export const TaskItem = ({
 }) => {
   const arrow_img = require("../../../assets/arrow.png");
   const money = require("../../../assets/money.png");
-  const newOffer = require("../../../assets/newOffer.png");
   const course = useSelector((state) => state.season?.course);
   const dispatch = useDispatch();
 

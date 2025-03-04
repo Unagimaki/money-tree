@@ -46,10 +46,12 @@ export const offersReducer = (state = initialState, action) => {
                 return offer
             })}
         case ADD_NEW_OFFER:
+            const newOffers = [...state.offers];
+            newOffers.splice(1, 0, action.payload); // Вставляем на второе место
             return {
                 ...state,
-                offers: [...state.offers, action.payload] // Добавляем новый объект в массив
-            }
+                offers: newOffers
+            };
         default: return state
     }
 }

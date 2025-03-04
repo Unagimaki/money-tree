@@ -7,6 +7,8 @@ import { BackButton } from '@vkruglikov/react-telegram-web-app'
 import { useDispatch, useSelector } from 'react-redux'
 import { actionSetOfferModalVisible } from '../../state/reducers/offersReducer/actions'
 import { Advert } from './components/Advert/Advert'
+import useCheckTime from '../../features/hooks/useCheckTime'
+import { useEffect } from 'react'
 
 
 const OffersPage = ({navigate}) => {
@@ -19,7 +21,10 @@ const OffersPage = ({navigate}) => {
             navigate('/main');
         }
     }
-
+    const { updateTimestamp } = useCheckTime();
+    useEffect(() => {
+        updateTimestamp(); // Обновляем время при открытии страницы
+    }, []);
     return(
         <div className={styles.bonus_page}>
             <Balance top={'min(11.73vw, 44px'}/>

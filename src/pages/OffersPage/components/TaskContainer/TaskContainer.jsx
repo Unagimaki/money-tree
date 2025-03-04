@@ -12,8 +12,13 @@ export const TaskContainer = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(actionAddNewOffer(offerData))
-    }, [])
+        // Проверяем, есть ли уже объект с таким id в offers
+        const offerExists = offers.some(offer => offer.id === offerData.id);
+
+        if (!offerExists) {
+            dispatch(actionAddNewOffer(offerData))
+        }
+    }, [winlineSortedOffers])
 
 
     return(

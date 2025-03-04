@@ -27,10 +27,10 @@ import OffersPage from './pages/OffersPage/OffersPage';
 import { isDevelopment } from './utils/config';
 import Snowfall from 'react-snowfall';
 import { AdvertModal } from './pages/OffersPage/components/AdvertModal/AdvertModal';
+import { actionAddNewOffer } from './state/reducers/offersReducer/actions';
 
 export const WebApp = window.Telegram.WebApp
-// export const baseURL = isDevelopment ? 'moneytree-stage.extensi.one' : process.env.REACT_APP_BASE_URL
-export const baseURL = 'moneytree.extensi.one' 
+export const baseURL = isDevelopment ? 'moneytree-stage.extensi.one' : process.env.REACT_APP_BASE_URL
 
 function App() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -52,7 +52,6 @@ function App() {
   const energy = useSelector((state) => state?.user?.player?.energy);
   const SOCKET_URL = `wss://${baseURL}/notification`;
 
-  
   useEffect(() => {
     if (socketRef.current || !token) return;
 
