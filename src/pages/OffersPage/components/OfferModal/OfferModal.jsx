@@ -175,7 +175,8 @@ export const OfferModal = () => {
             className={styles.container_wrapper_done_button}
             disabled={isChecking}
           >
-            Проверить
+            {isNew ? 'Получить награду' : 'Проверить'}
+            
           </button>
         )}
       </div>
