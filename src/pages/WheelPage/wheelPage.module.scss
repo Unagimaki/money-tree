@@ -9,6 +9,6 @@
     &_buttons {
         display: flex;
         gap: $size12px;
-        margin-top: $size12px;
+        margin-top: min(1.48vh, 12px);
     }
 }
