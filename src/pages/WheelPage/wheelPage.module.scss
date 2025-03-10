@@ -1,0 +1,14 @@
+@import '../../assets/styles/vars';
+
+.container {
+    @each $property, $value in $page_styles {
+        #{$property}: $value;
+    }
+    height: $page_height;
+    background: $dark_gradient;
+    &_buttons {
+        display: flex;
+        gap: $size12px;
+        margin-top: $size12px;
+    }
+}

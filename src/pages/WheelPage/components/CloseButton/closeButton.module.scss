@@ -1,0 +1,9 @@
+@import '../../../../assets/styles/vars';
+
+.container {
+    position: absolute;
+    top: $size18px;
+    right: $size18px;
+    width: min(8.53vw, 32px);
+    height: min(8.53vw, 32px);
+}

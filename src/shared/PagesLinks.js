@@ -8,4 +8,5 @@ export const PagesLinks = {
     MAIN_URL: '/main',
     LOADING_URL: '/',
     SEASON_URL: '/season',
+    WHEEL_URL: '/wheel'
 }

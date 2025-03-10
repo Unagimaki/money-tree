@@ -1,0 +1,14 @@
+@import '../../../../assets/styles/vars';
+
+.container {
+    width: min(44.13vw, 165.6px);
+    height: min(15.47vw, 58px);
+    border-radius: $size12px;
+    color: #fff;
+    font-family: $MBold;
+    font-size: $size16px;
+    border: min(0.27vw, 1px) solid #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
