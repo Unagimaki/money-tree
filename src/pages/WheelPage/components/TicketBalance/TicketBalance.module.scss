@@ -26,3 +26,8 @@
         }
     }
 }
+@media screen and (max-height: 748px) {
+    .container {
+        margin-top: min(7.39vh, 30px);
+    }
+}
