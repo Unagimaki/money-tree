@@ -45,10 +45,14 @@ export const TaskItem = ({
           <div className={styles.container_info_reward_money}>
             &nbsp; ({(course * reward).toFixed(5).replace(/\.?0+$/, "")} $)
           </div>
-          <div className={styles.container_info_reward_ticket}>
-            <div>+{ticketReward}</div>
-            <img src={ticket} alt="ticket" />
-          </div>
+          {
+            ticketReward &&
+            <div className={styles.container_info_reward_ticket}>
+              <div>+{ticketReward}</div>
+              <img src={ticket} alt="ticket" />
+            </div>
+
+          }
 
         </div>
       </div>
