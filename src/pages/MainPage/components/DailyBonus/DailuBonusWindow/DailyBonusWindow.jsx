@@ -55,11 +55,12 @@ export const DailyBonusWindow = () => {
                                 bonuses.map(item => {
                                     return <DailyBonusItem
                                         day={item.day}
-                                        bonus={item.bonus}
+                                        bonus={item?.bonus}
                                         key={item.id}
                                         isAvailable={item.isAvailable}
                                         isCurrentDay={currentStreak}
                                         isCollected={item.isCollected}
+                                        ticketReward={item?.ticketReward}
                                     />
                                 })
                             }

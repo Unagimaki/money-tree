@@ -1,8 +1,9 @@
 import styles from './dailyBonusItem.module.scss'
 import { getDayStyle } from './helpers/getDayStyle'
 
-export const DailyBonusItem = ({isAvailable, isCurrentDay, isCollected, bonus, day}) => {
+export const DailyBonusItem = ({isAvailable, isCurrentDay, isCollected, bonus, day, ticketReward}) => {
     const money_icon = require('../../../assets/money_icon.png')
+    const ticket = require('../../../assets/ticket.png')
     const collected_icon = require('../../../assets/collected_icon.png')
     return(
         <div
@@ -19,10 +20,21 @@ export const DailyBonusItem = ({isAvailable, isCurrentDay, isCollected, bonus, d
                 >
                     {day} день
                 </div>
-                <div className={styles.container_inner_day_reward}>
-                    <div className={styles.container_inner_day_reward_num}>{bonus}</div>
-                    <img src={money_icon} alt="money_icon" />
-                </div>
+                {
+                    bonus &&
+                    <div className={styles.container_inner_day_reward}>
+                        <div className={styles.container_inner_day_reward_num}>{bonus}</div>
+                        <img src={money_icon} alt="money_icon" />
+                    </div>
+
+                }
+                {
+                    ticketReward &&
+                    <div className={styles.container_inner_day_reward}>
+                        <div className={styles.container_inner_day_reward_num}>{ticketReward}</div>
+                        <img src={ticket} alt="ticket" />
+                    </div>
+                }
             </div>
             {
                 isCollected &&

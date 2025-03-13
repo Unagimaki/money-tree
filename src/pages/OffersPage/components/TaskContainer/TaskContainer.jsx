@@ -41,6 +41,7 @@ export const TaskContainer = () => {
                                 key={item.id}
                                 count={item.count}
                                 isNew={item?.isNew}
+                                ticketReward={item?.ticketReward}
                             />
                         })
                     }

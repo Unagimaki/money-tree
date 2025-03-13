@@ -12,10 +12,12 @@ export const TaskItem = ({
   id,
   imgUrl,
   count,
-  isNew
+  isNew,
+  ticketReward
 }) => {
   const arrow_img = require("../../../assets/arrow.png");
   const money = require("../../../assets/money.png");
+  const ticket = require("../../../assets/ticket.png");
   const course = useSelector((state) => state.season?.course);
   const dispatch = useDispatch();
 
@@ -43,6 +45,11 @@ export const TaskItem = ({
           <div className={styles.container_info_reward_money}>
             &nbsp; ({(course * reward).toFixed(5).replace(/\.?0+$/, "")} $)
           </div>
+          <div className={styles.container_info_reward_ticket}>
+            <div>+{ticketReward}</div>
+            <img src={ticket} alt="ticket" />
+          </div>
+
         </div>
       </div>
       <div className={styles.container_done}>
