@@ -204,7 +204,7 @@ function App() {
               />
             }
           />
-          <Route path={PagesLinks.WHEEL_URL} element={<WheelPage/>}/>
+          <Route path={PagesLinks.WHEEL_URL} element={<WheelPage navigate={navigate}/>}/>
           <Route path={PagesLinks.TICKET_SHOP_URL} element={<TicketShopPage navigate={navigate}/>}/>
           <Route
             path={PagesLinks.LOADING_URL}

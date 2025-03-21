@@ -11,10 +11,8 @@ import styles from './wheelPage.module.scss'
 import { BackButton } from '@vkruglikov/react-telegram-web-app'
 
 
-const navigate = useNavigate()
-
-const handleBackButtonClick = () => {
-    navigate(PagesLinks.MAIN_URL)
+const handleBackButtonClick = ({navigate}) => {
+    navigate("/main");
 }
 
 

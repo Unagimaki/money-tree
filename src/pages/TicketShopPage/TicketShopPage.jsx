@@ -6,7 +6,7 @@ import { ShopItemsContainer } from './components/ShopItemsContainer/ShopItemsCon
 import { TicketBalance } from './components/TicketBalance/TicketBalance'
 import styles from './ticketShopPage.module.scss'
 
-export const TicketShopPage = () => {
+export const TicketShopPage = ({navigate}) => {
 
     const [isModalVisible, setIsModalVisible] = useState(false)
 
@@ -18,6 +18,10 @@ export const TicketShopPage = () => {
         isModalVisible && setTimeout(() => setIsModalVisible(false), 2000) 
     }, [isModalVisible])
 
+    const handleBackButtonClick = ({navigate}) => {
+        navigate("/main");
+    }
+
     return(
         <div className={styles.container}>
             <Balance/>
@@ -27,7 +31,7 @@ export const TicketShopPage = () => {
                 isModalVisible && <BuyModal showModal={() => setIsModalVisible(false)}/>
             }
             
-            <BackButton/>
+            <BackButton onClick={handleBackButtonClick}/>
         </div>
     )
 }
