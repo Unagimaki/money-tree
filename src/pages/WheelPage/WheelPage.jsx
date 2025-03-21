@@ -11,12 +11,15 @@ import styles from './wheelPage.module.scss'
 import { BackButton } from '@vkruglikov/react-telegram-web-app'
 
 
-const handleBackButtonClick = ({navigate}) => {
-    navigate("/main");
-}
 
 
 export const WheelPage = ({navigate}) => {
+
+    
+    const handleBackButtonClick = () => {
+        navigate("/main");
+    }
+
     return(
         <div className={styles.container}>
             <CloseButton/>
