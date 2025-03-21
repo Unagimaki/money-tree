@@ -25,7 +25,6 @@ import { Tutorial } from './features/components/Tutorial/Tutorial';
 import { TwaAnalyticsProvider } from "@tonsolutions/telemetree-react";
 import OffersPage from './pages/OffersPage/OffersPage';
 import { isDevelopment } from './utils/config';
-import Snowfall from 'react-snowfall';
 import { AdvertModal } from './pages/OffersPage/components/AdvertModal/AdvertModal';
 import { actionAddNewOffer } from './state/reducers/offersReducer/actions';
 
@@ -147,7 +146,6 @@ function App() {
   return (
     <TwaAnalyticsProvider projectId="59a2dcea-5236-4c30-888c-93c99eea7a19" apiKey="fb8e3102-1c0c-4751-8b14-6f687520c638" appName="Money tree">
       <div className={styles.app}>
-        <Snowfall style={{width: '100vw', height: '100vh', zIndex: 2}}/>
         {isTutorialActive && <Tutorial />}
         <Routes>
           <Route path={PagesLinks.BOOSTS_URL} element={<BoostsPage
