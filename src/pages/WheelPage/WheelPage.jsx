@@ -16,7 +16,7 @@ const handleBackButtonClick = ({navigate}) => {
 }
 
 
-export const WheelPage = () => {
+export const WheelPage = ({navigate}) => {
     return(
         <div className={styles.container}>
             <CloseButton/>
