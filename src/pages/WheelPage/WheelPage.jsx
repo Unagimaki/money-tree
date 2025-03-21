@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom'
 import { PagesLinks } from '../../shared/PagesLinks'
 import { BetSelector } from './components/BetSelector/BetSelector'
 import { BuyTicketButton } from './components/BuyTicketButton/BuyTicketButton'
@@ -9,9 +10,13 @@ import { WheelContainer } from './components/WheelContainer/WheelContainer'
 import styles from './wheelPage.module.scss'
 import { BackButton } from '@vkruglikov/react-telegram-web-app'
 
-const handleBackButtonClick = ({navigate}) => {
+
+const navigate = useNavigate()
+
+const handleBackButtonClick = () => {
     navigate(PagesLinks.MAIN_URL)
 }
+
 
 export const WheelPage = () => {
     return(
