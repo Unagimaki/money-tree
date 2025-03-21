@@ -39,7 +39,7 @@ export const AdvertRewardItem = ({place, prize, chance = null}) => {
                     }
                     <div className={styles.container_inner_info_reward}>
                         <div>{prize}</div>
-                        <div>({(course * convertStringToNumber(prize)).toFixed(5).replace(/\.?0+$/, "")}$)</div>
+                        <div><b> ({(course * convertStringToNumber(prize)).toFixed(5).replace(/\.?0+$/, "")}$)</b></div>
                     </div>
                 </div>
                 <img src={money} className={styles.container_inner_img} alt="money" />

@@ -1,3 +1,5 @@
+import { WEEK_LIMIT } from '../../../utils/config'
+
 export const withdrawalResponse = (res) => {
   switch (res) {
     case "Withdrawal amount exceeds threshold, verification is required. Please wait for approval.":
@@ -15,7 +17,7 @@ export const withdrawalResponse = (res) => {
     case 'Funds were successfully withdrawn':
       return "Успешно"
     case 'amount must not be less than 1, amount must be a number conforming to the specified constraints, amount should not be empty':
-      return 'Ошибка при выводе'
+      return `Вывод невозможен: сумма должна быть не меньше $${WEEK_LIMIT}, и недельный лимит не должен быть исчерпан (п.1 правил)`
     default:
       console.log('withdrawalResponse: ' + res);  // Печать в консоль
       return 'Неизвестная ошибка';  // Возвращаем строку

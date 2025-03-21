@@ -27,7 +27,7 @@ export const AdvertRools = ({status, rules}) => {
                 <br/>
                 <div className={styles.container_list_info}>
                     <InfoItem text={'Победитель выбирается случайным образом среди всех участников'} img={people}/>
-                    <InfoItem text={'Розыгрыш продлится до 20 марта'} img={menu}/>
+                    <InfoItem text={'Розыгрыш продлится до 25 апреля'} img={menu}/>
                 </div>
             </div>
         </div>
