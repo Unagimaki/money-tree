@@ -17,7 +17,7 @@ export const WheelPage = ({navigate}) => {
 
     
     const handleBackButtonClick = () => {
-        navigate("/wheel");
+        navigate("/main");
     }
 
     return(

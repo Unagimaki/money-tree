@@ -21,7 +21,7 @@ export const TicketShopPage = ({navigate}) => {
     }, [isModalVisible])
 
     const handleBackButtonClick = () => {
-        navigate("/main");
+        navigate("/wheel");
     }
 
     return(
