@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { BackButton } from './components/BackButton/BackButton'
+import { Back } from './components/Back/Back'
 import { Balance } from './components/Balance/Balance'
 import { BuyModal } from './components/BuyModal/BuyModal'
 import { ShopItemsContainer } from './components/ShopItemsContainer/ShopItemsContainer'
@@ -33,7 +33,7 @@ export const TicketShopPage = ({navigate}) => {
                 isModalVisible && <BuyModal showModal={() => setIsModalVisible(false)}/>
             }
             
-            <BackButton onClick={handleBackButtonClick}/>
+            <Back onClick={handleBackButtonClick}/>
             <BackButton onClick={handleBackButtonClick} />
         </div>
     )

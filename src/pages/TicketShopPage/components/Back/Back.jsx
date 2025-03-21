@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router-dom'
-import styles from './backButton.module.scss'
+import styles from './back.module.scss'
 import { PagesLinks } from '../../../../shared/PagesLinks'
 
-export const BackButton = () => {
+export const Back = () => {
     const navigate = useNavigate()
 
 
