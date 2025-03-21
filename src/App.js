@@ -29,6 +29,7 @@ import Snowfall from 'react-snowfall';
 import { AdvertModal } from './pages/OffersPage/components/AdvertModal/AdvertModal';
 import { actionAddNewOffer } from './state/reducers/offersReducer/actions';
 import { WheelPage } from './pages/WheelPage/WheelPage';
+import { TicketShopPage } from './pages/TicketShopPage/TicketShopPage';
 
 export const WebApp = window.Telegram.WebApp
 export const baseURL = isDevelopment ? 'moneytree-stage.extensi.one' : process.env.REACT_APP_BASE_URL
@@ -204,6 +205,7 @@ function App() {
             }
           />
           <Route path={PagesLinks.WHEEL_URL} element={<WheelPage navigate={navigate}/>}/>
+          <Route path={PagesLinks.TICKET_SHOP_URL} element={<TicketShopPage navigate={navigate}/>}/>
           <Route
             path={PagesLinks.LOADING_URL}
             element={<LoaderPage navigate={navigate} />}
@@ -211,7 +213,7 @@ function App() {
           <Route path={PagesLinks.SEASON_URL} element={<SeasonEnd />} />
           <Route path="/" element={<LoaderPage />} />
         </Routes>
-        {currentUrl !== "/" && currentUrl !== PagesLinks.LOADING_URL && currentUrl !== PagesLinks.SEASON_URL && currentUrl !== PagesLinks.WHEEL_URL && <FooterMenu />}
+        {currentUrl !== "/" && currentUrl !== PagesLinks.LOADING_URL && currentUrl !== PagesLinks.SEASON_URL && currentUrl !== PagesLinks.WHEEL_URL && currentUrl !== PagesLinks.TICKET_SHOP_URL && <FooterMenu />}
         {(currentUrl === PagesLinks.STATS_URL || currentUrl === PagesLinks.SEASON_URL) && <StatButton />}
         {offerModalVisible && <OfferModal/> }
         {isStatModalVisible.isVisible && ( <StatModal onDamageModalShow={handleDamageStatModalShow} type={isStatModalVisible.type} /> )}

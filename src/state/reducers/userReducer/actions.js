@@ -1,4 +1,4 @@
-import { CAN_USER_PLAY, INCREASE_USER_BALANCE, INCREASE_USER_ENERGY, REDUCE_USER_ENERGY, SET_USER, SET_USER_BALANCE, SET_USER_DAMAGE, SET_USER_ENERGY, SET_USER_MAX_ENERGY, SET_USER_REFRESH_TOKEN, SET_USER_REGENERATION, SET_USER_TOKEN } from "./types"
+import { CAN_USER_PLAY, INCREASE_USER_BALANCE, INCREASE_USER_ENERGY, REDUCE_USER_ENERGY, SET_USER, SET_USER_BALANCE, SET_USER_DAMAGE, SET_USER_ENERGY, SET_USER_MAX_ENERGY, SET_USER_REFRESH_TOKEN, SET_USER_REGENERATION, SET_USER_TICKETS, SET_USER_TOKEN } from "./types"
 
 export const actionSetUser = (user) => {
   return {
@@ -75,5 +75,12 @@ export const actionSetCanUserPlay = (boolean) => {
   return {
     type: CAN_USER_PLAY,
     payload: boolean
+  }
+}
+
+export const actionSetUserTickets = (amount) => {
+  return {
+    type: SET_USER_TICKETS,
+    payload: amount
   }
 }

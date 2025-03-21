@@ -1,0 +1,19 @@
+@import '../../../../assets/styles/vars';
+
+.container {
+    position: absolute;
+    bottom: 4%;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &_inner {
+        width: $size343px;
+        height: min(15.47vw, 58px);
+        border-radius: $size12px;
+        border: min(0.27vw, 1px) solid #fff;
+        color: #fff;
+        font-size: $size16px;
+        font-family: $MBold;
+    }
+}

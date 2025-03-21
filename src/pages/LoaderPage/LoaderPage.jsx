@@ -17,6 +17,7 @@ import { example_query, isDevelopment } from "../../utils/config";
 import { actionSetCurrentLeague, actionSetLeagues } from "../../state/reducers/leagueReducer/leagueReducer";
 import { actionSetDailyBonus } from "../../state/reducers/dailyBonusReducer/dailyBonusReducer";
 import { actionSetRef } from "../../state/reducers/referralsReducer/actions";
+import { actionSetTicketItems } from "../../state/reducers/ticketShopReducer/ticketShopReducer";
 
 const LoaderPage = () => {
   const dispatch = useDispatch();
@@ -53,6 +54,7 @@ const LoaderPage = () => {
       (data) => dispatch(actionSetCurrentLeague(data.currentUser.league)),
       (data) => dispatch(actionSetUserWallet(data)),
       (data) => dispatch(actionSetRef(data)),
+      (data) => dispatch(actionSetTicketItems(data))
       
     ]    
     if (!dataFetched) {

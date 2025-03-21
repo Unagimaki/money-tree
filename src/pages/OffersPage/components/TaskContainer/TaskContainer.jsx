@@ -37,7 +37,7 @@ export const TaskContainer = () => {
                                 reward={item.reward}
                                 terms={item.terms}
                                 title={item.title}
-                                imgUrl={item.media.fileId}
+                                imgUrl={item.media?.fileId}
                                 key={item.id}
                                 count={item.count}
                                 isNew={item?.isNew}

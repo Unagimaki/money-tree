@@ -1,0 +1,13 @@
+.container {
+    margin-top: min(3.07vw, 11.5px);
+    width: 100%;
+    
+    &_inner {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: min(3.07vw, 11.5px);
+        width: 91.33%;
+        margin: 0 auto;
+    }
+}

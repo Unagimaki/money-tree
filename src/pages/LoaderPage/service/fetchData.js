@@ -15,6 +15,7 @@ export const fetchData = async (token) => {
       getData(token, "player/top"),
       getData(token, "wallet"),
       getData(token, "referrals"),
+      getData(token, "ticket-shop")
     ])       
       
     return results

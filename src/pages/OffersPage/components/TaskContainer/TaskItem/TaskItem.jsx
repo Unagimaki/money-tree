@@ -34,7 +34,7 @@ export const TaskItem = ({
       <div className={styles.container_image}>
         <img
           src={`https://${baseURL}/directus/assets/${imgUrl}`}
-          alt="container_image"
+          alt="img"
         />
       </div>
       <div className={styles.container_info}>

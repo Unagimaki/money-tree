@@ -4,7 +4,7 @@ import styles from './dailyBonusWindow.module.scss'
 import { actionSetBonusCollected, actionSetBonusWindowVisible } from '../../../../../state/reducers/dailyBonusReducer/dailyBonusReducer'
 import { collectDailyBonus } from '../../../services/collectDailyBonus'
 import { useEffect, useState } from 'react'
-import { actionIncreaseUserBalance } from '../../../../../state/reducers/userReducer/actions'
+import { actionIncreaseUserBalance, actionSetUserBalance, actionSetUserTickets } from '../../../../../state/reducers/userReducer/actions'
 import { actionShowModal } from '../../../../../state/reducers/alertModalReducer/alertModalReducer'
 
 export const DailyBonusWindow = () => {
@@ -22,9 +22,10 @@ export const DailyBonusWindow = () => {
     }
     const handleCollectDailyBonus = () => {
         collectDailyBonus(token)
-        .then(res => {
+        .then(res => {            
             dispatch(actionSetBonusCollected(bonuses[currentStreak-1].id))
-            dispatch(actionIncreaseUserBalance(bonuses[currentStreak-1].bonus))
+            dispatch(actionSetUserBalance(res.data.totalBalance))
+            dispatch(actionSetUserTickets(res.data.totalTickets))
         })
         .catch(e => {
             dispatch(actionShowModal('Ошибка'))
