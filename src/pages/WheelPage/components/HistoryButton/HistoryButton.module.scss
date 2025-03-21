@@ -1,0 +1,15 @@
+@import '../../../../assets/styles/vars';
+
+.container {
+    width: min(44.13vw, 165.6px);
+    height: min(15.47vw, 58px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: $size8px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: $size12px;
+    color: #fff;
+    font-size: $size16px;
+    font-family: $MBold;
+}

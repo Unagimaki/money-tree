@@ -1,0 +1,34 @@
+@import '../../../../assets/styles/vars';
+
+.container {
+    margin-top: min(7.39vh, 60px);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &_inner {
+        width: max-content;
+        height: min(18.13vw, 68px);
+        padding: 0 min(4.8vw, 18px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: $size10px;
+        color: #fff;
+        background-color: rgba(255, 255, 255, 0.05);
+        border-radius: min(5.33vw, 20px);
+        img {
+            width: min(12.27vw, 46px);
+            height: min(12.27vw, 46px);
+        }
+        &_balance {
+            font-size: min(7.47vw, 28px);
+            font-family: $MBold;
+        }
+    }
+}
+@media screen and (max-height: 748px) {
+    .container {
+        margin-top: min(7.39vh, 30px);
+    }
+}

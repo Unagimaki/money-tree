@@ -1,0 +1,45 @@
+@import '../../../../assets/styles/vars';
+
+.container {
+    width: min(44.13vw, 165.5px);
+    height: min(33.07vw, 124px);
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: $size16px;
+    padding: $size8px;
+    &_inner {
+        display: flex;
+        height: 100%;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        &_tickets {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: $size12px;
+            color: #fff;
+            font-family: $MBold;
+            font-size: min(5.33vw, 20px);
+            img {
+                width: min(11.2vw, 42px);
+                height: min(11.2vw, 42px);
+            }
+        }
+        &_price_button {
+            width: 90.33%;
+            background-color: $green;
+            
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: $size12px;
+            font-family: $MBold;
+            font-size: $size16px;
+            gap: min(1.07vw, 4px);
+            img {
+                width: min(8.53vw, 32px);
+                height: min(8.53vw, 32px);
+            }
+        }
+    }
+}

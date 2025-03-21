@@ -16,7 +16,7 @@
         width: min(38.67vw, 145px);
     }
     &_info {
-        width: 57.99%;
+        white-space: nowrap;
         &_title {
             font-family: $MMedium;
             white-space: nowrap;
@@ -36,6 +36,17 @@
             &_money {
                 color: #fff;
                 white-space: nowrap;
+            }
+            &_ticket {
+                padding-left: 2vw;
+                color: #fff;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 1vw;
+                img {
+                    width: $size24px;
+                }
             }
         }
     }

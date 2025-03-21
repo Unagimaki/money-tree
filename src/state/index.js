@@ -15,6 +15,7 @@ import { leagueReducer } from "./reducers/leagueReducer/leagueReducer";
 import { dailyBonusReducer } from "./reducers/dailyBonusReducer/dailyBonusReducer";
 import { alertModalReducer } from "./reducers/alertModalReducer/alertModalReducer";
 import { advertModalReducer } from "./reducers/advertModalReducer/advertModalReducer";
+import { ticketShopReducer } from "./reducers/ticketShopReducer/ticketShopReducer";
 
 const rootReducer = combineReducers({
   user: userReducer,
@@ -32,7 +33,8 @@ const rootReducer = combineReducers({
   league: leagueReducer,
   dailyBonus: dailyBonusReducer,
   alert: alertModalReducer,
-  advert: advertModalReducer
+  advert: advertModalReducer,
+  ticketShop: ticketShopReducer,
 });
 
 export const store = createStore(rootReducer)

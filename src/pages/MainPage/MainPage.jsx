@@ -17,6 +17,7 @@ import { MainBackground } from './components/MainBackground/MainBackground'
 import { IntroModal } from '../../features/modals/IntroModal/IntroModal'
 import { IntroModalSecond } from '../../features/modals/IntroModalSecond/IntroModalSecond'
 import { IntroModalThird } from '../../features/modals/IntroModalThird/IntroModalThird'
+import { WheelIconContainer } from './components/WheelIcon/WheelIconContainer'
 
 
 const MainPage = ({ isStatModalVisible, onDamageModalShow }) => {
@@ -34,9 +35,23 @@ const MainPage = ({ isStatModalVisible, onDamageModalShow }) => {
   const background = (energy && energy > 0) ? require(`./assets/energy_snow/${energy}.png`) : snow_background;
 
   const isTutorialIsActive = useSelector(state => state.tutorial.isTutorialIsActive)
+
   console.log(store.getState());
-  
-  const handleButtonClick = () => { isStatModalVisible ? onDamageModalShow() : WebApp.close() };
+
+  const handleIntroModalVisible = () => {   
+    setIsIntroModalVisible(false)
+  }
+
+  const handleButtonClick = () => {
+    if (isStatModalVisible) {
+      onDamageModalShow()
+    }
+    else if (isIntroModalVisible) {
+      handleIntroModalVisible()
+    } else {
+      WebApp.close()
+    }
+  };
 
   useEffect(() => {
     const isTutorialDone = JSON.parse(localStorage.getItem('isTutorialDone')) || false;   
@@ -87,10 +102,6 @@ const MainPage = ({ isStatModalVisible, onDamageModalShow }) => {
 
   }, []);
 
-  const handleIntroModalVisible = () => {
-    setIsIntroModalVisible(false)
-  }
-
   return (
     <div>
       <div className={styles.main_page}>
@@ -101,7 +112,8 @@ const MainPage = ({ isStatModalVisible, onDamageModalShow }) => {
         <TreeModule shop={shop} state={store.getState()}/>
         <DailyBonusIcon/>
         <DailyBonusWindow/>
-        {isStatModalVisible && <BackButton onClick={handleButtonClick}/>}
+        <WheelIconContainer/>
+        {(isStatModalVisible || isIntroModalVisible) && <BackButton onClick={handleButtonClick}/>}
         {
           isIntroModalVisible && (
             currentModal === 'first_modal' ? <IntroModal handleIntroModalVisible={handleIntroModalVisible}/> : currentModal === 'second_modal' ? <IntroModalSecond handleIntroModalVisible={handleIntroModalVisible}/> : currentModal === 'third_modal' ? <IntroModalThird handleIntroModalVisible={handleIntroModalVisible}/> : ''

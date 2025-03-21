@@ -1,0 +1,48 @@
+@import '../../../../assets/styles/vars';
+
+.container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &_inner {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: $size8px;
+        &_currentBet {
+            width: min(26.67vw, 100px);
+            height: min(13.87vw, 52px);
+            border-radius: $size12px;
+            border: min(0.53vw, 2px) solid $green;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: $size12px;
+            &_amount {
+                color: #fff;
+                font-size: min(5.33vw, 20px);
+                font-family: $MBold;
+            }
+            img {
+                width: min(8.53vw, 32px);
+                height: min(8.53vw, 32px);
+            }
+        }
+        &_button {
+            width: min(13.87vw, 52px);
+            height: min(13.87vw, 52px);
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: $size12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+}
+
+@media screen and (max-height: 790px) {
+    .container {
+        margin-top: -5vh;
+    }
+}

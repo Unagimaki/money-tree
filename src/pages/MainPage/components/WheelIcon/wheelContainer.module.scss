@@ -1,0 +1,14 @@
+@import '../../../../assets/styles/vars';
+
+.container {
+    position: absolute;
+    z-index: 3;
+    width: min(12.8vw, 48px);
+    height: min(12.8vw, 48px);
+    right: $size16px;
+    top: min(65.07vw, 244px);
+    img {
+        width: 100%;
+        height: 100%;
+    }
+}

@@ -1,0 +1,11 @@
+@import '../../../../assets/styles/vars';
+
+.container {
+    max-width: 380px;
+}
+
+@media screen and (max-height: 705px) {
+    .container {
+        max-width: 330px;
+    }
+}
