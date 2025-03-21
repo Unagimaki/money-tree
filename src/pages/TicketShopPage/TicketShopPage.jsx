@@ -5,6 +5,8 @@ import { BuyModal } from './components/BuyModal/BuyModal'
 import { ShopItemsContainer } from './components/ShopItemsContainer/ShopItemsContainer'
 import { TicketBalance } from './components/TicketBalance/TicketBalance'
 import styles from './ticketShopPage.module.scss'
+import { BackButton } from '@vkruglikov/react-telegram-web-app'
+
 
 export const TicketShopPage = ({navigate}) => {
 
@@ -18,7 +20,7 @@ export const TicketShopPage = ({navigate}) => {
         isModalVisible && setTimeout(() => setIsModalVisible(false), 2000) 
     }, [isModalVisible])
 
-    const handleBackButtonClick = ({navigate}) => {
+    const handleBackButtonClick = () => {
         navigate("/main");
     }
 
@@ -32,6 +34,7 @@ export const TicketShopPage = ({navigate}) => {
             }
             
             <BackButton onClick={handleBackButtonClick}/>
+            <BackButton onClick={handleBackButtonClick} />
         </div>
     )
 }
