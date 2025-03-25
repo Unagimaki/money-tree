@@ -57,7 +57,7 @@ export const WithdrawalBalance = () => {
 
                 <div className={styles.container_inner_info}>
                     <div className={styles.container_inner_info_limits}>
-                        Лимит в неделю - $5 <br/>
+                        Лимит в неделю - ${WEEK_LIMIT} <br/>
                         Безлимитно - от ${UNLIMITED}
                     </div>
                     <div className={styles.container_inner_info_time_left}>

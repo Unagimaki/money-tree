@@ -31,9 +31,9 @@ export const AdvertModal = () => {
             { place: '4', prize: '500 млн.' },
             { place: '5', prize: '200 млн.' },
             { place: '6-100', prize: '10 млн.' },
-            { place: '101-500', prize: '2 млн.' },
-            { place: '501-1000', prize: '1 млн.' },
-            { place: '1001+', prize: '200 тыс.' }
+            // { place: '101-500', prize: '2 млн.' },
+            // { place: '501-1000', prize: '1 млн.' },
+            // { place: '1001+', prize: '200 тыс.' }
         ]
     }
 
