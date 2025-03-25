@@ -2,6 +2,11 @@
 
 .container {
     max-width: 380px;
+    &_inner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
 @media screen and (max-height: 705px) {
