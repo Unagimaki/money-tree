@@ -22,6 +22,8 @@ export const WheelPage = ({navigate}) => {
     useEffect(() => {
       getPrizes(token, 1)
       .then(res => {
+        console.log(res);
+        
           dispatch(actionSetPrizes(res.data))
       })
     }, [])

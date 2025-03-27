@@ -13,11 +13,15 @@ const refresh_circle = require('../../assets/refresh-circle.png');
 const ticket_icon = require('../../assets/ticket_icon.png');
 
 export const WheelContainer = ({prizes}) => {    
+  const [isCanSpeen, setIsCanSpeen] = useState(true)
   const [mustSpin, setMustSpin] = useState(false);
   const [prizeIndex, setPrizeIndex] = useState(0);
   const token = useSelector(state => state.user.token)   
   const dispatch = useDispatch()
   const [tickets, setTickets] = useState(1)
+  const userTicketsBalace = useSelector(state => state.user.player.tickets)
+  
+
   const TICKETS = 'TICKETS'
   const RESPIN = 'RESPIN'
   const SPONSOR = 'SPONSOR'
@@ -27,43 +31,53 @@ export const WheelContainer = ({prizes}) => {
     setTickets(newData); // Обновляем состояние родителя
   };
 
-  const data = prizes?.map((item) => ({    
-    option: `${item.prizeType} - ${item.value}`, // Объединяем prizeType и value в одну строку
-    image: {
-      uri:item.prizeType === LEAFS ? money_icon : 
-          item.prizeType === SPONSOR ? sponsor : 
-          item.prizeType === TICKETS ? ticket_icon :
-          item.prizeType === RESPIN ? refresh_circle : '',
-      sizeMultiplier: 0.4,
+  const data = prizes?.map((item) => ({
+    option: item.prizeType === 'LEAFS' ? `${item.value} лифов` :
+            item.prizeType === 'TICKETS' ? `${item.value} билетов` : '', 
+    image: item.prizeType !== 'LEAFS' && item.prizeType !== 'TICKETS' ? {
+      uri: item.prizeType === 'SPONSOR' ? sponsor :
+          item.prizeType === 'RESPIN' ? refresh_circle : '',
+      sizeMultiplier: 0.7,
       offsetX: 0,
       offsetY: 100,
-    },
+    } : null,
   }));
 
-  const handleSpinClick = () => {
-    const randomIndex = Math.floor(Math.random() * prizes.length);
-    setPrizeIndex(randomIndex);
-    setMustSpin(true);
+  const handleSpeen = () => {
+    setIsCanSpeen(false)
+    dispatch(actionSetUserTickets(userTicketsBalace - tickets))
+    speenWheel(token, tickets)
+      .then(response => {
+        console.log(response);
+        const { prizeType, value } = response.data.selectedPrize;
+
+        // Определяем, что использовать в поиске
+        const searchValue = prizeType === 'LEAFS' ? `${value} лифов` :
+                            prizeType === 'TICKETS' ? `${value} билетов` :
+                            `${prizeType} - ${value}`;
+
+        console.log(searchValue);
+
+        // Поиск нужного элемента
+        const index = data.findIndex(item => item.option === searchValue);
+        setPrizeIndex(index);
+        console.log(index); // Выведет индекс найденного элемента или -1, если не найден
+
+        setMustSpin(true);
+
+        setTimeout(() => {
+          dispatch(actionSetUserBalance(response.data.totalBalance));
+          dispatch(actionSetUserTickets(response.data.totalTickets));
+        }, 5500);
+      })
+      .catch(e => console.log(e));
   };
 
-  const handleSpeen = () => {
-    speenWheel(token, tickets)
-    .then(response => {
-      console.log(response)         
-      const { prizeType, value } = response.data.selectedPrize;
-      const searchString = `${prizeType} - ${value}`;
-      console.log(searchString);
-      const index = data.findIndex(item => item.option === searchString);
-      setPrizeIndex(index)
-      console.log(index); // Выведет 2 (или -1, если не найдено)
-      setMustSpin(true);
-      setTimeout(() => {
-        dispatch(actionSetUserBalance(response.data.totalBalance))
-        dispatch(actionSetUserTickets(response.data.totalTickets))
-      }, 5500)
-    })
-    .catch(e => console.log(e))
+  const handleStopSpeen = () => {
+    setMustSpin(false)
+    setIsCanSpeen(true)
   }
+
 
   useEffect(() => {
     console.log(data);
@@ -83,14 +97,14 @@ export const WheelContainer = ({prizes}) => {
             outerBorderWidth={1}
             innerRadius={5}
             radiusLineWidth={1.3}
-            fontSize={14}
-            onStopSpinning={() => setMustSpin(false)}
+            fontSize={18}
+            onStopSpinning={handleStopSpeen}
             spinDuration={0.5}
-          
+            textColors={['#fff']}
           />
 
         <BetSelector onDataChange={handleDataChange}/>
-        <SpinButton mustSpin={mustSpin} onClick={handleSpeen}/>
+        <SpinButton mustSpin={mustSpin} onClick={handleSpeen} isCanSpeen={isCanSpeen}/>
       </div>
     </div>
   );

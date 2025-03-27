@@ -5,6 +5,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: min(6.65vh, 812px);
     &_inner {
         display: flex;
         align-items: center;
@@ -43,6 +44,6 @@
 
 @media screen and (max-height: 790px) {
     .container {
-        margin-top: -5vh;
+        margin-top: 3vh;
     }
 }

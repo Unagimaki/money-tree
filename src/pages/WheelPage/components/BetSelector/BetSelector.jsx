@@ -22,7 +22,7 @@ export const BetSelector = ({onDataChange}) => {
         }
     }
     const decrementBet = () => {
-        currentBet !== 0 && setCurrentBet(currentBet => currentBet - 1)
+        currentBet !== 1 && setCurrentBet(currentBet => currentBet - 1)
     }
 
     useEffect(() => {
