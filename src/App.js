@@ -31,7 +31,7 @@ import { WheelPage } from './pages/WheelPage/WheelPage';
 import { TicketShopPage } from './pages/TicketShopPage/TicketShopPage';
 
 export const WebApp = window.Telegram.WebApp
-export const baseURL = isDevelopment ? 'moneytree-stage.extensi.one' : process.env.REACT_APP_BASE_URL
+export const baseURL = isDevelopment ? 'moneytree.extensi.one' : process.env.REACT_APP_BASE_URL
 
 function App() {
   const [isLoaded, setIsLoaded] = useState(false);

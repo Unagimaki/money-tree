@@ -1,11 +1,11 @@
 import styles from './HistoryButton.module.scss'
 
-export const HistoryButton = () => {
+export const HistoryButton = ({handleHistory}) => {
     const clock = require('../../assets/clock.png')
     return(
-        <div className={styles.container}>
+        <button onClick={handleHistory} className={styles.container}>
             <div>История</div>
             <img src={clock} alt="clock"/>
-        </div>
+        </button>
     )
 }

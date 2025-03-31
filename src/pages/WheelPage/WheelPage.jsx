@@ -10,6 +10,7 @@ import { getPrizes } from './services/getPrizes'
 import { useEffect } from 'react'
 import { actionSetPrizes } from '../../state/reducers/wheelReducer/wheelReducer'
 import { WheelModal } from './components/WheelModal/WheelModal'
+import { getData } from '../../services/getData'
 
 export const WheelPage = ({navigate}) => {
 
@@ -30,6 +31,12 @@ export const WheelPage = ({navigate}) => {
       })
     }, [])
 
+    const handleHistory = () => {
+        getData(token, 'player-prizes')
+        .then(res => console.log(res))
+        .catch(e => console.log(e))
+    }
+
     return(
         <div className={styles.container}>
             <CloseButton/>
@@ -38,7 +45,7 @@ export const WheelPage = ({navigate}) => {
                 prizes.length > 0 && <WheelContainer prizes={prizes}/>
             }
             <div className={styles.container_buttons}>
-                <HistoryButton/>
+                <HistoryButton handleHistory={handleHistory}/>
                 <BuyTicketButton/>
             </div>
             {
