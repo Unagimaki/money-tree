@@ -23,7 +23,7 @@ import { WheelIconContainer } from './components/WheelIcon/WheelIconContainer'
 const MainPage = ({ isStatModalVisible, onDamageModalShow }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch()
-  const snow_background = require("./assets/background_snow.png");
+  const main_background = require("./assets/main_background.png");
   const [isLoading, setIsLoading] = useState(true);
   const [isIntroModalVisible, setIsIntroModalVisible] = useState(false)
   const [currentModal, setCurrentModal] = useState(null)
@@ -32,7 +32,7 @@ const MainPage = ({ isStatModalVisible, onDamageModalShow }) => {
   const isHintActive = useSelector(state => state.tutorial.isHintVisible)
   const shop = useSelector(state => state.shop)
   const energy = shop?.find(item => item.shopItem.itemType === 'ENERGY').currentLevel
-  const background = (energy && energy > 0) ? require(`./assets/energy_snow/${energy}.png`) : snow_background;
+  const background = (energy && energy > 0) ? require(`./assets/regen/${energy}.png`) : main_background;
 
   const isTutorialIsActive = useSelector(state => state.tutorial.isTutorialIsActive)
 
@@ -63,10 +63,10 @@ const MainPage = ({ isStatModalVisible, onDamageModalShow }) => {
 
   useEffect(() => {
     const img = new Image();
-    img.src = snow_background;
+    img.src = main_background;
     img.onload = () => setIsLoading(false)
     img.onerror = () => setIsLoading(false)
-  }, [snow_background]);  
+  }, [main_background]);  
 
   useEffect(() => {
     const isTutorialDone = JSON.parse(localStorage.getItem('isTutorialDone')) || false;
@@ -105,7 +105,7 @@ const MainPage = ({ isStatModalVisible, onDamageModalShow }) => {
   return (
     <div>
       <div className={styles.main_page}>
-        <MainBackground main_background={snow_background} img={background} isLoading={isLoading}/>
+        <MainBackground img={background} isLoading={isLoading}/>
         <AutoBot currentBotLevel={currentBotLevel}/>
         <Stats onDamageModalShow={onDamageModalShow}/>
         <Balance />

@@ -9,6 +9,7 @@ import { BackButton } from '@vkruglikov/react-telegram-web-app'
 import { getPrizes } from './services/getPrizes'
 import { useEffect } from 'react'
 import { actionSetPrizes } from '../../state/reducers/wheelReducer/wheelReducer'
+import { WheelModal } from './components/WheelModal/WheelModal'
 
 export const WheelPage = ({navigate}) => {
 
@@ -17,6 +18,7 @@ export const WheelPage = ({navigate}) => {
     }
     const prizes = useSelector((state) => state.wheel.prizes);
     const token = useSelector(state => state.user.token)
+    const wheelModalVisible = useSelector(state => state.wheel.wheelModalVisible)
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -39,6 +41,10 @@ export const WheelPage = ({navigate}) => {
                 <HistoryButton/>
                 <BuyTicketButton/>
             </div>
+            {
+                wheelModalVisible &&
+                <WheelModal/>
+            }
             <BackButton onClick={handleBackButtonClick} />
         </div>
     )

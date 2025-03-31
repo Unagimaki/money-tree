@@ -1,0 +1,67 @@
+@import '../../../../assets/styles/vars';
+
+.container {
+    display: flex;
+    align-items: center;
+    &_dark_background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 95;
+        background-color: #000;
+        opacity: .6;
+    }
+    &_wrapper {
+        width: 100vw;
+        height: 100vh;
+        margin: 0 auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 97;
+        display: flex;
+        justify-content: center;
+        &_modal {
+            margin-top: min(30.67vh, 249px);
+            width: $size343px;
+            height: min(65.6vw, 375px);
+            border: min(0.53vw, 2px) solid $green;
+            border-radius: $size24px;
+            background: linear-gradient(to right, #2F4422, #171E17);
+            display: flex;
+            gap: $size24px;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: #fff;
+            font-family: $MBold;
+            &_title {
+                font-size: min(5.33vw, 20px);
+            }
+            &_prize {
+                background-color: rgba(255, 255, 255, 0.05);
+                padding: min(3.47vw, 13px) $size16px;
+                display: flex;
+                gap: min(3.73vw, 14px);
+                align-items: center;
+                border-radius: $size16px;
+                &_amount {
+                    font-size: $size24px;
+                }
+                img {
+                    width: min(12.27vw, 46px);
+                    height: min(12.27vw, 46px);
+                }   
+            }
+            &_button {
+                font-size: $size16px;
+                background-color: rgba(255, 255, 255, 0.05);
+                width: min(80.8vw, 303px);
+                height: min(14.4vw, 54px);
+                border-radius: $size12px;
+            }
+        }
+    }
+}

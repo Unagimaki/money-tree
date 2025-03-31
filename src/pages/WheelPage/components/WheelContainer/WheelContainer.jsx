@@ -6,6 +6,7 @@ import { SpinButton } from '../SpinButton/SpinButton';
 import { BetSelector } from '../BetSelector/BetSelector';
 import { speenWheel } from '../../services/spinWheel';
 import { actionSetUserBalance, actionSetUserTickets } from '../../../../state/reducers/userReducer/actions';
+import { actionSetCurrentPrize, actionSetModalVisible } from '../../../../state/reducers/wheelReducer/wheelReducer';
 
 const money_icon = require('../../assets/money_icon.png');
 const sponsor = require('../../assets/1win.png');
@@ -32,40 +33,46 @@ export const WheelContainer = ({prizes}) => {
   };
 
   const data = prizes?.map((item) => ({
-    option: item.prizeType === 'LEAFS' ? `${item.value} лифов` :
-            item.prizeType === 'TICKETS' ? `${item.value} билетов` : '', 
-    image: item.prizeType !== 'LEAFS' && item.prizeType !== 'TICKETS' ? {
-      uri: item.prizeType === 'SPONSOR' ? sponsor :
-          item.prizeType === 'RESPIN' ? refresh_circle : '',
-      sizeMultiplier: 0.7,
-      offsetX: 0,
-      offsetY: 100,
-    } : null,
+      option: item.prizeType === 'LEAFS' ? `${item.value} лифов` :
+              item.prizeType === 'TICKETS' ? `${item.value} билетов` :
+              item.prizeType === 'SPONSOR' ? 'спонсор' :
+              item.prizeType === 'RESPIN' ? 'респин' : '', 
+      image: item.prizeType !== 'LEAFS' && item.prizeType !== 'TICKETS' ? {
+        uri: item.prizeType === 'SPONSOR' ? sponsor :
+            item.prizeType === 'RESPIN' ? refresh_circle : '',
+        sizeMultiplier: 0.7,
+        offsetX: 0,
+        offsetY: 100,
+      } : null,
   }));
 
+
   const handleSpeen = () => {
+    if (tickets > userTicketsBalace || userTicketsBalace === 0) {
+      return
+    }
     setIsCanSpeen(false)
     dispatch(actionSetUserTickets(userTicketsBalace - tickets))
     speenWheel(token, tickets)
       .then(response => {
-        console.log(response);
         const { prizeType, value } = response.data.selectedPrize;
 
         // Определяем, что использовать в поиске
-        const searchValue = prizeType === 'LEAFS' ? `${value} лифов` :
-                            prizeType === 'TICKETS' ? `${value} билетов` :
-                            `${prizeType} - ${value}`;
-
-        console.log(searchValue);
+      const searchValue = prizeType === 'LEAFS' ? `${value} лифов` :
+                    prizeType === 'TICKETS' ? `${value} билетов` :
+                    prizeType === 'SPONSOR' ? 'спонсор' :
+                    prizeType === 'RESPIN' ? 'респин' :
+                    `${prizeType} - ${value}`;
 
         // Поиск нужного элемента
         const index = data.findIndex(item => item.option === searchValue);
         setPrizeIndex(index);
-        console.log(index); // Выведет индекс найденного элемента или -1, если не найден
 
         setMustSpin(true);
 
         setTimeout(() => {
+          dispatch(actionSetModalVisible(true))
+          dispatch(actionSetCurrentPrize(response.data.selectedPrize.value, response.data.selectedPrize.prizeType))
           dispatch(actionSetUserBalance(response.data.totalBalance));
           dispatch(actionSetUserTickets(response.data.totalTickets));
         }, 5500);
@@ -76,14 +83,7 @@ export const WheelContainer = ({prizes}) => {
   const handleStopSpeen = () => {
     setMustSpin(false)
     setIsCanSpeen(true)
-  }
-
-
-  useEffect(() => {
-    console.log(data);
-    
-  }, [data])
-  
+  }  
 
   return (
     <div className={styles.container}>
@@ -103,7 +103,7 @@ export const WheelContainer = ({prizes}) => {
             textColors={['#fff']}
           />
 
-        <BetSelector onDataChange={handleDataChange}/>
+        <BetSelector isCanSpeen={isCanSpeen} onDataChange={handleDataChange}/>
         <SpinButton mustSpin={mustSpin} onClick={handleSpeen} isCanSpeen={isCanSpeen}/>
       </div>
     </div>
