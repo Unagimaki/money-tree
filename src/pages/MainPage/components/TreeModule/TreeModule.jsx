@@ -32,7 +32,7 @@ export const TreeModule = ({shop, state}) => {
             {
             !isLoading &&
             <div
-                style={{ backgroundImage: `url(${tree_snow})` }}
+                style={{ backgroundImage: `url(${tree_background})` }}
                 className={styles.container_tree}
                 >
                 {

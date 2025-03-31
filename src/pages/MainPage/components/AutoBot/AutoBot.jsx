@@ -17,7 +17,7 @@ export const AutoBot = ({ currentBotLevel }) => {
   const isInitialValue = time.hours === 0 && time.minutes === 0 && time.seconds === 0;
 
   const dispatch = useDispatch();
-  const lvl1 = require("../../assets/bot/autobot-snow.png");
+  const lvl1 = require("../../assets/bot/lvl1.png");
   const lvl2 = require("../../assets/bot/lvl2.png");
   const dots = require("../../assets/bot/dots.png");
   const threeHours = 10800000;
