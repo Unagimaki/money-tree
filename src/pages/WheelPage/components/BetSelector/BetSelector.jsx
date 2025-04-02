@@ -16,9 +16,13 @@ export const BetSelector = ({onDataChange, isCanSpeen}) => {
 
     const incrementBet = () => {
         if (!isCanSpeen) return
-        if (currentBet == ticketBalance) {
+        if (currentBet === ticketBalance) {
             dispatch(actionShowModal('Недостаточно билетов'))
         } else {
+            if (currentBet > 49) {
+                dispatch(actionShowModal('Максимальная сумма прокрутки 50 билетов'))
+                return
+            }
             setCurrentBet(currentBet => currentBet + 1)
         }
     }

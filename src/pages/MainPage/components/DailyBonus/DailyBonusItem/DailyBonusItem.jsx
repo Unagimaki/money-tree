@@ -21,7 +21,7 @@ export const DailyBonusItem = ({isAvailable, isCurrentDay, isCollected, bonus, d
                     {day} день
                 </div>
                 {
-                    bonus &&
+                    bonus > 0 &&
                     <div className={styles.container_inner_day_reward}>
                         <div className={styles.container_inner_day_reward_num}>{bonus}</div>
                         <img src={money_icon} alt="money_icon" />

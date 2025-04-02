@@ -6,6 +6,7 @@
     }
     height: $page_height;
     background: $dark_gradient;
+    overflow-x: hidden;
     &_buttons {
         display: flex;
         gap: $size12px;
@@ -16,6 +17,7 @@
 
 @media screen and (max-height: 790px) {
     .container {
-        overflow: auto;
+        overflow-y: auto;
+        overflow-x: hidden;
     }
 }

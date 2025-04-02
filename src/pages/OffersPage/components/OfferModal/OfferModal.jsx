@@ -109,7 +109,7 @@ export const OfferModal = () => {
 			console.log({opening_url})
 
 		} else {
-			const opening_url = url
+			const opening_url = updatedUrl(url, 'tid', tgId)
 			WebApp.openLink(opening_url)
 			console.log({opening_url})
 

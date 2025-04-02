@@ -11,8 +11,10 @@ import { BackButton } from '@vkruglikov/react-telegram-web-app'
 export const TicketShopPage = ({navigate}) => {
 
     const [isModalVisible, setIsModalVisible] = useState(false)
+    const [boughtTickets, setBoughtTickets] = useState(0)
 
-    const showModal = () => {
+    const showModal = (tickets) => {
+        setBoughtTickets(tickets)
         setIsModalVisible(true)
     }
 
@@ -30,7 +32,7 @@ export const TicketShopPage = ({navigate}) => {
             <TicketBalance/>
             <ShopItemsContainer showModal={showModal} isModalVisible={isModalVisible}/>
             {
-                isModalVisible && <BuyModal showModal={() => setIsModalVisible(false)}/>
+                isModalVisible && <BuyModal showModal={() => setIsModalVisible(false)} tickets={boughtTickets}/>
             }
             
             <Back onClick={handleBackButtonClick}/>

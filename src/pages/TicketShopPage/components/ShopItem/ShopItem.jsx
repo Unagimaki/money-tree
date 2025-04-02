@@ -19,7 +19,7 @@ export const ShopItem = ({id, price, tickets, token, showModal, isModalVisible})
             console.log(res)
             dispatch(actionSetUserTickets(res.data.totalTickets))
             dispatch(actionSetUserBalance(res.data.playerNewBalance))
-            showModal()
+            showModal(tickets)
         })
         .catch(e => {
             dispatch(actionShowModal('Ошибка при покупке'))
