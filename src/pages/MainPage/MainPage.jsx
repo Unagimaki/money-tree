@@ -18,6 +18,7 @@ import { IntroModal } from '../../features/modals/IntroModal/IntroModal'
 import { IntroModalSecond } from '../../features/modals/IntroModalSecond/IntroModalSecond'
 import { IntroModalThird } from '../../features/modals/IntroModalThird/IntroModalThird'
 import { WheelIconContainer } from './components/WheelIcon/WheelIconContainer'
+import { DailyBonusModal } from './components/DailyBonus/DailyBonusModal/DailyBonusModal'
 
 
 const MainPage = ({ isStatModalVisible, onDamageModalShow }) => {
@@ -33,9 +34,9 @@ const MainPage = ({ isStatModalVisible, onDamageModalShow }) => {
   const shop = useSelector(state => state.shop)
   const energy = shop?.find(item => item.shopItem.itemType === 'ENERGY').currentLevel
   const background = (energy && energy > 0) ? require(`./assets/regen/${energy}.png`) : main_background;
-
+  const dailyBonusModalVisible = useSelector(state => state.dailyBonus.dailyModalVisible)
   const isTutorialIsActive = useSelector(state => state.tutorial.isTutorialIsActive)
-
+  
   console.log(store.getState());
 
   const handleIntroModalVisible = () => {   
@@ -113,6 +114,10 @@ const MainPage = ({ isStatModalVisible, onDamageModalShow }) => {
         <DailyBonusIcon/>
         <DailyBonusWindow/>
         <WheelIconContainer/>
+        {
+          dailyBonusModalVisible &&
+          <DailyBonusModal/>
+        }
         {(isStatModalVisible || isIntroModalVisible) && <BackButton onClick={handleButtonClick}/>}
         {
           isIntroModalVisible && (
