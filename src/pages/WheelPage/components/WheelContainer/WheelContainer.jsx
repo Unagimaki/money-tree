@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Wheel } from 'react-custom-roulette' // Импортируем библиотеку
+import { Wheel } from 'react-custom-roulette'
 import styles from './wheelContainer.module.scss'
 import { SpinButton } from '../SpinButton/SpinButton'
 import { BetSelector } from '../BetSelector/BetSelector'
@@ -15,19 +15,17 @@ const refresh_circle = require('../../assets/refresh-circle.png')
 const ticket_icon = require('../../assets/ticket_icon.png')
 
 export const WheelContainer = ({ prizes }) => {
-	const [isCanSpeen, setIsCanSpeen] = useState(true)
+	const [isSpeeningNow, setIsSpeeningNow] = useState(false)
 	const [mustSpin, setMustSpin] = useState(false)
 	const [prizeIndex, setPrizeIndex] = useState(0)
+	const [isAutoSpin, setIsAutoSpin] = useState(false)
+	const [speenDuration, setSpeenDuration] = useState(0.5)
+
+	const [timer, setTimer] = useState(5500)
 	const token = useSelector(state => state.user.token)
 	const dispatch = useDispatch()
 	const [tickets, setTickets] = useState(1)
 	const userTicketsBalace = useSelector(state => state.user.player.tickets)
-
-
-	const TICKETS = 'TICKETS'
-	const RESPIN = 'RESPIN'
-	const SPONSOR = 'SPONSOR'
-	const LEAFS = 'LEAFS'
 
 	const handleDataChange = (newData) => {
 		setTickets(newData) // Обновляем состояние родителя
@@ -64,7 +62,9 @@ export const WheelContainer = ({ prizes }) => {
 			return
 		}
 
-			setIsCanSpeen(false)
+		if (isSpeeningNow) return
+
+		setIsSpeeningNow(true)
 		dispatch(actionSetUserTickets(userTicketsBalace - tickets))
 		speenWheel(token, tickets)
 			.then(response => {
@@ -82,25 +82,64 @@ export const WheelContainer = ({ prizes }) => {
 				setPrizeIndex(index)
 
 				setMustSpin(true)
-
 				setTimeout(() => {
-					// dispatch(actionSetModalVisible(true))
-					// setTimeout(() => dispatch(actionSetModalVisible(false)), 500)
-					dispatch(actionSetCurrentPrize(response.data.selectedPrize.value, response.data.selectedPrize.prizeType))
+					// if (!isAutoSpin) {
+					// 	// Показать модалку и установить текущий приз только если не включена автопрокрутка
+					// 	dispatch(actionSetModalVisible(true))
+					// 	dispatch(actionSetCurrentPrize(response.data.selectedPrize.value, response.data.selectedPrize.prizeType))
+					// }
+					
+					// Обновление баланса и билетов происходит всегда
 					dispatch(actionSetUserBalance(response.data.totalBalance))
 					dispatch(actionSetUserTickets(response.data.totalTickets))
-				}, 5500)
+				}, timer)
+
 			})
 			.catch(e => {
 				console.log(e)
 				dispatch(actionShowModal('Произошла ошибка'))
-				setIsCanSpeen(true)
 			})
+			.finally(() => {
+				setIsSpeeningNow(false)
+			})
+	}
+
+	useEffect(() => {
+		if (isAutoSpin) {
+			setTimer(1100)
+			const interval = setInterval(() => {
+				if (!isSpeeningNow) {
+					console.log('Автоспин: запускаем колесо')
+					handleSpeen()
+				}
+			}, 500)
+
+			// Очистка интервала
+			return () => {
+				clearInterval(interval)
+				console.log('Автоспин выключен, очищаем интервал')
+			}
+		} else {
+			setTimer(5500)
+		}
+	}, [isAutoSpin, isSpeeningNow])
+
+	const onHoldComplete = () => {
+		console.log('Удерживание 2 сек');	
+		setSpeenDuration(0.1)
+		setIsAutoSpin(true)
+		handleSpeen()
+	}
+	const onHoldDone = () => {
+		console.log('Удерживание завершено');	
+		setIsAutoSpin(false)	
+		setSpeenDuration(0.5)
+		handleSpeen()
 	}
 
 	const handleStopSpeen = () => {
 		setMustSpin(false)
-		setIsCanSpeen(true)
+		setIsSpeeningNow(false)
 	}
 
 	return (
@@ -117,12 +156,12 @@ export const WheelContainer = ({ prizes }) => {
 					radiusLineWidth={1.3}
 					fontSize={18}
 					onStopSpinning={handleStopSpeen}
-					spinDuration={0.5}
+					spinDuration={speenDuration}
 					textColors={['#fff']}
 				/>
 
-				<BetSelector isCanSpeen={isCanSpeen} onDataChange={handleDataChange} />
-				<SpinButton mustSpin={mustSpin} onClick={handleSpeen} isCanSpeen={isCanSpeen} />
+				<BetSelector isSpeeningNow={isSpeeningNow} onDataChange={handleDataChange} />
+				<SpinButton onHoldDone={onHoldDone} onHoldComplete={onHoldComplete} mustSpin={mustSpin} isSpeeningNow={isSpeeningNow} />
 			</div>
 		</div>
 	)

@@ -1,11 +1,30 @@
 @import '../../../../assets/styles/vars';
 
+.wrapper {
+    position: relative;
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.progressCircle {
+    position: absolute;
+    top: 85%;
+    left: 88%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 3;
+}
+
 .container {
     margin-top: min(4.19vh, 34px);
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+
     &_inner {
         width: $size343px;
         height: min(15.47vw, 58px);
@@ -15,16 +34,26 @@
         justify-content: center;
         background-color: $green;
         border-radius: $size12px;
+        position: relative;
+        z-index: 2; // поверх круга
+        user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            pointer-events: auto;
+            touch-action: manipulation;
         &_title {
             font-size: $size16px;
             font-family: $MBold;
         }
+
         &_text {
             display: flex;
             align-items: center;
             gap: min(1.07vw, 4px);
             font-family: $MBold;
             font-size: $size10px;
+
             img {
                 width: $size12px;
                 height: $size12px;
