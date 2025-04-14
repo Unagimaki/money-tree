@@ -72,7 +72,7 @@ export const WheelContainer = ({ prizes }) => {
 
 				// Определяем, что использовать в поиске
 			const searchValue = prizeType === 'LEAFS' ? `${value} лифов` :
-				prizeType === 'TICKETS' ? `${value} билетов` :
+				prizeType === 'TICKETS' ? `${value} билета` :
 					prizeType === 'SPONSOR' ? 'спонсор' :
 						prizeType === 'RESPIN' ? 'респин' :
 							`${prizeType} - ${value}`;
