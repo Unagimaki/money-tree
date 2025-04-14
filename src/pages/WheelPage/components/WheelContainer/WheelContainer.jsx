@@ -97,11 +97,6 @@ export const WheelContainer = ({ prizes }) => {
 
 				setMustSpin(true)
 				setTimeout(() => {
-					// if (!isAutoSpin) {
-					// 	// Показать модалку и установить текущий приз только если не включена автопрокрутка
-					// 	dispatch(actionSetModalVisible(true))
-					// 	dispatch(actionSetCurrentPrize(response.data.selectedPrize.value, response.data.selectedPrize.prizeType))
-					// }
 					
 					// Обновление баланса и билетов происходит всегда
 					dispatch(actionSetUserBalance(response.data.totalBalance))
@@ -124,7 +119,9 @@ export const WheelContainer = ({ prizes }) => {
 			const interval = setInterval(() => {
 				if (!isSpeeningNow) {
 					console.log('Автоспин: запускаем колесо')
-					handleSpeen()
+					setTimer(() => {
+						handleSpeen()
+					}, 1000)
 				}
 			}, 500)
 
