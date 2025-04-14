@@ -71,15 +71,27 @@ export const WheelContainer = ({ prizes }) => {
 				const { prizeType, value } = response.data.selectedPrize
 
 				// Определяем, что использовать в поиске
-				const searchValue = prizeType === 'LEAFS' ? `${value} лифов` :
-					prizeType === 'TICKETS' ? `${value} билетов` :
-						prizeType === 'SPONSOR' ? 'спонсор' :
-							prizeType === 'RESPIN' ? 'респин' :
-								`${prizeType} - ${value}`
+			const searchValue = prizeType === 'LEAFS' ? `${value} лифов` :
+				prizeType === 'TICKETS' ? `${value} билетов` :
+					prizeType === 'SPONSOR' ? 'спонсор' :
+						prizeType === 'RESPIN' ? 'респин' :
+							`${prizeType} - ${value}`;
 
-				// Поиск нужного элемента
-				const index = data.findIndex(item => item.option === searchValue)
-				setPrizeIndex(index)
+			// Поиск нужного элемента
+			const index = data.findIndex(item => item.option === searchValue);
+
+			if (index === -1) {
+				// Обрабатываем ошибку, если элемент не найден
+				console.error(`Prize not found: ${searchValue}`);
+				// Можно добавить дополнительную логику для обработки, например:
+				// - показ модалки с ошибкой
+				// - вернуть значение по умолчанию
+				// - выполнить другие действия
+			} else {
+				// Если элемент найден, продолжаем выполнение кода
+				setPrizeIndex(index);
+			}
+
 
 				setMustSpin(true)
 				setTimeout(() => {
