@@ -76,13 +76,15 @@ export const WheelContainer = ({ prizes }) => {
 					prizeType === 'SPONSOR' ? 'спонсор' :
 						prizeType === 'RESPIN' ? 'респин' :
 							`${prizeType} - ${value}`;
-
+			
 			// Поиск нужного элемента
 			const index = data.findIndex(item => item.option === searchValue);
 
 			if (index === -1) {
 				// Обрабатываем ошибку, если элемент не найден
 				console.error(`Prize not found: ${searchValue}`);
+				console.log(data);
+				
 				// Можно добавить дополнительную логику для обработки, например:
 				// - показ модалки с ошибкой
 				// - вернуть значение по умолчанию
