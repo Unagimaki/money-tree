@@ -26,6 +26,7 @@ export const WheelContainer = ({ prizes }) => {
 	const dispatch = useDispatch()
 	const [tickets, setTickets] = useState(1)
 	const userTicketsBalace = useSelector(state => state.user.player.tickets)
+	const AUTO_SPIN_PAUSE = 1000 // 1 секунда между прокрутками
 
 	const handleDataChange = (newData) => {
 		setTickets(newData) // Обновляем состояние родителя
@@ -119,11 +120,9 @@ export const WheelContainer = ({ prizes }) => {
 			const interval = setInterval(() => {
 				if (!isSpeeningNow) {
 					console.log('Автоспин: запускаем колесо')
-					setTimer(() => {
-						handleSpeen()
-					}, 1000)
+					handleSpeen()
 				}
-			}, 500)
+			}, 1500)
 
 			// Очистка интервала
 			return () => {
