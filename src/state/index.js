@@ -17,6 +17,7 @@ import { alertModalReducer } from "./reducers/alertModalReducer/alertModalReduce
 import { advertModalReducer } from "./reducers/advertModalReducer/advertModalReducer";
 import { ticketShopReducer } from "./reducers/ticketShopReducer/ticketShopReducer";
 import { wheelReducer } from "./reducers/wheelReducer/wheelReducer";
+import { historyPrizesReducer } from "./reducers/hostorePrizesReducer/historyPrizesReducer";
 
 const rootReducer = combineReducers({
   user: userReducer,
@@ -36,7 +37,8 @@ const rootReducer = combineReducers({
   alert: alertModalReducer,
   advert: advertModalReducer,
   ticketShop: ticketShopReducer,
-  wheel: wheelReducer
+  wheel: wheelReducer,
+  prizesHistory: historyPrizesReducer,
 });
 
 export const store = createStore(rootReducer)

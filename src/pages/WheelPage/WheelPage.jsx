@@ -11,6 +11,7 @@ import { useEffect } from 'react'
 import { actionSetPrizes } from '../../state/reducers/wheelReducer/wheelReducer'
 import { WheelModal } from './components/WheelModal/WheelModal'
 import { getData } from '../../services/getData'
+import { PagesLinks } from '../../shared/PagesLinks'
 
 export const WheelPage = ({navigate}) => {
 
@@ -32,9 +33,7 @@ export const WheelPage = ({navigate}) => {
     }, [])
 
     const handleHistory = () => {
-        getData(token, 'player-prizes')
-        .then(res => console.log(res))
-        .catch(e => console.log(e))
+        navigate(PagesLinks.WHEEL_PRIZES_HISTORY_URL)
     }
 
     return(

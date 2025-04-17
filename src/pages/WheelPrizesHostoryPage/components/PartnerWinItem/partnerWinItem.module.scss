@@ -1,0 +1,35 @@
+@import '../../../../assets/styles/vars';
+
+.container {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    background-color: $opacity_background;
+    height: min(19.2vw, 72px);
+    border-radius: $size18px;
+    font-family: $MBold;
+    &_inner {
+        &_info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: min(2.67vw, 10px);
+            color: #fff;
+        }
+        width: 90%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        img {
+            width: min(12.8vw, 48px);
+        }
+        &_button {
+            width: min(21.07vw, 79px);
+            height: min(9.6vw, 36px);
+            background: $green;
+            border-radius: $size12px;
+            color: #000;
+            font-size: $size12px;
+        }
+    }
+}

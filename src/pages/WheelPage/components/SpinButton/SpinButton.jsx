@@ -5,6 +5,7 @@ export const SpinButton = ({ onHoldDone, onHoldComplete, mustSpin, isSpeeningNow
 	const timerRef = useRef(null)
 	const hasCompletedRef = useRef(false)
 	const intervalRef = useRef(null)
+	const auto_spin_icon = require('../../assets/refresh.png')
 
 	const handleMouseDown = () => {
 		if (isSpeeningNow) return
@@ -18,8 +19,8 @@ export const SpinButton = ({ onHoldDone, onHoldComplete, mustSpin, isSpeeningNow
 	}
 
 	const handleMouseUp = () => {
-		console.log('Отжато');
-		
+		// console.log('Отжато');
+		if (isSpeeningNow) return
 		clearTimeout(timerRef.current)
 		clearInterval(intervalRef.current)
 		onHoldDone()
@@ -51,6 +52,11 @@ export const SpinButton = ({ onHoldDone, onHoldComplete, mustSpin, isSpeeningNow
 			<div className={styles.container}>
 				<div className={styles.container_inner}>
 					<div className={styles.container_inner_title}>Крутить колесо</div>
+					<div className={styles.container_inner_text}>
+						<div>Удерживайте для автопрокрутки</div>
+						<img src={auto_spin_icon} alt="auto_spin_icon" />
+						
+					</div>
 				</div>
 			</div>
 		</div>

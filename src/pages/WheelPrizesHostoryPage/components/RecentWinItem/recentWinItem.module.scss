@@ -1,0 +1,21 @@
+@import '../../../../assets/styles/vars';
+
+.container {
+    width: min(44.13vw, 165.5px);
+    height: min(18.13vw, 68px);
+    background-color: $opacity_background;
+    border-radius: $size18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: $size14px;
+    font-family: $MBold;
+    &_inner {
+        display: flex;
+        align-items: center;
+        gap: min(2.67vw, 10px);
+        img {
+            width: min(8.53vw, 32px);
+        }
+    }
+}

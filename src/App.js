@@ -29,6 +29,7 @@ import { AdvertModal } from './pages/OffersPage/components/AdvertModal/AdvertMod
 import { actionAddNewOffer } from './state/reducers/offersReducer/actions';
 import { WheelPage } from './pages/WheelPage/WheelPage';
 import { TicketShopPage } from './pages/TicketShopPage/TicketShopPage';
+import { WheelPrizesHostoryPage } from './pages/WheelPrizesHostoryPage/WheelPrizesHostoryPage';
 
 export const WebApp = window.Telegram.WebApp
 export const baseURL = isDevelopment ? 'moneytree.extensi.one' : process.env.REACT_APP_BASE_URL
@@ -204,14 +205,13 @@ function App() {
           />
           <Route path={PagesLinks.WHEEL_URL} element={<WheelPage navigate={navigate}/>}/>
           <Route path={PagesLinks.TICKET_SHOP_URL} element={<TicketShopPage navigate={navigate}/>}/>
-          <Route
-            path={PagesLinks.LOADING_URL}
-            element={<LoaderPage navigate={navigate} />}
+          <Route path={PagesLinks.WHEEL_PRIZES_HISTORY_URL} element={<WheelPrizesHostoryPage navigate={navigate}/>}/>
+          <Route path={PagesLinks.LOADING_URL} element={<LoaderPage navigate={navigate} />}
           />
           <Route path={PagesLinks.SEASON_URL} element={<SeasonEnd />} />
           <Route path="/" element={<LoaderPage />} />
         </Routes>
-        {currentUrl !== "/" && currentUrl !== PagesLinks.LOADING_URL && currentUrl !== PagesLinks.SEASON_URL && currentUrl !== PagesLinks.WHEEL_URL && currentUrl !== PagesLinks.TICKET_SHOP_URL && <FooterMenu />}
+        {currentUrl !== "/" && currentUrl !== PagesLinks.LOADING_URL && currentUrl !== PagesLinks.SEASON_URL && currentUrl !== PagesLinks.WHEEL_URL && currentUrl !== PagesLinks.TICKET_SHOP_URL && currentUrl !== PagesLinks.WHEEL_PRIZES_HISTORY_URL && <FooterMenu />}
         {(currentUrl === PagesLinks.STATS_URL || currentUrl === PagesLinks.SEASON_URL) && <StatButton />}
         {offerModalVisible && <OfferModal/> }
         {isStatModalVisible.isVisible && ( <StatModal onDamageModalShow={handleDamageStatModalShow} type={isStatModalVisible.type} /> )}

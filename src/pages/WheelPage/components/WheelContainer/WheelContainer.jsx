@@ -83,7 +83,7 @@ export const WheelContainer = ({ prizes }) => {
 
 			if (index === -1) {
 				// Обрабатываем ошибку, если элемент не найден
-				console.error(`Prize not found: ${searchValue}`);
+				// console.error(`Prize not found: ${searchValue}`);
 				console.log(data);
 				
 				// Можно добавить дополнительную логику для обработки, например:
@@ -119,7 +119,7 @@ export const WheelContainer = ({ prizes }) => {
 			setTimer(1100)
 			const interval = setInterval(() => {
 				if (!isSpeeningNow) {
-					console.log('Автоспин: запускаем колесо')
+					// console.log('Автоспин: запускаем колесо')
 					handleSpeen()
 				}
 			}, 1500)
@@ -127,7 +127,7 @@ export const WheelContainer = ({ prizes }) => {
 			// Очистка интервала
 			return () => {
 				clearInterval(interval)
-				console.log('Автоспин выключен, очищаем интервал')
+				// console.log('Автоспин выключен, очищаем интервал')
 			}
 		} else {
 			setTimer(5500)
@@ -135,13 +135,14 @@ export const WheelContainer = ({ prizes }) => {
 	}, [isAutoSpin, isSpeeningNow])
 
 	const onHoldComplete = () => {
-		console.log('Удерживание 2 сек');	
+		// console.log('Удерживание 2 сек');	
 		setSpeenDuration(0.1)
 		setIsAutoSpin(true)
 		handleSpeen()
 	}
 	const onHoldDone = () => {
-		console.log('Удерживание завершено');	
+		// console.log('Удерживание завершено');
+		if (isSpeeningNow || mustSpin) return	
 		setIsAutoSpin(false)	
 		setSpeenDuration(0.5)
 		handleSpeen()

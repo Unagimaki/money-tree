@@ -1,0 +1,50 @@
+@import '../../assets/styles/vars';
+
+.container {
+    @each $property, $value in $page_styles {
+        #{$property}: $value;
+    }
+        
+    height: $page_height;
+    background: $dark_gradient;
+    &_close_icon {
+        position: absolute;
+        width: min(8.53vw, 32px);
+        height: min(8.53vw, 32px);
+        top: $size18px;
+        right: $size18px;
+    }
+    &_inner {
+        color: #fff;
+        width: $size343px;
+        margin: 0 auto;
+        &_title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            font-size: min(5.33vw, 20px);
+            font-family: $MBold;
+            width: min(33.87vw, 127px);
+            height: min(16vw, 60px);
+            background-color: $opacity_background;
+            border-radius: $size16px;
+            margin-bottom: min(7.47vw, 28px);
+            margin-top: min(16vw, 60px);
+        }
+        &_recent {
+            &_winnings {
+                &_title {
+                    font-family: $MBold;
+                    font-size: $size18px;
+                    margin-bottom: $size8px;
+                }
+                &_wrapper {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: $size12px;
+                }
+            }
+        }
+    }
+}
