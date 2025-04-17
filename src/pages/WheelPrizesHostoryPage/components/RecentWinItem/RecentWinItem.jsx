@@ -1,3 +1,4 @@
+import { formatNumber } from '../../../../helpers/formatNumber'
 import styles from './recentWinItem.module.scss'
 
 export const RecentWinItem = ({value, prizeType, isUsed}) => {
@@ -19,7 +20,7 @@ export const RecentWinItem = ({value, prizeType, isUsed}) => {
         <div className={styles.container}>
             <div className={styles.container_inner}>
                 <img src={handleImage()} alt="money_icon"/>
-                <div className={styles.container_inner_text}>{value}</div>
+                <div className={styles.container_inner_text}>{formatNumber(value)}</div>
             </div>
         </div>
     )

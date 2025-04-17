@@ -87,9 +87,7 @@ export const WheelContainer = ({ prizes }) => {
 				console.log(data);
 				
 				// Можно добавить дополнительную логику для обработки, например:
-				// - показ модалки с ошибкой
-				// - вернуть значение по умолчанию
-				// - выполнить другие действия
+
 			} else {
 				// Если элемент найден, продолжаем выполнение кода
 				setPrizeIndex(index);
@@ -142,8 +140,8 @@ export const WheelContainer = ({ prizes }) => {
 	}
 	const onHoldDone = () => {
 		// console.log('Удерживание завершено');
-		if (isSpeeningNow || mustSpin) return	
-		setIsAutoSpin(false)	
+		setIsAutoSpin(false)
+		if (isSpeeningNow || mustSpin) return		
 		setSpeenDuration(0.5)
 		handleSpeen()
 	}
