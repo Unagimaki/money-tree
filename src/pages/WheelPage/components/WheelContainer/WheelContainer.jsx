@@ -8,6 +8,7 @@ import { speenWheel } from '../../services/spinWheel'
 import { actionSetUserBalance, actionSetUserTickets } from '../../../../state/reducers/userReducer/actions'
 import { actionSetCurrentPrize, actionSetModalVisible } from '../../../../state/reducers/wheelReducer/wheelReducer'
 import { actionShowModal } from '../../../../state/reducers/alertModalReducer/alertModalReducer'
+import { formatNumber } from '../../../../helpers/formatNumber'
 
 const money_icon = require('../../assets/money_icon.png')
 const sponsor = require('../../assets/1win.png')
@@ -33,8 +34,8 @@ export const WheelContainer = ({ prizes }) => {
 	}
 
 	const data = prizes?.map((item) => ({
-		option: item.prizeType === 'LEAFS' ? `${item.value} лифов` :
-			item.prizeType === 'TICKETS' ? `${item.value} билета` :
+		option: item.prizeType === 'LEAFS' ? `${formatNumber(item.value)} лифов` :
+			item.prizeType === 'TICKETS' ? `${formatNumber(item.value)} билета` :
 				item.prizeType === 'SPONSOR' ? 'спонсор' :
 					item.prizeType === 'RESPIN' ? 'респин' : '',
 		image: item.prizeType !== 'LEAFS' && item.prizeType !== 'TICKETS' ? {
@@ -72,8 +73,8 @@ export const WheelContainer = ({ prizes }) => {
 				const { prizeType, value } = response.data.selectedPrize
 
 				// Определяем, что использовать в поиске
-			const searchValue = prizeType === 'LEAFS' ? `${value} лифов` :
-				prizeType === 'TICKETS' ? `${value} билета` :
+			const searchValue = prizeType === 'LEAFS' ? `${formatNumber(value)} лифов` :
+				prizeType === 'TICKETS' ? `${formatNumber(value)} билета` :
 					prizeType === 'SPONSOR' ? 'спонсор' :
 						prizeType === 'RESPIN' ? 'респин' :
 							`${prizeType} - ${value}`;

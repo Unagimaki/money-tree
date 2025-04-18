@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux'
 import styles from './TicketBalance.module.scss'
+import { formatNumber } from '../../../../helpers/formatNumber'
 
 
 export const TicketBalance = () => {
@@ -9,7 +10,7 @@ export const TicketBalance = () => {
         <div className={styles.container}>
             <div className={styles.container_inner}>
                 <img src={ticket_icon} alt="ticket_icon" />
-                <div className={styles.container_inner_balance}>{ticket_balance}</div>
+                <div className={styles.container_inner_balance}>{formatNumber(ticket_balance)}</div>
             </div>
         </div>
     )

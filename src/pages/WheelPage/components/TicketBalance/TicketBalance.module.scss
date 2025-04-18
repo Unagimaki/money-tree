@@ -8,7 +8,8 @@
     align-items: center;
     justify-content: center;
     &_inner {
-        width: min(33.6vw, 126px);
+
+        padding: 0 20px;
         height: min(18.13vw, 68px);
         display: flex;
         align-items: center;

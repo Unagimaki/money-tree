@@ -108,7 +108,12 @@ export const OfferModal = () => {
 			WebApp.openLink(opening_url)
 			console.log({opening_url})
 
-		} else {
+		} else if (url.startsWith('https://trk.xplink.io')) {
+			const opening_url = updatedUrl(url, 'sub1', tgId)
+			WebApp.openLink(opening_url)
+			console.log('stoloto', {opening_url})
+		}
+		else {
 			const opening_url = updatedUrl(url, 'tid', tgId)
 			WebApp.openLink(opening_url)
 			console.log({opening_url})

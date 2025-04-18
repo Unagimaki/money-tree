@@ -14,22 +14,36 @@ export const BetSelector = ({onDataChange, isSpeeningNow}) => {
     const token = useSelector(state => state.user.token)
     const [currentBet, setCurrentBet] = useState(1)
 
+
+    const betSteps = [1, 5, 10, 20, 30, 40, 50]
+
     const incrementBet = () => {
         if (isSpeeningNow) return
-        if (currentBet === ticketBalance) {
-            dispatch(actionShowModal('Недостаточно билетов'))
-        } else {
-            if (currentBet > 49) {
-                dispatch(actionShowModal('Максимальная сумма прокрутки 50 билетов'))
-                return
-            }
-            setCurrentBet(currentBet => currentBet + 1)
+
+        const currentIndex = betSteps.indexOf(currentBet)
+        if (currentIndex === betSteps.length - 1) {
+            dispatch(actionShowModal('Максимальная сумма прокрутки 50 билетов'))
+            return
         }
+
+        const nextBet = betSteps[currentIndex + 1]
+        if (nextBet > ticketBalance) {
+            dispatch(actionShowModal('Недостаточно билетов'))
+            return
+        }
+
+        setCurrentBet(nextBet)
     }
+
     const decrementBet = () => {
         if (isSpeeningNow) return
-        currentBet !== 1 && setCurrentBet(currentBet => currentBet - 1)
+
+        const currentIndex = betSteps.indexOf(currentBet)
+        if (currentIndex > 0) {
+            setCurrentBet(betSteps[currentIndex - 1])
+        }
     }
+
 
     useEffect(() => {
         if (isSpeeningNow) return

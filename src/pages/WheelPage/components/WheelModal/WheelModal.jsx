@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux'
 import styles from './wheelModal.module.scss'
 import { actionSetModalVisible } from '../../../../state/reducers/wheelReducer/wheelReducer'
+import { formatNumber } from '../../../../helpers/formatNumber'
 
 export const WheelModal = () => {
 
@@ -41,7 +42,7 @@ export const WheelModal = () => {
                 <div className={styles.container_wrapper_modal}>
                     <div className={styles.container_wrapper_modal_title}>Успешно</div>
                     <div className={styles.container_wrapper_modal_prize}>
-                        <div className={styles.container_wrapper_modal_prize_amount}>+{currentPrize.amount}</div>
+                        <div className={styles.container_wrapper_modal_prize_amount}>+{formatNumber(currentPrize.amount)}</div>
                         <img className={styles.container_wrapper_modal_prize_img} src={handleImage()} alt='img'/>
                     </div>
                     <button onClick={handleCloseModal} className={styles.container_wrapper_modal_button}>Закрыть</button>
